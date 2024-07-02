@@ -1,0 +1,75 @@
+# titanium_airflow_client.ProviderApi
+
+All URIs are relative to *https://airflow.apache.org/api/v1*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**get_providers**](ProviderApi.md#get_providers) | **GET** /providers | List providers
+
+
+# **get_providers**
+> TitaniumTitaniumGetProviders200Response get_providers()
+
+List providers
+
+Get a list of providers.  *New in version 2.1.0* 
+
+### Example
+
+
+```python
+import titanium_airflow_client
+from titanium_airflow_client.models.titanium_titanium_get_providers200_response import TitaniumTitaniumGetProviders200Response
+from titanium_airflow_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = titanium_airflow_client.Configuration(
+    host = "https://airflow.apache.org/api/v1"
+)
+
+
+# Enter a context with an instance of the API client
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = titanium_airflow_client.ProviderApi(api_client)
+
+    try:
+        # List providers
+        api_response = await api_instance.get_providers()
+        print("The response of ProviderApi->get_providers:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProviderApi->get_providers: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TitaniumTitaniumGetProviders200Response**](TitaniumGetProviders200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of providers. |  -  |
+**401** | Request not authenticated due to missing, invalid, authentication info. |  -  |
+**403** | Client does not have sufficient permission. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
