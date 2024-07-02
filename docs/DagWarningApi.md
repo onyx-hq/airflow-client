@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_dag_warnings**
-> TitaniumTitaniumDagWarningCollection get_dag_warnings(dag_id=dag_id, warning_type=warning_type, limit=limit, offset=offset, order_by=order_by)
+> DagWarningCollection get_dag_warnings(dag_id=dag_id, warning_type=warning_type, limit=limit, offset=offset, order_by=order_by)
 
 List dag warnings
 
@@ -17,7 +17,7 @@ List dag warnings
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_dag_warning_collection import TitaniumTitaniumDagWarningCollection
+from titanium_airflow_client.models.dag_warning_collection import DagWarningCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -29,7 +29,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DagWarningApi(api_client)
     dag_id = 'dag_id_example' # str | If set, only return DAG warnings with this dag_id. (optional)
@@ -40,7 +40,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List dag warnings
-        api_response = await api_instance.get_dag_warnings(dag_id=dag_id, warning_type=warning_type, limit=limit, offset=offset, order_by=order_by)
+        api_response = api_instance.get_dag_warnings(dag_id=dag_id, warning_type=warning_type, limit=limit, offset=offset, order_by=order_by)
         print("The response of DagWarningApi->get_dag_warnings:\n")
         pprint(api_response)
     except Exception as e:
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumDagWarningCollection**](TitaniumDagWarningCollection.md)
+[**DagWarningCollection**](DagWarningCollection.md)
 
 ### Authorization
 

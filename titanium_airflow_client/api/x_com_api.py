@@ -20,8 +20,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from titanium_airflow_client.models.titanium_titanium_x_com import TitaniumTitaniumXCom
-from titanium_airflow_client.models.titanium_titanium_x_com_collection import TitaniumTitaniumXComCollection
+from titanium_airflow_client.models.x_com import XCom
+from titanium_airflow_client.models.x_com_collection import XComCollection
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -42,7 +42,7 @@ class XComApi:
 
 
     @validate_call
-    async def get_xcom_entries(
+    def get_xcom_entries(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -63,7 +63,7 @@ class XComApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumXComCollection:
+    ) -> XComCollection:
         """List XCom entries
 
         This endpoint allows specifying `~` as the dag_id, dag_run_id, task_id to retrieve XCOM entries for for all DAGs, DAG runs and task instances. XCom values won't be returned as they can be large. Use this endpoint to get a list of XCom entries and then fetch individual entry to get value.
@@ -119,15 +119,15 @@ class XComApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumXComCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "XComCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -135,7 +135,7 @@ class XComApi:
 
 
     @validate_call
-    async def get_xcom_entries_with_http_info(
+    def get_xcom_entries_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -156,7 +156,7 @@ class XComApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumXComCollection]:
+    ) -> ApiResponse[XComCollection]:
         """List XCom entries
 
         This endpoint allows specifying `~` as the dag_id, dag_run_id, task_id to retrieve XCOM entries for for all DAGs, DAG runs and task instances. XCom values won't be returned as they can be large. Use this endpoint to get a list of XCom entries and then fetch individual entry to get value.
@@ -212,15 +212,15 @@ class XComApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumXComCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "XComCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -228,7 +228,7 @@ class XComApi:
 
 
     @validate_call
-    async def get_xcom_entries_without_preload_content(
+    def get_xcom_entries_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -305,11 +305,11 @@ class XComApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumXComCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "XComCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -403,7 +403,7 @@ class XComApi:
 
 
     @validate_call
-    async def get_xcom_entry(
+    def get_xcom_entry(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -423,7 +423,7 @@ class XComApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumXCom:
+    ) -> XCom:
         """Get an XCom entry
 
 
@@ -475,16 +475,16 @@ class XComApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumXCom",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "XCom",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -492,7 +492,7 @@ class XComApi:
 
 
     @validate_call
-    async def get_xcom_entry_with_http_info(
+    def get_xcom_entry_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -512,7 +512,7 @@ class XComApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumXCom]:
+    ) -> ApiResponse[XCom]:
         """Get an XCom entry
 
 
@@ -564,16 +564,16 @@ class XComApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumXCom",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "XCom",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -581,7 +581,7 @@ class XComApi:
 
 
     @validate_call
-    async def get_xcom_entry_without_preload_content(
+    def get_xcom_entry_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -653,12 +653,12 @@ class XComApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumXCom",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "XCom",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

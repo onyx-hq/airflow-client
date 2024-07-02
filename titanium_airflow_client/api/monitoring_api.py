@@ -17,8 +17,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from titanium_airflow_client.models.titanium_titanium_health_info import TitaniumTitaniumHealthInfo
-from titanium_airflow_client.models.titanium_titanium_version_info import TitaniumTitaniumVersionInfo
+from titanium_airflow_client.models.health_info import HealthInfo
+from titanium_airflow_client.models.version_info import VersionInfo
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -39,7 +39,7 @@ class MonitoringApi:
 
 
     @validate_call
-    async def get_health(
+    def get_health(
         self,
         _request_timeout: Union[
             None,
@@ -53,7 +53,7 @@ class MonitoringApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumHealthInfo:
+    ) -> HealthInfo:
         """Get instance status
 
         Get the status of Airflow's metadatabase, triggerer and scheduler. It includes info about metadatabase and last heartbeat of scheduler and triggerer. 
@@ -88,13 +88,13 @@ class MonitoringApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumHealthInfo",
+            '200': "HealthInfo",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -102,7 +102,7 @@ class MonitoringApi:
 
 
     @validate_call
-    async def get_health_with_http_info(
+    def get_health_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -116,7 +116,7 @@ class MonitoringApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumHealthInfo]:
+    ) -> ApiResponse[HealthInfo]:
         """Get instance status
 
         Get the status of Airflow's metadatabase, triggerer and scheduler. It includes info about metadatabase and last heartbeat of scheduler and triggerer. 
@@ -151,13 +151,13 @@ class MonitoringApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumHealthInfo",
+            '200': "HealthInfo",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -165,7 +165,7 @@ class MonitoringApi:
 
 
     @validate_call
-    async def get_health_without_preload_content(
+    def get_health_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -214,9 +214,9 @@ class MonitoringApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumHealthInfo",
+            '200': "HealthInfo",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -281,7 +281,7 @@ class MonitoringApi:
 
 
     @validate_call
-    async def get_version(
+    def get_version(
         self,
         _request_timeout: Union[
             None,
@@ -295,7 +295,7 @@ class MonitoringApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumVersionInfo:
+    ) -> VersionInfo:
         """Get version information
 
 
@@ -329,13 +329,13 @@ class MonitoringApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVersionInfo",
+            '200': "VersionInfo",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -343,7 +343,7 @@ class MonitoringApi:
 
 
     @validate_call
-    async def get_version_with_http_info(
+    def get_version_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -357,7 +357,7 @@ class MonitoringApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumVersionInfo]:
+    ) -> ApiResponse[VersionInfo]:
         """Get version information
 
 
@@ -391,13 +391,13 @@ class MonitoringApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVersionInfo",
+            '200': "VersionInfo",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -405,7 +405,7 @@ class MonitoringApi:
 
 
     @validate_call
-    async def get_version_without_preload_content(
+    def get_version_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -453,9 +453,9 @@ class MonitoringApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVersionInfo",
+            '200': "VersionInfo",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

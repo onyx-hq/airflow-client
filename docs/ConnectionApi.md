@@ -33,14 +33,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ConnectionApi(api_client)
     connection_id = 'connection_id_example' # str | The connection ID.
 
     try:
         # Delete a connection
-        await api_instance.delete_connection(connection_id)
+        api_instance.delete_connection(connection_id)
     except Exception as e:
         print("Exception when calling ConnectionApi->delete_connection: %s\n" % e)
 ```
@@ -80,7 +80,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_connection**
-> TitaniumTitaniumConnection get_connection(connection_id)
+> Connection get_connection(connection_id)
 
 Get a connection
 
@@ -89,7 +89,7 @@ Get a connection
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_connection import TitaniumTitaniumConnection
+from titanium_airflow_client.models.connection import Connection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -101,14 +101,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ConnectionApi(api_client)
     connection_id = 'connection_id_example' # str | The connection ID.
 
     try:
         # Get a connection
-        api_response = await api_instance.get_connection(connection_id)
+        api_response = api_instance.get_connection(connection_id)
         print("The response of ConnectionApi->get_connection:\n")
         pprint(api_response)
     except Exception as e:
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumConnection**](TitaniumConnection.md)
+[**Connection**](Connection.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_connections**
-> TitaniumTitaniumConnectionCollection get_connections(limit=limit, offset=offset, order_by=order_by)
+> ConnectionCollection get_connections(limit=limit, offset=offset, order_by=order_by)
 
 List connections
 
@@ -158,7 +158,7 @@ List connections
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_connection_collection import TitaniumTitaniumConnectionCollection
+from titanium_airflow_client.models.connection_collection import ConnectionCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -170,7 +170,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ConnectionApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -179,7 +179,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List connections
-        api_response = await api_instance.get_connections(limit=limit, offset=offset, order_by=order_by)
+        api_response = api_instance.get_connections(limit=limit, offset=offset, order_by=order_by)
         print("The response of ConnectionApi->get_connections:\n")
         pprint(api_response)
     except Exception as e:
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumConnectionCollection**](TitaniumConnectionCollection.md)
+[**ConnectionCollection**](ConnectionCollection.md)
 
 ### Authorization
 
@@ -221,7 +221,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_connection**
-> TitaniumTitaniumConnection patch_connection(connection_id, titanium_connection, update_mask=update_mask)
+> Connection patch_connection(connection_id, connection, update_mask=update_mask)
 
 Update a connection
 
@@ -230,8 +230,7 @@ Update a connection
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_connection import TitaniumConnection
-from titanium_airflow_client.models.titanium_titanium_connection import TitaniumTitaniumConnection
+from titanium_airflow_client.models.connection import Connection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -243,16 +242,16 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ConnectionApi(api_client)
     connection_id = 'connection_id_example' # str | The connection ID.
-    titanium_connection = titanium_airflow_client.TitaniumConnection() # TitaniumConnection | 
+    connection = titanium_airflow_client.Connection() # Connection | 
     update_mask = ['update_mask_example'] # List[str] | The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields.  (optional)
 
     try:
         # Update a connection
-        api_response = await api_instance.patch_connection(connection_id, titanium_connection, update_mask=update_mask)
+        api_response = api_instance.patch_connection(connection_id, connection, update_mask=update_mask)
         print("The response of ConnectionApi->patch_connection:\n")
         pprint(api_response)
     except Exception as e:
@@ -267,12 +266,12 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **connection_id** | **str**| The connection ID. | 
- **titanium_connection** | [**TitaniumConnection**](TitaniumConnection.md)|  | 
+ **connection** | [**Connection**](Connection.md)|  | 
  **update_mask** | [**List[str]**](str.md)| The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields.  | [optional] 
 
 ### Return type
 
-[**TitaniumTitaniumConnection**](TitaniumConnection.md)
+[**Connection**](Connection.md)
 
 ### Authorization
 
@@ -296,7 +295,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_connection**
-> TitaniumTitaniumConnection post_connection(titanium_connection)
+> Connection post_connection(connection)
 
 Create a connection
 
@@ -305,8 +304,7 @@ Create a connection
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_connection import TitaniumConnection
-from titanium_airflow_client.models.titanium_titanium_connection import TitaniumTitaniumConnection
+from titanium_airflow_client.models.connection import Connection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -318,14 +316,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ConnectionApi(api_client)
-    titanium_connection = titanium_airflow_client.TitaniumConnection() # TitaniumConnection | 
+    connection = titanium_airflow_client.Connection() # Connection | 
 
     try:
         # Create a connection
-        api_response = await api_instance.post_connection(titanium_connection)
+        api_response = api_instance.post_connection(connection)
         print("The response of ConnectionApi->post_connection:\n")
         pprint(api_response)
     except Exception as e:
@@ -339,11 +337,11 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **titanium_connection** | [**TitaniumConnection**](TitaniumConnection.md)|  | 
+ **connection** | [**Connection**](Connection.md)|  | 
 
 ### Return type
 
-[**TitaniumTitaniumConnection**](TitaniumConnection.md)
+[**Connection**](Connection.md)
 
 ### Authorization
 
@@ -366,7 +364,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **test_connection**
-> TitaniumTitaniumConnectionTest test_connection(titanium_connection)
+> ConnectionTest test_connection(connection)
 
 Test a connection
 
@@ -377,8 +375,8 @@ Test a connection.  For security reasons, the test connection functionality is d
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_connection import TitaniumConnection
-from titanium_airflow_client.models.titanium_titanium_connection_test import TitaniumTitaniumConnectionTest
+from titanium_airflow_client.models.connection import Connection
+from titanium_airflow_client.models.connection_test import ConnectionTest
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -390,14 +388,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ConnectionApi(api_client)
-    titanium_connection = titanium_airflow_client.TitaniumConnection() # TitaniumConnection | 
+    connection = titanium_airflow_client.Connection() # Connection | 
 
     try:
         # Test a connection
-        api_response = await api_instance.test_connection(titanium_connection)
+        api_response = api_instance.test_connection(connection)
         print("The response of ConnectionApi->test_connection:\n")
         pprint(api_response)
     except Exception as e:
@@ -411,11 +409,11 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **titanium_connection** | [**TitaniumConnection**](TitaniumConnection.md)|  | 
+ **connection** | [**Connection**](Connection.md)|  | 
 
 ### Return type
 
-[**TitaniumTitaniumConnectionTest**](TitaniumConnectionTest.md)
+[**ConnectionTest**](ConnectionTest.md)
 
 ### Authorization
 

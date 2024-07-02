@@ -34,14 +34,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.RoleApi(api_client)
     role_name = 'role_name_example' # str | The role name
 
     try:
         # Delete a role
-        await api_instance.delete_role(role_name)
+        api_instance.delete_role(role_name)
     except Exception as e:
         print("Exception when calling RoleApi->delete_role: %s\n" % e)
 ```
@@ -81,7 +81,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_role**
-> TitaniumTitaniumRole get_role(role_name)
+> Role get_role(role_name)
 
 Get a role
 
@@ -92,7 +92,7 @@ Get a role.  *This API endpoint is deprecated, please use the endpoint `/auth/fa
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_role import TitaniumTitaniumRole
+from titanium_airflow_client.models.role import Role
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -104,14 +104,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.RoleApi(api_client)
     role_name = 'role_name_example' # str | The role name
 
     try:
         # Get a role
-        api_response = await api_instance.get_role(role_name)
+        api_response = api_instance.get_role(role_name)
         print("The response of RoleApi->get_role:\n")
         pprint(api_response)
     except Exception as e:
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumRole**](TitaniumRole.md)
+[**Role**](Role.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_roles**
-> TitaniumTitaniumRoleCollection get_roles(limit=limit, offset=offset, order_by=order_by)
+> RoleCollection get_roles(limit=limit, offset=offset, order_by=order_by)
 
 List roles
 
@@ -163,7 +163,7 @@ Get a list of roles.  *This API endpoint is deprecated, please use the endpoint 
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_role_collection import TitaniumTitaniumRoleCollection
+from titanium_airflow_client.models.role_collection import RoleCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -175,7 +175,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.RoleApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -184,7 +184,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List roles
-        api_response = await api_instance.get_roles(limit=limit, offset=offset, order_by=order_by)
+        api_response = api_instance.get_roles(limit=limit, offset=offset, order_by=order_by)
         print("The response of RoleApi->get_roles:\n")
         pprint(api_response)
     except Exception as e:
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumRoleCollection**](TitaniumRoleCollection.md)
+[**RoleCollection**](RoleCollection.md)
 
 ### Authorization
 
@@ -226,7 +226,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_role**
-> TitaniumTitaniumRole patch_role(role_name, titanium_role, update_mask=update_mask)
+> Role patch_role(role_name, role, update_mask=update_mask)
 
 Update a role
 
@@ -237,8 +237,7 @@ Update a role.  *This API endpoint is deprecated, please use the endpoint `/auth
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_role import TitaniumRole
-from titanium_airflow_client.models.titanium_titanium_role import TitaniumTitaniumRole
+from titanium_airflow_client.models.role import Role
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -250,16 +249,16 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.RoleApi(api_client)
     role_name = 'role_name_example' # str | The role name
-    titanium_role = titanium_airflow_client.TitaniumRole() # TitaniumRole | 
+    role = titanium_airflow_client.Role() # Role | 
     update_mask = ['update_mask_example'] # List[str] | The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields.  (optional)
 
     try:
         # Update a role
-        api_response = await api_instance.patch_role(role_name, titanium_role, update_mask=update_mask)
+        api_response = api_instance.patch_role(role_name, role, update_mask=update_mask)
         print("The response of RoleApi->patch_role:\n")
         pprint(api_response)
     except Exception as e:
@@ -274,12 +273,12 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **role_name** | **str**| The role name | 
- **titanium_role** | [**TitaniumRole**](TitaniumRole.md)|  | 
+ **role** | [**Role**](Role.md)|  | 
  **update_mask** | [**List[str]**](str.md)| The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields.  | [optional] 
 
 ### Return type
 
-[**TitaniumTitaniumRole**](TitaniumRole.md)
+[**Role**](Role.md)
 
 ### Authorization
 
@@ -303,7 +302,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_role**
-> TitaniumTitaniumRole post_role(titanium_role)
+> Role post_role(role)
 
 Create a role
 
@@ -314,8 +313,7 @@ Create a new role.  *This API endpoint is deprecated, please use the endpoint `/
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_role import TitaniumRole
-from titanium_airflow_client.models.titanium_titanium_role import TitaniumTitaniumRole
+from titanium_airflow_client.models.role import Role
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -327,14 +325,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.RoleApi(api_client)
-    titanium_role = titanium_airflow_client.TitaniumRole() # TitaniumRole | 
+    role = titanium_airflow_client.Role() # Role | 
 
     try:
         # Create a role
-        api_response = await api_instance.post_role(titanium_role)
+        api_response = api_instance.post_role(role)
         print("The response of RoleApi->post_role:\n")
         pprint(api_response)
     except Exception as e:
@@ -348,11 +346,11 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **titanium_role** | [**TitaniumRole**](TitaniumRole.md)|  | 
+ **role** | [**Role**](Role.md)|  | 
 
 ### Return type
 
-[**TitaniumTitaniumRole**](TitaniumRole.md)
+[**Role**](Role.md)
 
 ### Authorization
 

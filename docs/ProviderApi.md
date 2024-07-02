@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_providers**
-> TitaniumTitaniumGetProviders200Response get_providers()
+> GetProviders200Response get_providers()
 
 List providers
 
@@ -19,7 +19,7 @@ Get a list of providers.  *New in version 2.1.0*
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_get_providers200_response import TitaniumTitaniumGetProviders200Response
+from titanium_airflow_client.models.get_providers200_response import GetProviders200Response
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -31,13 +31,13 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ProviderApi(api_client)
 
     try:
         # List providers
-        api_response = await api_instance.get_providers()
+        api_response = api_instance.get_providers()
         print("The response of ProviderApi->get_providers:\n")
         pprint(api_response)
     except Exception as e:
@@ -52,7 +52,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TitaniumTitaniumGetProviders200Response**](TitaniumGetProviders200Response.md)
+[**GetProviders200Response**](GetProviders200Response.md)
 
 ### Authorization
 

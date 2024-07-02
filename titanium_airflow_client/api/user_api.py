@@ -20,10 +20,9 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from titanium_airflow_client.models.titanium_titanium_user import TitaniumTitaniumUser
-from titanium_airflow_client.models.titanium_titanium_user_collection import TitaniumTitaniumUserCollection
-from titanium_airflow_client.models.titanium_titanium_user_collection_item import TitaniumTitaniumUserCollectionItem
-from titanium_airflow_client.models.titanium_user import TitaniumUser
+from titanium_airflow_client.models.user import User
+from titanium_airflow_client.models.user_collection import UserCollection
+from titanium_airflow_client.models.user_collection_item import UserCollectionItem
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -44,7 +43,7 @@ class UserApi:
 
 
     @validate_call
-    async def delete_user(
+    def delete_user(
         self,
         username: Annotated[StrictStr, Field(description="The username of the user.  *New in version 2.1.0* ")],
         _request_timeout: Union[
@@ -99,16 +98,16 @@ class UserApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -116,7 +115,7 @@ class UserApi:
 
 
     @validate_call
-    async def delete_user_with_http_info(
+    def delete_user_with_http_info(
         self,
         username: Annotated[StrictStr, Field(description="The username of the user.  *New in version 2.1.0* ")],
         _request_timeout: Union[
@@ -171,16 +170,16 @@ class UserApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -188,7 +187,7 @@ class UserApi:
 
 
     @validate_call
-    async def delete_user_without_preload_content(
+    def delete_user_without_preload_content(
         self,
         username: Annotated[StrictStr, Field(description="The username of the user.  *New in version 2.1.0* ")],
         _request_timeout: Union[
@@ -243,12 +242,12 @@ class UserApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -316,7 +315,7 @@ class UserApi:
 
 
     @validate_call
-    async def get_user(
+    def get_user(
         self,
         username: Annotated[StrictStr, Field(description="The username of the user.  *New in version 2.1.0* ")],
         _request_timeout: Union[
@@ -331,7 +330,7 @@ class UserApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumUserCollectionItem:
+    ) -> UserCollectionItem:
         """(Deprecated) Get a user
 
         Get a user with a specific username.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
@@ -370,16 +369,16 @@ class UserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumUserCollectionItem",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "UserCollectionItem",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -387,7 +386,7 @@ class UserApi:
 
 
     @validate_call
-    async def get_user_with_http_info(
+    def get_user_with_http_info(
         self,
         username: Annotated[StrictStr, Field(description="The username of the user.  *New in version 2.1.0* ")],
         _request_timeout: Union[
@@ -402,7 +401,7 @@ class UserApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumUserCollectionItem]:
+    ) -> ApiResponse[UserCollectionItem]:
         """(Deprecated) Get a user
 
         Get a user with a specific username.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
@@ -441,16 +440,16 @@ class UserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumUserCollectionItem",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "UserCollectionItem",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -458,7 +457,7 @@ class UserApi:
 
 
     @validate_call
-    async def get_user_without_preload_content(
+    def get_user_without_preload_content(
         self,
         username: Annotated[StrictStr, Field(description="The username of the user.  *New in version 2.1.0* ")],
         _request_timeout: Union[
@@ -512,12 +511,12 @@ class UserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumUserCollectionItem",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "UserCollectionItem",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -585,7 +584,7 @@ class UserApi:
 
 
     @validate_call
-    async def get_users(
+    def get_users(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -602,7 +601,7 @@ class UserApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumUserCollection:
+    ) -> UserCollection:
         """(Deprecated) List users
 
         Get a list of users.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
@@ -647,15 +646,15 @@ class UserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumUserCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "UserCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -663,7 +662,7 @@ class UserApi:
 
 
     @validate_call
-    async def get_users_with_http_info(
+    def get_users_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -680,7 +679,7 @@ class UserApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumUserCollection]:
+    ) -> ApiResponse[UserCollection]:
         """(Deprecated) List users
 
         Get a list of users.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
@@ -725,15 +724,15 @@ class UserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumUserCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "UserCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -741,7 +740,7 @@ class UserApi:
 
 
     @validate_call
-    async def get_users_without_preload_content(
+    def get_users_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -803,11 +802,11 @@ class UserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumUserCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "UserCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -887,10 +886,10 @@ class UserApi:
 
 
     @validate_call
-    async def patch_user(
+    def patch_user(
         self,
         username: Annotated[StrictStr, Field(description="The username of the user.  *New in version 2.1.0* ")],
-        titanium_user: TitaniumUser,
+        user: User,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -904,15 +903,15 @@ class UserApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumUserCollectionItem:
+    ) -> UserCollectionItem:
         """(Deprecated) Update a user
 
         Update fields for a user.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
 
         :param username: The username of the user.  *New in version 2.1.0*  (required)
         :type username: str
-        :param titanium_user: (required)
-        :type titanium_user: TitaniumUser
+        :param user: (required)
+        :type user: User
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -940,7 +939,7 @@ class UserApi:
 
         _param = self._patch_user_serialize(
             username=username,
-            titanium_user=titanium_user,
+            user=user,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -949,17 +948,17 @@ class UserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumUserCollectionItem",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "UserCollectionItem",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -967,10 +966,10 @@ class UserApi:
 
 
     @validate_call
-    async def patch_user_with_http_info(
+    def patch_user_with_http_info(
         self,
         username: Annotated[StrictStr, Field(description="The username of the user.  *New in version 2.1.0* ")],
-        titanium_user: TitaniumUser,
+        user: User,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -984,15 +983,15 @@ class UserApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumUserCollectionItem]:
+    ) -> ApiResponse[UserCollectionItem]:
         """(Deprecated) Update a user
 
         Update fields for a user.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
 
         :param username: The username of the user.  *New in version 2.1.0*  (required)
         :type username: str
-        :param titanium_user: (required)
-        :type titanium_user: TitaniumUser
+        :param user: (required)
+        :type user: User
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1020,7 +1019,7 @@ class UserApi:
 
         _param = self._patch_user_serialize(
             username=username,
-            titanium_user=titanium_user,
+            user=user,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1029,17 +1028,17 @@ class UserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumUserCollectionItem",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "UserCollectionItem",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1047,10 +1046,10 @@ class UserApi:
 
 
     @validate_call
-    async def patch_user_without_preload_content(
+    def patch_user_without_preload_content(
         self,
         username: Annotated[StrictStr, Field(description="The username of the user.  *New in version 2.1.0* ")],
-        titanium_user: TitaniumUser,
+        user: User,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -1071,8 +1070,8 @@ class UserApi:
 
         :param username: The username of the user.  *New in version 2.1.0*  (required)
         :type username: str
-        :param titanium_user: (required)
-        :type titanium_user: TitaniumUser
+        :param user: (required)
+        :type user: User
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1100,7 +1099,7 @@ class UserApi:
 
         _param = self._patch_user_serialize(
             username=username,
-            titanium_user=titanium_user,
+            user=user,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1109,13 +1108,13 @@ class UserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumUserCollectionItem",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "UserCollectionItem",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1125,7 +1124,7 @@ class UserApi:
     def _patch_user_serialize(
         self,
         username,
-        titanium_user,
+        user,
         update_mask,
         _request_auth,
         _content_type,
@@ -1157,8 +1156,8 @@ class UserApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_user is not None:
-            _body_params = titanium_user
+        if user is not None:
+            _body_params = user
 
 
         # set the HTTP header `Accept`
@@ -1205,9 +1204,9 @@ class UserApi:
 
 
     @validate_call
-    async def post_user(
+    def post_user(
         self,
-        titanium_user: TitaniumUser,
+        user: User,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1220,13 +1219,13 @@ class UserApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumUser:
+    ) -> User:
         """(Deprecated) Create a user
 
         Create a new user with unique username and email.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
 
-        :param titanium_user: (required)
-        :type titanium_user: TitaniumUser
+        :param user: (required)
+        :type user: User
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1251,7 +1250,7 @@ class UserApi:
         warnings.warn("POST /users is deprecated.", DeprecationWarning)
 
         _param = self._post_user_serialize(
-            titanium_user=titanium_user,
+            user=user,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1259,17 +1258,17 @@ class UserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumUser",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '409': "TitaniumTitaniumError",
+            '200': "User",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '409': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1277,9 +1276,9 @@ class UserApi:
 
 
     @validate_call
-    async def post_user_with_http_info(
+    def post_user_with_http_info(
         self,
-        titanium_user: TitaniumUser,
+        user: User,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1292,13 +1291,13 @@ class UserApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumUser]:
+    ) -> ApiResponse[User]:
         """(Deprecated) Create a user
 
         Create a new user with unique username and email.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
 
-        :param titanium_user: (required)
-        :type titanium_user: TitaniumUser
+        :param user: (required)
+        :type user: User
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1323,7 +1322,7 @@ class UserApi:
         warnings.warn("POST /users is deprecated.", DeprecationWarning)
 
         _param = self._post_user_serialize(
-            titanium_user=titanium_user,
+            user=user,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1331,17 +1330,17 @@ class UserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumUser",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '409': "TitaniumTitaniumError",
+            '200': "User",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '409': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1349,9 +1348,9 @@ class UserApi:
 
 
     @validate_call
-    async def post_user_without_preload_content(
+    def post_user_without_preload_content(
         self,
-        titanium_user: TitaniumUser,
+        user: User,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1369,8 +1368,8 @@ class UserApi:
 
         Create a new user with unique username and email.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
 
-        :param titanium_user: (required)
-        :type titanium_user: TitaniumUser
+        :param user: (required)
+        :type user: User
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1395,7 +1394,7 @@ class UserApi:
         warnings.warn("POST /users is deprecated.", DeprecationWarning)
 
         _param = self._post_user_serialize(
-            titanium_user=titanium_user,
+            user=user,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1403,13 +1402,13 @@ class UserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumUser",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '409': "TitaniumTitaniumError",
+            '200': "User",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '409': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1418,7 +1417,7 @@ class UserApi:
 
     def _post_user_serialize(
         self,
-        titanium_user,
+        user,
         _request_auth,
         _content_type,
         _headers,
@@ -1442,8 +1441,8 @@ class UserApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_user is not None:
-            _body_params = titanium_user
+        if user is not None:
+            _body_params = user
 
 
         # set the HTTP header `Accept`

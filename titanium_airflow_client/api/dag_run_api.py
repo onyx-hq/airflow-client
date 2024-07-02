@@ -21,15 +21,14 @@ from datetime import datetime
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from titanium_airflow_client.models.titanium_clear_dag_run import TitaniumClearDagRun
-from titanium_airflow_client.models.titanium_dag_run import TitaniumDAGRun
-from titanium_airflow_client.models.titanium_list_dag_runs_form import TitaniumListDagRunsForm
-from titanium_airflow_client.models.titanium_set_dag_run_note import TitaniumSetDagRunNote
-from titanium_airflow_client.models.titanium_titanium_clear_dag_run200_response import TitaniumTitaniumClearDagRun200Response
-from titanium_airflow_client.models.titanium_titanium_dag_run import TitaniumTitaniumDAGRun
-from titanium_airflow_client.models.titanium_titanium_dag_run_collection import TitaniumTitaniumDAGRunCollection
-from titanium_airflow_client.models.titanium_titanium_dataset_event_collection import TitaniumTitaniumDatasetEventCollection
-from titanium_airflow_client.models.titanium_update_dag_run_state import TitaniumUpdateDagRunState
+from titanium_airflow_client.models.clear_dag_run import ClearDagRun
+from titanium_airflow_client.models.clear_dag_run200_response import ClearDagRun200Response
+from titanium_airflow_client.models.dag_run import DAGRun
+from titanium_airflow_client.models.dag_run_collection import DAGRunCollection
+from titanium_airflow_client.models.dataset_event_collection import DatasetEventCollection
+from titanium_airflow_client.models.list_dag_runs_form import ListDagRunsForm
+from titanium_airflow_client.models.set_dag_run_note import SetDagRunNote
+from titanium_airflow_client.models.update_dag_run_state import UpdateDagRunState
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -50,11 +49,11 @@ class DAGRunApi:
 
 
     @validate_call
-    async def clear_dag_run(
+    def clear_dag_run(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
-        titanium_clear_dag_run: TitaniumClearDagRun,
+        clear_dag_run: ClearDagRun,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -67,7 +66,7 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumClearDagRun200Response:
+    ) -> ClearDagRun200Response:
         """Clear a DAG run
 
         Clear a DAG run.  *New in version 2.4.0* 
@@ -76,8 +75,8 @@ class DAGRunApi:
         :type dag_id: str
         :param dag_run_id: The DAG run ID. (required)
         :type dag_run_id: str
-        :param titanium_clear_dag_run: (required)
-        :type titanium_clear_dag_run: TitaniumClearDagRun
+        :param clear_dag_run: (required)
+        :type clear_dag_run: ClearDagRun
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -103,7 +102,7 @@ class DAGRunApi:
         _param = self._clear_dag_run_serialize(
             dag_id=dag_id,
             dag_run_id=dag_run_id,
-            titanium_clear_dag_run=titanium_clear_dag_run,
+            clear_dag_run=clear_dag_run,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -111,17 +110,17 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumClearDagRun200Response",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "ClearDagRun200Response",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -129,11 +128,11 @@ class DAGRunApi:
 
 
     @validate_call
-    async def clear_dag_run_with_http_info(
+    def clear_dag_run_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
-        titanium_clear_dag_run: TitaniumClearDagRun,
+        clear_dag_run: ClearDagRun,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -146,7 +145,7 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumClearDagRun200Response]:
+    ) -> ApiResponse[ClearDagRun200Response]:
         """Clear a DAG run
 
         Clear a DAG run.  *New in version 2.4.0* 
@@ -155,8 +154,8 @@ class DAGRunApi:
         :type dag_id: str
         :param dag_run_id: The DAG run ID. (required)
         :type dag_run_id: str
-        :param titanium_clear_dag_run: (required)
-        :type titanium_clear_dag_run: TitaniumClearDagRun
+        :param clear_dag_run: (required)
+        :type clear_dag_run: ClearDagRun
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -182,7 +181,7 @@ class DAGRunApi:
         _param = self._clear_dag_run_serialize(
             dag_id=dag_id,
             dag_run_id=dag_run_id,
-            titanium_clear_dag_run=titanium_clear_dag_run,
+            clear_dag_run=clear_dag_run,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -190,17 +189,17 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumClearDagRun200Response",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "ClearDagRun200Response",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -208,11 +207,11 @@ class DAGRunApi:
 
 
     @validate_call
-    async def clear_dag_run_without_preload_content(
+    def clear_dag_run_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
-        titanium_clear_dag_run: TitaniumClearDagRun,
+        clear_dag_run: ClearDagRun,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -234,8 +233,8 @@ class DAGRunApi:
         :type dag_id: str
         :param dag_run_id: The DAG run ID. (required)
         :type dag_run_id: str
-        :param titanium_clear_dag_run: (required)
-        :type titanium_clear_dag_run: TitaniumClearDagRun
+        :param clear_dag_run: (required)
+        :type clear_dag_run: ClearDagRun
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -261,7 +260,7 @@ class DAGRunApi:
         _param = self._clear_dag_run_serialize(
             dag_id=dag_id,
             dag_run_id=dag_run_id,
-            titanium_clear_dag_run=titanium_clear_dag_run,
+            clear_dag_run=clear_dag_run,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -269,13 +268,13 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumClearDagRun200Response",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "ClearDagRun200Response",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -286,7 +285,7 @@ class DAGRunApi:
         self,
         dag_id,
         dag_run_id,
-        titanium_clear_dag_run,
+        clear_dag_run,
         _request_auth,
         _content_type,
         _headers,
@@ -314,8 +313,8 @@ class DAGRunApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_clear_dag_run is not None:
-            _body_params = titanium_clear_dag_run
+        if clear_dag_run is not None:
+            _body_params = clear_dag_run
 
 
         # set the HTTP header `Accept`
@@ -362,7 +361,7 @@ class DAGRunApi:
 
 
     @validate_call
-    async def delete_dag_run(
+    def delete_dag_run(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -419,16 +418,16 @@ class DAGRunApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -436,7 +435,7 @@ class DAGRunApi:
 
 
     @validate_call
-    async def delete_dag_run_with_http_info(
+    def delete_dag_run_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -493,16 +492,16 @@ class DAGRunApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -510,7 +509,7 @@ class DAGRunApi:
 
 
     @validate_call
-    async def delete_dag_run_without_preload_content(
+    def delete_dag_run_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -567,12 +566,12 @@ class DAGRunApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -643,7 +642,7 @@ class DAGRunApi:
 
 
     @validate_call
-    async def get_dag_run(
+    def get_dag_run(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -660,7 +659,7 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDAGRun:
+    ) -> DAGRun:
         """Get a DAG run
 
 
@@ -703,16 +702,16 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRun",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DAGRun",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -720,7 +719,7 @@ class DAGRunApi:
 
 
     @validate_call
-    async def get_dag_run_with_http_info(
+    def get_dag_run_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -737,7 +736,7 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDAGRun]:
+    ) -> ApiResponse[DAGRun]:
         """Get a DAG run
 
 
@@ -780,16 +779,16 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRun",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DAGRun",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -797,7 +796,7 @@ class DAGRunApi:
 
 
     @validate_call
-    async def get_dag_run_without_preload_content(
+    def get_dag_run_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -857,12 +856,12 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRun",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DAGRun",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -939,7 +938,7 @@ class DAGRunApi:
 
 
     @validate_call
-    async def get_dag_runs(
+    def get_dag_runs(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
@@ -967,7 +966,7 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDAGRunCollection:
+    ) -> DAGRunCollection:
         """List DAG runs
 
         This endpoint allows specifying `~` as the dag_id to retrieve DAG runs for all DAGs. 
@@ -1044,14 +1043,14 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRunCollection",
-            '401': "TitaniumTitaniumError",
+            '200': "DAGRunCollection",
+            '401': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1059,7 +1058,7 @@ class DAGRunApi:
 
 
     @validate_call
-    async def get_dag_runs_with_http_info(
+    def get_dag_runs_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
@@ -1087,7 +1086,7 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDAGRunCollection]:
+    ) -> ApiResponse[DAGRunCollection]:
         """List DAG runs
 
         This endpoint allows specifying `~` as the dag_id to retrieve DAG runs for all DAGs. 
@@ -1164,14 +1163,14 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRunCollection",
-            '401': "TitaniumTitaniumError",
+            '200': "DAGRunCollection",
+            '401': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1179,7 +1178,7 @@ class DAGRunApi:
 
 
     @validate_call
-    async def get_dag_runs_without_preload_content(
+    def get_dag_runs_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
@@ -1284,10 +1283,10 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRunCollection",
-            '401': "TitaniumTitaniumError",
+            '200': "DAGRunCollection",
+            '401': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1494,9 +1493,9 @@ class DAGRunApi:
 
 
     @validate_call
-    async def get_dag_runs_batch(
+    def get_dag_runs_batch(
         self,
-        titanium_list_dag_runs_form: TitaniumListDagRunsForm,
+        list_dag_runs_form: ListDagRunsForm,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1509,13 +1508,13 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDAGRunCollection:
+    ) -> DAGRunCollection:
         """List DAG runs (batch)
 
         This endpoint is a POST to allow filtering across a large number of DAG IDs, where as a GET it would run in to maximum HTTP request URL length limit. 
 
-        :param titanium_list_dag_runs_form: (required)
-        :type titanium_list_dag_runs_form: TitaniumListDagRunsForm
+        :param list_dag_runs_form: (required)
+        :type list_dag_runs_form: ListDagRunsForm
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1539,7 +1538,7 @@ class DAGRunApi:
         """ # noqa: E501
 
         _param = self._get_dag_runs_batch_serialize(
-            titanium_list_dag_runs_form=titanium_list_dag_runs_form,
+            list_dag_runs_form=list_dag_runs_form,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1547,16 +1546,16 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRunCollection",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "DAGRunCollection",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1564,9 +1563,9 @@ class DAGRunApi:
 
 
     @validate_call
-    async def get_dag_runs_batch_with_http_info(
+    def get_dag_runs_batch_with_http_info(
         self,
-        titanium_list_dag_runs_form: TitaniumListDagRunsForm,
+        list_dag_runs_form: ListDagRunsForm,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1579,13 +1578,13 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDAGRunCollection]:
+    ) -> ApiResponse[DAGRunCollection]:
         """List DAG runs (batch)
 
         This endpoint is a POST to allow filtering across a large number of DAG IDs, where as a GET it would run in to maximum HTTP request URL length limit. 
 
-        :param titanium_list_dag_runs_form: (required)
-        :type titanium_list_dag_runs_form: TitaniumListDagRunsForm
+        :param list_dag_runs_form: (required)
+        :type list_dag_runs_form: ListDagRunsForm
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1609,7 +1608,7 @@ class DAGRunApi:
         """ # noqa: E501
 
         _param = self._get_dag_runs_batch_serialize(
-            titanium_list_dag_runs_form=titanium_list_dag_runs_form,
+            list_dag_runs_form=list_dag_runs_form,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1617,16 +1616,16 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRunCollection",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "DAGRunCollection",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1634,9 +1633,9 @@ class DAGRunApi:
 
 
     @validate_call
-    async def get_dag_runs_batch_without_preload_content(
+    def get_dag_runs_batch_without_preload_content(
         self,
-        titanium_list_dag_runs_form: TitaniumListDagRunsForm,
+        list_dag_runs_form: ListDagRunsForm,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1654,8 +1653,8 @@ class DAGRunApi:
 
         This endpoint is a POST to allow filtering across a large number of DAG IDs, where as a GET it would run in to maximum HTTP request URL length limit. 
 
-        :param titanium_list_dag_runs_form: (required)
-        :type titanium_list_dag_runs_form: TitaniumListDagRunsForm
+        :param list_dag_runs_form: (required)
+        :type list_dag_runs_form: ListDagRunsForm
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1679,7 +1678,7 @@ class DAGRunApi:
         """ # noqa: E501
 
         _param = self._get_dag_runs_batch_serialize(
-            titanium_list_dag_runs_form=titanium_list_dag_runs_form,
+            list_dag_runs_form=list_dag_runs_form,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1687,12 +1686,12 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRunCollection",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "DAGRunCollection",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1701,7 +1700,7 @@ class DAGRunApi:
 
     def _get_dag_runs_batch_serialize(
         self,
-        titanium_list_dag_runs_form,
+        list_dag_runs_form,
         _request_auth,
         _content_type,
         _headers,
@@ -1725,8 +1724,8 @@ class DAGRunApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_list_dag_runs_form is not None:
-            _body_params = titanium_list_dag_runs_form
+        if list_dag_runs_form is not None:
+            _body_params = list_dag_runs_form
 
 
         # set the HTTP header `Accept`
@@ -1773,7 +1772,7 @@ class DAGRunApi:
 
 
     @validate_call
-    async def get_upstream_dataset_events(
+    def get_upstream_dataset_events(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1789,7 +1788,7 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDatasetEventCollection:
+    ) -> DatasetEventCollection:
         """Get dataset events for a DAG run
 
         Get datasets for a dag run.  *New in version 2.4.0* 
@@ -1830,16 +1829,16 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DatasetEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1847,7 +1846,7 @@ class DAGRunApi:
 
 
     @validate_call
-    async def get_upstream_dataset_events_with_http_info(
+    def get_upstream_dataset_events_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1863,7 +1862,7 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDatasetEventCollection]:
+    ) -> ApiResponse[DatasetEventCollection]:
         """Get dataset events for a DAG run
 
         Get datasets for a dag run.  *New in version 2.4.0* 
@@ -1904,16 +1903,16 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DatasetEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1921,7 +1920,7 @@ class DAGRunApi:
 
 
     @validate_call
-    async def get_upstream_dataset_events_without_preload_content(
+    def get_upstream_dataset_events_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1978,12 +1977,12 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DatasetEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2054,10 +2053,10 @@ class DAGRunApi:
 
 
     @validate_call
-    async def post_dag_run(
+    def post_dag_run(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
-        titanium_dag_run: TitaniumDAGRun,
+        dag_run: DAGRun,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2070,15 +2069,15 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDAGRun:
+    ) -> DAGRun:
         """Trigger a new DAG run.
 
         This will initiate a dagrun. If DAG is paused then dagrun state will remain queued, and the task won't run. 
 
         :param dag_id: The DAG ID. (required)
         :type dag_id: str
-        :param titanium_dag_run: (required)
-        :type titanium_dag_run: TitaniumDAGRun
+        :param dag_run: (required)
+        :type dag_run: DAGRun
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2103,7 +2102,7 @@ class DAGRunApi:
 
         _param = self._post_dag_run_serialize(
             dag_id=dag_id,
-            titanium_dag_run=titanium_dag_run,
+            dag_run=dag_run,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2111,18 +2110,18 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRun",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '409': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DAGRun",
+            '400': "Error",
+            '401': "Error",
+            '409': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2130,10 +2129,10 @@ class DAGRunApi:
 
 
     @validate_call
-    async def post_dag_run_with_http_info(
+    def post_dag_run_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
-        titanium_dag_run: TitaniumDAGRun,
+        dag_run: DAGRun,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2146,15 +2145,15 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDAGRun]:
+    ) -> ApiResponse[DAGRun]:
         """Trigger a new DAG run.
 
         This will initiate a dagrun. If DAG is paused then dagrun state will remain queued, and the task won't run. 
 
         :param dag_id: The DAG ID. (required)
         :type dag_id: str
-        :param titanium_dag_run: (required)
-        :type titanium_dag_run: TitaniumDAGRun
+        :param dag_run: (required)
+        :type dag_run: DAGRun
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2179,7 +2178,7 @@ class DAGRunApi:
 
         _param = self._post_dag_run_serialize(
             dag_id=dag_id,
-            titanium_dag_run=titanium_dag_run,
+            dag_run=dag_run,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2187,18 +2186,18 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRun",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '409': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DAGRun",
+            '400': "Error",
+            '401': "Error",
+            '409': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2206,10 +2205,10 @@ class DAGRunApi:
 
 
     @validate_call
-    async def post_dag_run_without_preload_content(
+    def post_dag_run_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
-        titanium_dag_run: TitaniumDAGRun,
+        dag_run: DAGRun,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2229,8 +2228,8 @@ class DAGRunApi:
 
         :param dag_id: The DAG ID. (required)
         :type dag_id: str
-        :param titanium_dag_run: (required)
-        :type titanium_dag_run: TitaniumDAGRun
+        :param dag_run: (required)
+        :type dag_run: DAGRun
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2255,7 +2254,7 @@ class DAGRunApi:
 
         _param = self._post_dag_run_serialize(
             dag_id=dag_id,
-            titanium_dag_run=titanium_dag_run,
+            dag_run=dag_run,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2263,14 +2262,14 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRun",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '409': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DAGRun",
+            '400': "Error",
+            '401': "Error",
+            '409': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2280,7 +2279,7 @@ class DAGRunApi:
     def _post_dag_run_serialize(
         self,
         dag_id,
-        titanium_dag_run,
+        dag_run,
         _request_auth,
         _content_type,
         _headers,
@@ -2306,8 +2305,8 @@ class DAGRunApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_dag_run is not None:
-            _body_params = titanium_dag_run
+        if dag_run is not None:
+            _body_params = dag_run
 
 
         # set the HTTP header `Accept`
@@ -2354,11 +2353,11 @@ class DAGRunApi:
 
 
     @validate_call
-    async def set_dag_run_note(
+    def set_dag_run_note(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
-        titanium_set_dag_run_note: Annotated[TitaniumSetDagRunNote, Field(description="Parameters of set DagRun note.")],
+        set_dag_run_note: Annotated[SetDagRunNote, Field(description="Parameters of set DagRun note.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2371,7 +2370,7 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDAGRun:
+    ) -> DAGRun:
         """Update the DagRun note.
 
         Update the manual user note of a DagRun.  *New in version 2.5.0* 
@@ -2380,8 +2379,8 @@ class DAGRunApi:
         :type dag_id: str
         :param dag_run_id: The DAG run ID. (required)
         :type dag_run_id: str
-        :param titanium_set_dag_run_note: Parameters of set DagRun note. (required)
-        :type titanium_set_dag_run_note: TitaniumSetDagRunNote
+        :param set_dag_run_note: Parameters of set DagRun note. (required)
+        :type set_dag_run_note: SetDagRunNote
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2407,7 +2406,7 @@ class DAGRunApi:
         _param = self._set_dag_run_note_serialize(
             dag_id=dag_id,
             dag_run_id=dag_run_id,
-            titanium_set_dag_run_note=titanium_set_dag_run_note,
+            set_dag_run_note=set_dag_run_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2415,17 +2414,17 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRun",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DAGRun",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2433,11 +2432,11 @@ class DAGRunApi:
 
 
     @validate_call
-    async def set_dag_run_note_with_http_info(
+    def set_dag_run_note_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
-        titanium_set_dag_run_note: Annotated[TitaniumSetDagRunNote, Field(description="Parameters of set DagRun note.")],
+        set_dag_run_note: Annotated[SetDagRunNote, Field(description="Parameters of set DagRun note.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2450,7 +2449,7 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDAGRun]:
+    ) -> ApiResponse[DAGRun]:
         """Update the DagRun note.
 
         Update the manual user note of a DagRun.  *New in version 2.5.0* 
@@ -2459,8 +2458,8 @@ class DAGRunApi:
         :type dag_id: str
         :param dag_run_id: The DAG run ID. (required)
         :type dag_run_id: str
-        :param titanium_set_dag_run_note: Parameters of set DagRun note. (required)
-        :type titanium_set_dag_run_note: TitaniumSetDagRunNote
+        :param set_dag_run_note: Parameters of set DagRun note. (required)
+        :type set_dag_run_note: SetDagRunNote
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2486,7 +2485,7 @@ class DAGRunApi:
         _param = self._set_dag_run_note_serialize(
             dag_id=dag_id,
             dag_run_id=dag_run_id,
-            titanium_set_dag_run_note=titanium_set_dag_run_note,
+            set_dag_run_note=set_dag_run_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2494,17 +2493,17 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRun",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DAGRun",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2512,11 +2511,11 @@ class DAGRunApi:
 
 
     @validate_call
-    async def set_dag_run_note_without_preload_content(
+    def set_dag_run_note_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
-        titanium_set_dag_run_note: Annotated[TitaniumSetDagRunNote, Field(description="Parameters of set DagRun note.")],
+        set_dag_run_note: Annotated[SetDagRunNote, Field(description="Parameters of set DagRun note.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2538,8 +2537,8 @@ class DAGRunApi:
         :type dag_id: str
         :param dag_run_id: The DAG run ID. (required)
         :type dag_run_id: str
-        :param titanium_set_dag_run_note: Parameters of set DagRun note. (required)
-        :type titanium_set_dag_run_note: TitaniumSetDagRunNote
+        :param set_dag_run_note: Parameters of set DagRun note. (required)
+        :type set_dag_run_note: SetDagRunNote
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2565,7 +2564,7 @@ class DAGRunApi:
         _param = self._set_dag_run_note_serialize(
             dag_id=dag_id,
             dag_run_id=dag_run_id,
-            titanium_set_dag_run_note=titanium_set_dag_run_note,
+            set_dag_run_note=set_dag_run_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2573,13 +2572,13 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRun",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DAGRun",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2590,7 +2589,7 @@ class DAGRunApi:
         self,
         dag_id,
         dag_run_id,
-        titanium_set_dag_run_note,
+        set_dag_run_note,
         _request_auth,
         _content_type,
         _headers,
@@ -2618,8 +2617,8 @@ class DAGRunApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_set_dag_run_note is not None:
-            _body_params = titanium_set_dag_run_note
+        if set_dag_run_note is not None:
+            _body_params = set_dag_run_note
 
 
         # set the HTTP header `Accept`
@@ -2666,11 +2665,11 @@ class DAGRunApi:
 
 
     @validate_call
-    async def update_dag_run_state(
+    def update_dag_run_state(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
-        titanium_update_dag_run_state: TitaniumUpdateDagRunState,
+        update_dag_run_state: UpdateDagRunState,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2683,7 +2682,7 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDAGRun:
+    ) -> DAGRun:
         """Modify a DAG run
 
         Modify a DAG run.  *New in version 2.2.0* 
@@ -2692,8 +2691,8 @@ class DAGRunApi:
         :type dag_id: str
         :param dag_run_id: The DAG run ID. (required)
         :type dag_run_id: str
-        :param titanium_update_dag_run_state: (required)
-        :type titanium_update_dag_run_state: TitaniumUpdateDagRunState
+        :param update_dag_run_state: (required)
+        :type update_dag_run_state: UpdateDagRunState
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2719,7 +2718,7 @@ class DAGRunApi:
         _param = self._update_dag_run_state_serialize(
             dag_id=dag_id,
             dag_run_id=dag_run_id,
-            titanium_update_dag_run_state=titanium_update_dag_run_state,
+            update_dag_run_state=update_dag_run_state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2727,17 +2726,17 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRun",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DAGRun",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2745,11 +2744,11 @@ class DAGRunApi:
 
 
     @validate_call
-    async def update_dag_run_state_with_http_info(
+    def update_dag_run_state_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
-        titanium_update_dag_run_state: TitaniumUpdateDagRunState,
+        update_dag_run_state: UpdateDagRunState,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2762,7 +2761,7 @@ class DAGRunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDAGRun]:
+    ) -> ApiResponse[DAGRun]:
         """Modify a DAG run
 
         Modify a DAG run.  *New in version 2.2.0* 
@@ -2771,8 +2770,8 @@ class DAGRunApi:
         :type dag_id: str
         :param dag_run_id: The DAG run ID. (required)
         :type dag_run_id: str
-        :param titanium_update_dag_run_state: (required)
-        :type titanium_update_dag_run_state: TitaniumUpdateDagRunState
+        :param update_dag_run_state: (required)
+        :type update_dag_run_state: UpdateDagRunState
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2798,7 +2797,7 @@ class DAGRunApi:
         _param = self._update_dag_run_state_serialize(
             dag_id=dag_id,
             dag_run_id=dag_run_id,
-            titanium_update_dag_run_state=titanium_update_dag_run_state,
+            update_dag_run_state=update_dag_run_state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2806,17 +2805,17 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRun",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DAGRun",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2824,11 +2823,11 @@ class DAGRunApi:
 
 
     @validate_call
-    async def update_dag_run_state_without_preload_content(
+    def update_dag_run_state_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
-        titanium_update_dag_run_state: TitaniumUpdateDagRunState,
+        update_dag_run_state: UpdateDagRunState,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2850,8 +2849,8 @@ class DAGRunApi:
         :type dag_id: str
         :param dag_run_id: The DAG run ID. (required)
         :type dag_run_id: str
-        :param titanium_update_dag_run_state: (required)
-        :type titanium_update_dag_run_state: TitaniumUpdateDagRunState
+        :param update_dag_run_state: (required)
+        :type update_dag_run_state: UpdateDagRunState
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2877,7 +2876,7 @@ class DAGRunApi:
         _param = self._update_dag_run_state_serialize(
             dag_id=dag_id,
             dag_run_id=dag_run_id,
-            titanium_update_dag_run_state=titanium_update_dag_run_state,
+            update_dag_run_state=update_dag_run_state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2885,13 +2884,13 @@ class DAGRunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDAGRun",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DAGRun",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2902,7 +2901,7 @@ class DAGRunApi:
         self,
         dag_id,
         dag_run_id,
-        titanium_update_dag_run_state,
+        update_dag_run_state,
         _request_auth,
         _content_type,
         _headers,
@@ -2930,8 +2929,8 @@ class DAGRunApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_update_dag_run_state is not None:
-            _body_params = titanium_update_dag_run_state
+        if update_dag_run_state is not None:
+            _body_params = update_dag_run_state
 
 
         # set the HTTP header `Accept`

@@ -21,14 +21,14 @@ from datetime import datetime
 from pydantic import Field, StrictBool, StrictFloat, StrictInt, StrictStr
 from typing import List, Optional, Union
 from typing_extensions import Annotated
-from titanium_airflow_client.models.titanium_list_task_instance_form import TitaniumListTaskInstanceForm
-from titanium_airflow_client.models.titanium_set_task_instance_note import TitaniumSetTaskInstanceNote
-from titanium_airflow_client.models.titanium_titanium_extra_link_collection import TitaniumTitaniumExtraLinkCollection
-from titanium_airflow_client.models.titanium_titanium_get_log200_response import TitaniumTitaniumGetLog200Response
-from titanium_airflow_client.models.titanium_titanium_task_instance import TitaniumTitaniumTaskInstance
-from titanium_airflow_client.models.titanium_titanium_task_instance_collection import TitaniumTitaniumTaskInstanceCollection
-from titanium_airflow_client.models.titanium_titanium_task_instance_reference import TitaniumTitaniumTaskInstanceReference
-from titanium_airflow_client.models.titanium_update_task_instance import TitaniumUpdateTaskInstance
+from titanium_airflow_client.models.extra_link_collection import ExtraLinkCollection
+from titanium_airflow_client.models.get_log200_response import GetLog200Response
+from titanium_airflow_client.models.list_task_instance_form import ListTaskInstanceForm
+from titanium_airflow_client.models.set_task_instance_note import SetTaskInstanceNote
+from titanium_airflow_client.models.task_instance import TaskInstance
+from titanium_airflow_client.models.task_instance_collection import TaskInstanceCollection
+from titanium_airflow_client.models.task_instance_reference import TaskInstanceReference
+from titanium_airflow_client.models.update_task_instance import UpdateTaskInstance
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -49,7 +49,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_extra_links(
+    def get_extra_links(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -66,7 +66,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumExtraLinkCollection:
+    ) -> ExtraLinkCollection:
         """List extra links
 
         List extra links for task instance. 
@@ -110,16 +110,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumExtraLinkCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "ExtraLinkCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -127,7 +127,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_extra_links_with_http_info(
+    def get_extra_links_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -144,7 +144,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumExtraLinkCollection]:
+    ) -> ApiResponse[ExtraLinkCollection]:
         """List extra links
 
         List extra links for task instance. 
@@ -188,16 +188,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumExtraLinkCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "ExtraLinkCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -205,7 +205,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_extra_links_without_preload_content(
+    def get_extra_links_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -266,12 +266,12 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumExtraLinkCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "ExtraLinkCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -345,7 +345,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_log(
+    def get_log(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -366,7 +366,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumGetLog200Response:
+    ) -> GetLog200Response:
         """Get logs
 
         Get logs for a specific task instance and its try number. To get log from specific character position, following way of using URLSafeSerializer can be used.  Example: ``` from itsdangerous.url_safe import URLSafeSerializer  request_url = f\"api/v1/dags/{DAG_ID}/dagRuns/{RUN_ID}/taskInstances/{TASK_ID}/logs/1\" key = app.config[\"SECRET_KEY\"] serializer = URLSafeSerializer(key) token = serializer.dumps({\"log_pos\": 10000})  response = self.client.get(     request_url,     query_string={\"token\": token},     headers={\"Accept\": \"text/plain\"},     environ_overrides={\"REMOTE_USER\": \"test\"}, ) continuation_token = response.json[\"continuation_token\"]     metadata = URLSafeSerializer(key).loads(continuation_token)     log_pos = metadata[\"log_pos\"]     end_of_log = metadata[\"end_of_log\"] ``` If log_pos is passed as 10000 like the above example, it renders the logs starting from char position 10000 to last (not the end as the logs may be tailing behind in running state). This way pagination can be done with metadata as part of the token. 
@@ -422,17 +422,17 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumGetLog200Response",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "GetLog200Response",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -440,7 +440,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_log_with_http_info(
+    def get_log_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -461,7 +461,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumGetLog200Response]:
+    ) -> ApiResponse[GetLog200Response]:
         """Get logs
 
         Get logs for a specific task instance and its try number. To get log from specific character position, following way of using URLSafeSerializer can be used.  Example: ``` from itsdangerous.url_safe import URLSafeSerializer  request_url = f\"api/v1/dags/{DAG_ID}/dagRuns/{RUN_ID}/taskInstances/{TASK_ID}/logs/1\" key = app.config[\"SECRET_KEY\"] serializer = URLSafeSerializer(key) token = serializer.dumps({\"log_pos\": 10000})  response = self.client.get(     request_url,     query_string={\"token\": token},     headers={\"Accept\": \"text/plain\"},     environ_overrides={\"REMOTE_USER\": \"test\"}, ) continuation_token = response.json[\"continuation_token\"]     metadata = URLSafeSerializer(key).loads(continuation_token)     log_pos = metadata[\"log_pos\"]     end_of_log = metadata[\"end_of_log\"] ``` If log_pos is passed as 10000 like the above example, it renders the logs starting from char position 10000 to last (not the end as the logs may be tailing behind in running state). This way pagination can be done with metadata as part of the token. 
@@ -517,17 +517,17 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumGetLog200Response",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "GetLog200Response",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -535,7 +535,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_log_without_preload_content(
+    def get_log_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -612,13 +612,13 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumGetLog200Response",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "GetLog200Response",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -711,7 +711,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_mapped_task_instance(
+    def get_mapped_task_instance(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -729,7 +729,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumTaskInstance:
+    ) -> TaskInstance:
         """Get a mapped task instance
 
         Get details of a mapped task instance.  *New in version 2.3.0* 
@@ -776,16 +776,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstance",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstance",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -793,7 +793,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_mapped_task_instance_with_http_info(
+    def get_mapped_task_instance_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -811,7 +811,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumTaskInstance]:
+    ) -> ApiResponse[TaskInstance]:
         """Get a mapped task instance
 
         Get details of a mapped task instance.  *New in version 2.3.0* 
@@ -858,16 +858,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstance",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstance",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -875,7 +875,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_mapped_task_instance_without_preload_content(
+    def get_mapped_task_instance_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -940,12 +940,12 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstance",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstance",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1022,7 +1022,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_mapped_task_instances(
+    def get_mapped_task_instances(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1055,7 +1055,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumTaskInstanceCollection:
+    ) -> TaskInstanceCollection:
         """List mapped task instances
 
         Get details of all mapped task instances.  *New in version 2.3.0* 
@@ -1147,16 +1147,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstanceCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1164,7 +1164,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_mapped_task_instances_with_http_info(
+    def get_mapped_task_instances_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1197,7 +1197,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumTaskInstanceCollection]:
+    ) -> ApiResponse[TaskInstanceCollection]:
         """List mapped task instances
 
         Get details of all mapped task instances.  *New in version 2.3.0* 
@@ -1289,16 +1289,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstanceCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1306,7 +1306,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_mapped_task_instances_without_preload_content(
+    def get_mapped_task_instances_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1431,12 +1431,12 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstanceCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1665,7 +1665,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_task_instance(
+    def get_task_instance(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1682,7 +1682,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumTaskInstance:
+    ) -> TaskInstance:
         """Get a task instance
 
 
@@ -1725,16 +1725,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstance",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstance",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1742,7 +1742,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_task_instance_with_http_info(
+    def get_task_instance_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1759,7 +1759,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumTaskInstance]:
+    ) -> ApiResponse[TaskInstance]:
         """Get a task instance
 
 
@@ -1802,16 +1802,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstance",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstance",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1819,7 +1819,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_task_instance_without_preload_content(
+    def get_task_instance_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1879,12 +1879,12 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstance",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstance",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1958,7 +1958,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_task_instances(
+    def get_task_instances(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1989,7 +1989,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumTaskInstanceCollection:
+    ) -> TaskInstanceCollection:
         """List task instances
 
         This endpoint allows specifying `~` as the dag_id, dag_run_id to retrieve DAG runs for all DAGs and DAG runs. 
@@ -2075,15 +2075,15 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "TaskInstanceCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2091,7 +2091,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_task_instances_with_http_info(
+    def get_task_instances_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -2122,7 +2122,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumTaskInstanceCollection]:
+    ) -> ApiResponse[TaskInstanceCollection]:
         """List task instances
 
         This endpoint allows specifying `~` as the dag_id, dag_run_id to retrieve DAG runs for all DAGs and DAG runs. 
@@ -2208,15 +2208,15 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "TaskInstanceCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2224,7 +2224,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_task_instances_without_preload_content(
+    def get_task_instances_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -2341,11 +2341,11 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "TaskInstanceCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2566,9 +2566,9 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_task_instances_batch(
+    def get_task_instances_batch(
         self,
-        titanium_list_task_instance_form: TitaniumListTaskInstanceForm,
+        list_task_instance_form: ListTaskInstanceForm,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2581,13 +2581,13 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumTaskInstanceCollection:
+    ) -> TaskInstanceCollection:
         """List task instances (batch)
 
         List task instances from all DAGs and DAG runs. This endpoint is a POST to allow filtering across a large number of DAG IDs, where as a GET it would run in to maximum HTTP request URL length limits. 
 
-        :param titanium_list_task_instance_form: (required)
-        :type titanium_list_task_instance_form: TitaniumListTaskInstanceForm
+        :param list_task_instance_form: (required)
+        :type list_task_instance_form: ListTaskInstanceForm
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2611,7 +2611,7 @@ class TaskInstanceApi:
         """ # noqa: E501
 
         _param = self._get_task_instances_batch_serialize(
-            titanium_list_task_instance_form=titanium_list_task_instance_form,
+            list_task_instance_form=list_task_instance_form,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2619,16 +2619,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstanceCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2636,9 +2636,9 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_task_instances_batch_with_http_info(
+    def get_task_instances_batch_with_http_info(
         self,
-        titanium_list_task_instance_form: TitaniumListTaskInstanceForm,
+        list_task_instance_form: ListTaskInstanceForm,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2651,13 +2651,13 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumTaskInstanceCollection]:
+    ) -> ApiResponse[TaskInstanceCollection]:
         """List task instances (batch)
 
         List task instances from all DAGs and DAG runs. This endpoint is a POST to allow filtering across a large number of DAG IDs, where as a GET it would run in to maximum HTTP request URL length limits. 
 
-        :param titanium_list_task_instance_form: (required)
-        :type titanium_list_task_instance_form: TitaniumListTaskInstanceForm
+        :param list_task_instance_form: (required)
+        :type list_task_instance_form: ListTaskInstanceForm
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2681,7 +2681,7 @@ class TaskInstanceApi:
         """ # noqa: E501
 
         _param = self._get_task_instances_batch_serialize(
-            titanium_list_task_instance_form=titanium_list_task_instance_form,
+            list_task_instance_form=list_task_instance_form,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2689,16 +2689,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstanceCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2706,9 +2706,9 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def get_task_instances_batch_without_preload_content(
+    def get_task_instances_batch_without_preload_content(
         self,
-        titanium_list_task_instance_form: TitaniumListTaskInstanceForm,
+        list_task_instance_form: ListTaskInstanceForm,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2726,8 +2726,8 @@ class TaskInstanceApi:
 
         List task instances from all DAGs and DAG runs. This endpoint is a POST to allow filtering across a large number of DAG IDs, where as a GET it would run in to maximum HTTP request URL length limits. 
 
-        :param titanium_list_task_instance_form: (required)
-        :type titanium_list_task_instance_form: TitaniumListTaskInstanceForm
+        :param list_task_instance_form: (required)
+        :type list_task_instance_form: ListTaskInstanceForm
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2751,7 +2751,7 @@ class TaskInstanceApi:
         """ # noqa: E501
 
         _param = self._get_task_instances_batch_serialize(
-            titanium_list_task_instance_form=titanium_list_task_instance_form,
+            list_task_instance_form=list_task_instance_form,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2759,12 +2759,12 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstanceCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2773,7 +2773,7 @@ class TaskInstanceApi:
 
     def _get_task_instances_batch_serialize(
         self,
-        titanium_list_task_instance_form,
+        list_task_instance_form,
         _request_auth,
         _content_type,
         _headers,
@@ -2797,8 +2797,8 @@ class TaskInstanceApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_list_task_instance_form is not None:
-            _body_params = titanium_list_task_instance_form
+        if list_task_instance_form is not None:
+            _body_params = list_task_instance_form
 
 
         # set the HTTP header `Accept`
@@ -2845,13 +2845,13 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def patch_mapped_task_instance(
+    def patch_mapped_task_instance(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
         map_index: Annotated[StrictInt, Field(description="The map index.")],
-        titanium_update_task_instance: Annotated[Optional[TitaniumUpdateTaskInstance], Field(description="Parameters of action")] = None,
+        update_task_instance: Annotated[Optional[UpdateTaskInstance], Field(description="Parameters of action")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2864,7 +2864,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumTaskInstanceReference:
+    ) -> TaskInstanceReference:
         """Updates the state of a mapped task instance
 
         Updates the state for single mapped task instance. *New in version 2.5.0* 
@@ -2877,8 +2877,8 @@ class TaskInstanceApi:
         :type task_id: str
         :param map_index: The map index. (required)
         :type map_index: int
-        :param titanium_update_task_instance: Parameters of action
-        :type titanium_update_task_instance: TitaniumUpdateTaskInstance
+        :param update_task_instance: Parameters of action
+        :type update_task_instance: UpdateTaskInstance
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2906,7 +2906,7 @@ class TaskInstanceApi:
             dag_run_id=dag_run_id,
             task_id=task_id,
             map_index=map_index,
-            titanium_update_task_instance=titanium_update_task_instance,
+            update_task_instance=update_task_instance,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2914,16 +2914,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceReference",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstanceReference",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2931,13 +2931,13 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def patch_mapped_task_instance_with_http_info(
+    def patch_mapped_task_instance_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
         map_index: Annotated[StrictInt, Field(description="The map index.")],
-        titanium_update_task_instance: Annotated[Optional[TitaniumUpdateTaskInstance], Field(description="Parameters of action")] = None,
+        update_task_instance: Annotated[Optional[UpdateTaskInstance], Field(description="Parameters of action")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2950,7 +2950,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumTaskInstanceReference]:
+    ) -> ApiResponse[TaskInstanceReference]:
         """Updates the state of a mapped task instance
 
         Updates the state for single mapped task instance. *New in version 2.5.0* 
@@ -2963,8 +2963,8 @@ class TaskInstanceApi:
         :type task_id: str
         :param map_index: The map index. (required)
         :type map_index: int
-        :param titanium_update_task_instance: Parameters of action
-        :type titanium_update_task_instance: TitaniumUpdateTaskInstance
+        :param update_task_instance: Parameters of action
+        :type update_task_instance: UpdateTaskInstance
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2992,7 +2992,7 @@ class TaskInstanceApi:
             dag_run_id=dag_run_id,
             task_id=task_id,
             map_index=map_index,
-            titanium_update_task_instance=titanium_update_task_instance,
+            update_task_instance=update_task_instance,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3000,16 +3000,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceReference",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstanceReference",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3017,13 +3017,13 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def patch_mapped_task_instance_without_preload_content(
+    def patch_mapped_task_instance_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
         map_index: Annotated[StrictInt, Field(description="The map index.")],
-        titanium_update_task_instance: Annotated[Optional[TitaniumUpdateTaskInstance], Field(description="Parameters of action")] = None,
+        update_task_instance: Annotated[Optional[UpdateTaskInstance], Field(description="Parameters of action")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3049,8 +3049,8 @@ class TaskInstanceApi:
         :type task_id: str
         :param map_index: The map index. (required)
         :type map_index: int
-        :param titanium_update_task_instance: Parameters of action
-        :type titanium_update_task_instance: TitaniumUpdateTaskInstance
+        :param update_task_instance: Parameters of action
+        :type update_task_instance: UpdateTaskInstance
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3078,7 +3078,7 @@ class TaskInstanceApi:
             dag_run_id=dag_run_id,
             task_id=task_id,
             map_index=map_index,
-            titanium_update_task_instance=titanium_update_task_instance,
+            update_task_instance=update_task_instance,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3086,12 +3086,12 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceReference",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstanceReference",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3104,7 +3104,7 @@ class TaskInstanceApi:
         dag_run_id,
         task_id,
         map_index,
-        titanium_update_task_instance,
+        update_task_instance,
         _request_auth,
         _content_type,
         _headers,
@@ -3136,8 +3136,8 @@ class TaskInstanceApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_update_task_instance is not None:
-            _body_params = titanium_update_task_instance
+        if update_task_instance is not None:
+            _body_params = update_task_instance
 
 
         # set the HTTP header `Accept`
@@ -3184,12 +3184,12 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def patch_task_instance(
+    def patch_task_instance(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
-        titanium_update_task_instance: Annotated[TitaniumUpdateTaskInstance, Field(description="Parameters of action")],
+        update_task_instance: Annotated[UpdateTaskInstance, Field(description="Parameters of action")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3202,7 +3202,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumTaskInstanceReference:
+    ) -> TaskInstanceReference:
         """Updates the state of a task instance
 
         Updates the state for single task instance. *New in version 2.5.0* 
@@ -3213,8 +3213,8 @@ class TaskInstanceApi:
         :type dag_run_id: str
         :param task_id: The task ID. (required)
         :type task_id: str
-        :param titanium_update_task_instance: Parameters of action (required)
-        :type titanium_update_task_instance: TitaniumUpdateTaskInstance
+        :param update_task_instance: Parameters of action (required)
+        :type update_task_instance: UpdateTaskInstance
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3241,7 +3241,7 @@ class TaskInstanceApi:
             dag_id=dag_id,
             dag_run_id=dag_run_id,
             task_id=task_id,
-            titanium_update_task_instance=titanium_update_task_instance,
+            update_task_instance=update_task_instance,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3249,16 +3249,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceReference",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstanceReference",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3266,12 +3266,12 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def patch_task_instance_with_http_info(
+    def patch_task_instance_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
-        titanium_update_task_instance: Annotated[TitaniumUpdateTaskInstance, Field(description="Parameters of action")],
+        update_task_instance: Annotated[UpdateTaskInstance, Field(description="Parameters of action")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3284,7 +3284,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumTaskInstanceReference]:
+    ) -> ApiResponse[TaskInstanceReference]:
         """Updates the state of a task instance
 
         Updates the state for single task instance. *New in version 2.5.0* 
@@ -3295,8 +3295,8 @@ class TaskInstanceApi:
         :type dag_run_id: str
         :param task_id: The task ID. (required)
         :type task_id: str
-        :param titanium_update_task_instance: Parameters of action (required)
-        :type titanium_update_task_instance: TitaniumUpdateTaskInstance
+        :param update_task_instance: Parameters of action (required)
+        :type update_task_instance: UpdateTaskInstance
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3323,7 +3323,7 @@ class TaskInstanceApi:
             dag_id=dag_id,
             dag_run_id=dag_run_id,
             task_id=task_id,
-            titanium_update_task_instance=titanium_update_task_instance,
+            update_task_instance=update_task_instance,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3331,16 +3331,16 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceReference",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstanceReference",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3348,12 +3348,12 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def patch_task_instance_without_preload_content(
+    def patch_task_instance_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
-        titanium_update_task_instance: Annotated[TitaniumUpdateTaskInstance, Field(description="Parameters of action")],
+        update_task_instance: Annotated[UpdateTaskInstance, Field(description="Parameters of action")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3377,8 +3377,8 @@ class TaskInstanceApi:
         :type dag_run_id: str
         :param task_id: The task ID. (required)
         :type task_id: str
-        :param titanium_update_task_instance: Parameters of action (required)
-        :type titanium_update_task_instance: TitaniumUpdateTaskInstance
+        :param update_task_instance: Parameters of action (required)
+        :type update_task_instance: UpdateTaskInstance
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3405,7 +3405,7 @@ class TaskInstanceApi:
             dag_id=dag_id,
             dag_run_id=dag_run_id,
             task_id=task_id,
-            titanium_update_task_instance=titanium_update_task_instance,
+            update_task_instance=update_task_instance,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3413,12 +3413,12 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstanceReference",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstanceReference",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3430,7 +3430,7 @@ class TaskInstanceApi:
         dag_id,
         dag_run_id,
         task_id,
-        titanium_update_task_instance,
+        update_task_instance,
         _request_auth,
         _content_type,
         _headers,
@@ -3460,8 +3460,8 @@ class TaskInstanceApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_update_task_instance is not None:
-            _body_params = titanium_update_task_instance
+        if update_task_instance is not None:
+            _body_params = update_task_instance
 
 
         # set the HTTP header `Accept`
@@ -3508,13 +3508,13 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def set_mapped_task_instance_note(
+    def set_mapped_task_instance_note(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
         map_index: Annotated[StrictInt, Field(description="The map index.")],
-        titanium_set_task_instance_note: Annotated[TitaniumSetTaskInstanceNote, Field(description="Parameters of set Task Instance note.")],
+        set_task_instance_note: Annotated[SetTaskInstanceNote, Field(description="Parameters of set Task Instance note.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3527,7 +3527,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumTaskInstance:
+    ) -> TaskInstance:
         """Update the TaskInstance note.
 
         Update the manual user note of a mapped Task Instance.  *New in version 2.5.0* 
@@ -3540,8 +3540,8 @@ class TaskInstanceApi:
         :type task_id: str
         :param map_index: The map index. (required)
         :type map_index: int
-        :param titanium_set_task_instance_note: Parameters of set Task Instance note. (required)
-        :type titanium_set_task_instance_note: TitaniumSetTaskInstanceNote
+        :param set_task_instance_note: Parameters of set Task Instance note. (required)
+        :type set_task_instance_note: SetTaskInstanceNote
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3569,7 +3569,7 @@ class TaskInstanceApi:
             dag_run_id=dag_run_id,
             task_id=task_id,
             map_index=map_index,
-            titanium_set_task_instance_note=titanium_set_task_instance_note,
+            set_task_instance_note=set_task_instance_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3577,17 +3577,17 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstance",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstance",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3595,13 +3595,13 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def set_mapped_task_instance_note_with_http_info(
+    def set_mapped_task_instance_note_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
         map_index: Annotated[StrictInt, Field(description="The map index.")],
-        titanium_set_task_instance_note: Annotated[TitaniumSetTaskInstanceNote, Field(description="Parameters of set Task Instance note.")],
+        set_task_instance_note: Annotated[SetTaskInstanceNote, Field(description="Parameters of set Task Instance note.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3614,7 +3614,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumTaskInstance]:
+    ) -> ApiResponse[TaskInstance]:
         """Update the TaskInstance note.
 
         Update the manual user note of a mapped Task Instance.  *New in version 2.5.0* 
@@ -3627,8 +3627,8 @@ class TaskInstanceApi:
         :type task_id: str
         :param map_index: The map index. (required)
         :type map_index: int
-        :param titanium_set_task_instance_note: Parameters of set Task Instance note. (required)
-        :type titanium_set_task_instance_note: TitaniumSetTaskInstanceNote
+        :param set_task_instance_note: Parameters of set Task Instance note. (required)
+        :type set_task_instance_note: SetTaskInstanceNote
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3656,7 +3656,7 @@ class TaskInstanceApi:
             dag_run_id=dag_run_id,
             task_id=task_id,
             map_index=map_index,
-            titanium_set_task_instance_note=titanium_set_task_instance_note,
+            set_task_instance_note=set_task_instance_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3664,17 +3664,17 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstance",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstance",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3682,13 +3682,13 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def set_mapped_task_instance_note_without_preload_content(
+    def set_mapped_task_instance_note_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
         map_index: Annotated[StrictInt, Field(description="The map index.")],
-        titanium_set_task_instance_note: Annotated[TitaniumSetTaskInstanceNote, Field(description="Parameters of set Task Instance note.")],
+        set_task_instance_note: Annotated[SetTaskInstanceNote, Field(description="Parameters of set Task Instance note.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3714,8 +3714,8 @@ class TaskInstanceApi:
         :type task_id: str
         :param map_index: The map index. (required)
         :type map_index: int
-        :param titanium_set_task_instance_note: Parameters of set Task Instance note. (required)
-        :type titanium_set_task_instance_note: TitaniumSetTaskInstanceNote
+        :param set_task_instance_note: Parameters of set Task Instance note. (required)
+        :type set_task_instance_note: SetTaskInstanceNote
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3743,7 +3743,7 @@ class TaskInstanceApi:
             dag_run_id=dag_run_id,
             task_id=task_id,
             map_index=map_index,
-            titanium_set_task_instance_note=titanium_set_task_instance_note,
+            set_task_instance_note=set_task_instance_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3751,13 +3751,13 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstance",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstance",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3770,7 +3770,7 @@ class TaskInstanceApi:
         dag_run_id,
         task_id,
         map_index,
-        titanium_set_task_instance_note,
+        set_task_instance_note,
         _request_auth,
         _content_type,
         _headers,
@@ -3802,8 +3802,8 @@ class TaskInstanceApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_set_task_instance_note is not None:
-            _body_params = titanium_set_task_instance_note
+        if set_task_instance_note is not None:
+            _body_params = set_task_instance_note
 
 
         # set the HTTP header `Accept`
@@ -3850,12 +3850,12 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def set_task_instance_note(
+    def set_task_instance_note(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
-        titanium_set_task_instance_note: Annotated[TitaniumSetTaskInstanceNote, Field(description="Parameters of set Task Instance note.")],
+        set_task_instance_note: Annotated[SetTaskInstanceNote, Field(description="Parameters of set Task Instance note.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3868,7 +3868,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumTaskInstance:
+    ) -> TaskInstance:
         """Update the TaskInstance note.
 
         Update the manual user note of a non-mapped Task Instance.  *New in version 2.5.0* 
@@ -3879,8 +3879,8 @@ class TaskInstanceApi:
         :type dag_run_id: str
         :param task_id: The task ID. (required)
         :type task_id: str
-        :param titanium_set_task_instance_note: Parameters of set Task Instance note. (required)
-        :type titanium_set_task_instance_note: TitaniumSetTaskInstanceNote
+        :param set_task_instance_note: Parameters of set Task Instance note. (required)
+        :type set_task_instance_note: SetTaskInstanceNote
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3907,7 +3907,7 @@ class TaskInstanceApi:
             dag_id=dag_id,
             dag_run_id=dag_run_id,
             task_id=task_id,
-            titanium_set_task_instance_note=titanium_set_task_instance_note,
+            set_task_instance_note=set_task_instance_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3915,17 +3915,17 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstance",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstance",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3933,12 +3933,12 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def set_task_instance_note_with_http_info(
+    def set_task_instance_note_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
-        titanium_set_task_instance_note: Annotated[TitaniumSetTaskInstanceNote, Field(description="Parameters of set Task Instance note.")],
+        set_task_instance_note: Annotated[SetTaskInstanceNote, Field(description="Parameters of set Task Instance note.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3951,7 +3951,7 @@ class TaskInstanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumTaskInstance]:
+    ) -> ApiResponse[TaskInstance]:
         """Update the TaskInstance note.
 
         Update the manual user note of a non-mapped Task Instance.  *New in version 2.5.0* 
@@ -3962,8 +3962,8 @@ class TaskInstanceApi:
         :type dag_run_id: str
         :param task_id: The task ID. (required)
         :type task_id: str
-        :param titanium_set_task_instance_note: Parameters of set Task Instance note. (required)
-        :type titanium_set_task_instance_note: TitaniumSetTaskInstanceNote
+        :param set_task_instance_note: Parameters of set Task Instance note. (required)
+        :type set_task_instance_note: SetTaskInstanceNote
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3990,7 +3990,7 @@ class TaskInstanceApi:
             dag_id=dag_id,
             dag_run_id=dag_run_id,
             task_id=task_id,
-            titanium_set_task_instance_note=titanium_set_task_instance_note,
+            set_task_instance_note=set_task_instance_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3998,17 +3998,17 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstance",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstance",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4016,12 +4016,12 @@ class TaskInstanceApi:
 
 
     @validate_call
-    async def set_task_instance_note_without_preload_content(
+    def set_task_instance_note_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
-        titanium_set_task_instance_note: Annotated[TitaniumSetTaskInstanceNote, Field(description="Parameters of set Task Instance note.")],
+        set_task_instance_note: Annotated[SetTaskInstanceNote, Field(description="Parameters of set Task Instance note.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4045,8 +4045,8 @@ class TaskInstanceApi:
         :type dag_run_id: str
         :param task_id: The task ID. (required)
         :type task_id: str
-        :param titanium_set_task_instance_note: Parameters of set Task Instance note. (required)
-        :type titanium_set_task_instance_note: TitaniumSetTaskInstanceNote
+        :param set_task_instance_note: Parameters of set Task Instance note. (required)
+        :type set_task_instance_note: SetTaskInstanceNote
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4073,7 +4073,7 @@ class TaskInstanceApi:
             dag_id=dag_id,
             dag_run_id=dag_run_id,
             task_id=task_id,
-            titanium_set_task_instance_note=titanium_set_task_instance_note,
+            set_task_instance_note=set_task_instance_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4081,13 +4081,13 @@ class TaskInstanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumTaskInstance",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "TaskInstance",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4099,7 +4099,7 @@ class TaskInstanceApi:
         dag_id,
         dag_run_id,
         task_id,
-        titanium_set_task_instance_note,
+        set_task_instance_note,
         _request_auth,
         _content_type,
         _headers,
@@ -4129,8 +4129,8 @@ class TaskInstanceApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_set_task_instance_note is not None:
-            _body_params = titanium_set_task_instance_note
+        if set_task_instance_note is not None:
+            _body_params = set_task_instance_note
 
 
         # set the HTTP header `Accept`

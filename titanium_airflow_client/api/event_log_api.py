@@ -21,8 +21,8 @@ from datetime import datetime
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from titanium_airflow_client.models.titanium_titanium_event_log import TitaniumTitaniumEventLog
-from titanium_airflow_client.models.titanium_titanium_event_log_collection import TitaniumTitaniumEventLogCollection
+from titanium_airflow_client.models.event_log import EventLog
+from titanium_airflow_client.models.event_log_collection import EventLogCollection
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -43,7 +43,7 @@ class EventLogApi:
 
 
     @validate_call
-    async def get_event_log(
+    def get_event_log(
         self,
         event_log_id: Annotated[StrictInt, Field(description="The event log ID.")],
         _request_timeout: Union[
@@ -58,7 +58,7 @@ class EventLogApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumEventLog:
+    ) -> EventLog:
         """Get a log entry
 
 
@@ -95,16 +95,16 @@ class EventLogApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumEventLog",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "EventLog",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -112,7 +112,7 @@ class EventLogApi:
 
 
     @validate_call
-    async def get_event_log_with_http_info(
+    def get_event_log_with_http_info(
         self,
         event_log_id: Annotated[StrictInt, Field(description="The event log ID.")],
         _request_timeout: Union[
@@ -127,7 +127,7 @@ class EventLogApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumEventLog]:
+    ) -> ApiResponse[EventLog]:
         """Get a log entry
 
 
@@ -164,16 +164,16 @@ class EventLogApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumEventLog",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "EventLog",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -181,7 +181,7 @@ class EventLogApi:
 
 
     @validate_call
-    async def get_event_log_without_preload_content(
+    def get_event_log_without_preload_content(
         self,
         event_log_id: Annotated[StrictInt, Field(description="The event log ID.")],
         _request_timeout: Union[
@@ -233,12 +233,12 @@ class EventLogApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumEventLog",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "EventLog",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -306,7 +306,7 @@ class EventLogApi:
 
 
     @validate_call
-    async def get_event_logs(
+    def get_event_logs(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -332,7 +332,7 @@ class EventLogApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumEventLogCollection:
+    ) -> EventLogCollection:
         """List log entries
 
         List log entries from event log.
@@ -403,15 +403,15 @@ class EventLogApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumEventLogCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "EventLogCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -419,7 +419,7 @@ class EventLogApi:
 
 
     @validate_call
-    async def get_event_logs_with_http_info(
+    def get_event_logs_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -445,7 +445,7 @@ class EventLogApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumEventLogCollection]:
+    ) -> ApiResponse[EventLogCollection]:
         """List log entries
 
         List log entries from event log.
@@ -516,15 +516,15 @@ class EventLogApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumEventLogCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "EventLogCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -532,7 +532,7 @@ class EventLogApi:
 
 
     @validate_call
-    async def get_event_logs_without_preload_content(
+    def get_event_logs_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -629,11 +629,11 @@ class EventLogApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumEventLogCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "EventLogCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

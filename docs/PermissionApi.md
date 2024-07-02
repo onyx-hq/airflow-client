@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_permissions**
-> TitaniumTitaniumActionCollection get_permissions(limit=limit, offset=offset)
+> ActionCollection get_permissions(limit=limit, offset=offset)
 
 List permissions
 
@@ -19,7 +19,7 @@ Get a list of permissions.  *This API endpoint is deprecated, please use the end
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_action_collection import TitaniumTitaniumActionCollection
+from titanium_airflow_client.models.action_collection import ActionCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -31,7 +31,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.PermissionApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -39,7 +39,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List permissions
-        api_response = await api_instance.get_permissions(limit=limit, offset=offset)
+        api_response = api_instance.get_permissions(limit=limit, offset=offset)
         print("The response of PermissionApi->get_permissions:\n")
         pprint(api_response)
     except Exception as e:
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumActionCollection**](TitaniumActionCollection.md)
+[**ActionCollection**](ActionCollection.md)
 
 ### Authorization
 

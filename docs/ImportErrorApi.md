@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_import_error**
-> TitaniumTitaniumImportError get_import_error(import_error_id)
+> ImportError get_import_error(import_error_id)
 
 Get an import error
 
@@ -18,7 +18,7 @@ Get an import error
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_import_error import TitaniumTitaniumImportError
+from titanium_airflow_client.models.import_error import ImportError
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -30,14 +30,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ImportErrorApi(api_client)
     import_error_id = 56 # int | The import error ID.
 
     try:
         # Get an import error
-        api_response = await api_instance.get_import_error(import_error_id)
+        api_response = api_instance.get_import_error(import_error_id)
         print("The response of ImportErrorApi->get_import_error:\n")
         pprint(api_response)
     except Exception as e:
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumImportError**](TitaniumImportError.md)
+[**ImportError**](ImportError.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_import_errors**
-> TitaniumTitaniumImportErrorCollection get_import_errors(limit=limit, offset=offset, order_by=order_by)
+> ImportErrorCollection get_import_errors(limit=limit, offset=offset, order_by=order_by)
 
 List import errors
 
@@ -87,7 +87,7 @@ List import errors
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_import_error_collection import TitaniumTitaniumImportErrorCollection
+from titanium_airflow_client.models.import_error_collection import ImportErrorCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -99,7 +99,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ImportErrorApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -108,7 +108,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List import errors
-        api_response = await api_instance.get_import_errors(limit=limit, offset=offset, order_by=order_by)
+        api_response = api_instance.get_import_errors(limit=limit, offset=offset, order_by=order_by)
         print("The response of ImportErrorApi->get_import_errors:\n")
         pprint(api_response)
     except Exception as e:
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumImportErrorCollection**](TitaniumImportErrorCollection.md)
+[**ImportErrorCollection**](ImportErrorCollection.md)
 
 ### Authorization
 

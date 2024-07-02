@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_plugins**
-> TitaniumTitaniumPluginCollection get_plugins(limit=limit, offset=offset)
+> PluginCollection get_plugins(limit=limit, offset=offset)
 
 Get a list of loaded plugins
 
@@ -19,7 +19,7 @@ Get a list of loaded plugins.  *New in version 2.1.0*
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_plugin_collection import TitaniumTitaniumPluginCollection
+from titanium_airflow_client.models.plugin_collection import PluginCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -31,7 +31,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.PluginApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -39,7 +39,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get a list of loaded plugins
-        api_response = await api_instance.get_plugins(limit=limit, offset=offset)
+        api_response = api_instance.get_plugins(limit=limit, offset=offset)
         print("The response of PluginApi->get_plugins:\n")
         pprint(api_response)
     except Exception as e:
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumPluginCollection**](TitaniumPluginCollection.md)
+[**PluginCollection**](PluginCollection.md)
 
 ### Authorization
 

@@ -20,7 +20,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from titanium_airflow_client.models.titanium_titanium_dag_warning_collection import TitaniumTitaniumDagWarningCollection
+from titanium_airflow_client.models.dag_warning_collection import DagWarningCollection
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -41,7 +41,7 @@ class DagWarningApi:
 
 
     @validate_call
-    async def get_dag_warnings(
+    def get_dag_warnings(
         self,
         dag_id: Annotated[Optional[StrictStr], Field(description="If set, only return DAG warnings with this dag_id.")] = None,
         warning_type: Annotated[Optional[StrictStr], Field(description="If set, only return DAG warnings with this type.")] = None,
@@ -60,7 +60,7 @@ class DagWarningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDagWarningCollection:
+    ) -> DagWarningCollection:
         """List dag warnings
 
 
@@ -109,15 +109,15 @@ class DagWarningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDagWarningCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "DagWarningCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -125,7 +125,7 @@ class DagWarningApi:
 
 
     @validate_call
-    async def get_dag_warnings_with_http_info(
+    def get_dag_warnings_with_http_info(
         self,
         dag_id: Annotated[Optional[StrictStr], Field(description="If set, only return DAG warnings with this dag_id.")] = None,
         warning_type: Annotated[Optional[StrictStr], Field(description="If set, only return DAG warnings with this type.")] = None,
@@ -144,7 +144,7 @@ class DagWarningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDagWarningCollection]:
+    ) -> ApiResponse[DagWarningCollection]:
         """List dag warnings
 
 
@@ -193,15 +193,15 @@ class DagWarningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDagWarningCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "DagWarningCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -209,7 +209,7 @@ class DagWarningApi:
 
 
     @validate_call
-    async def get_dag_warnings_without_preload_content(
+    def get_dag_warnings_without_preload_content(
         self,
         dag_id: Annotated[Optional[StrictStr], Field(description="If set, only return DAG warnings with this dag_id.")] = None,
         warning_type: Annotated[Optional[StrictStr], Field(description="If set, only return DAG warnings with this type.")] = None,
@@ -277,11 +277,11 @@ class DagWarningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDagWarningCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "DagWarningCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

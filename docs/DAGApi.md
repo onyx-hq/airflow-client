@@ -40,14 +40,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
 
     try:
         # Delete a DAG
-        await api_instance.delete_dag(dag_id)
+        api_instance.delete_dag(dag_id)
     except Exception as e:
         print("Exception when calling DAGApi->delete_dag: %s\n" % e)
 ```
@@ -88,7 +88,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_dag**
-> TitaniumTitaniumDAG get_dag(dag_id, fields=fields)
+> DAG get_dag(dag_id, fields=fields)
 
 Get basic information about a DAG
 
@@ -99,7 +99,7 @@ Presents only information available in database (DAGModel). If you need detailed
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_dag import TitaniumTitaniumDAG
+from titanium_airflow_client.models.dag import DAG
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -111,7 +111,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -119,7 +119,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get basic information about a DAG
-        api_response = await api_instance.get_dag(dag_id, fields=fields)
+        api_response = api_instance.get_dag(dag_id, fields=fields)
         print("The response of DAGApi->get_dag:\n")
         pprint(api_response)
     except Exception as e:
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumDAG**](TitaniumDAG.md)
+[**DAG**](DAG.md)
 
 ### Authorization
 
@@ -161,7 +161,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_dag_details**
-> TitaniumTitaniumDAGDetail get_dag_details(dag_id, fields=fields)
+> DAGDetail get_dag_details(dag_id, fields=fields)
 
 Get a simplified representation of DAG
 
@@ -172,7 +172,7 @@ The response contains many DAG attributes, so the response can be large. If poss
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_dag_detail import TitaniumTitaniumDAGDetail
+from titanium_airflow_client.models.dag_detail import DAGDetail
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -184,7 +184,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -192,7 +192,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get a simplified representation of DAG
-        api_response = await api_instance.get_dag_details(dag_id, fields=fields)
+        api_response = api_instance.get_dag_details(dag_id, fields=fields)
         print("The response of DAGApi->get_dag_details:\n")
         pprint(api_response)
     except Exception as e:
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumDAGDetail**](TitaniumDAGDetail.md)
+[**DAGDetail**](DAGDetail.md)
 
 ### Authorization
 
@@ -234,7 +234,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_dag_source**
-> TitaniumTitaniumGetDagSource200Response get_dag_source(file_token)
+> GetDagSource200Response get_dag_source(file_token)
 
 Get a source code
 
@@ -245,7 +245,7 @@ Get a source code using file token.
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_get_dag_source200_response import TitaniumTitaniumGetDagSource200Response
+from titanium_airflow_client.models.get_dag_source200_response import GetDagSource200Response
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -257,14 +257,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     file_token = 'file_token_example' # str | The key containing the encrypted path to the file. Encryption and decryption take place only on the server. This prevents the client from reading an non-DAG file. This also ensures API extensibility, because the format of encrypted data may change. 
 
     try:
         # Get a source code
-        api_response = await api_instance.get_dag_source(file_token)
+        api_response = api_instance.get_dag_source(file_token)
         print("The response of DAGApi->get_dag_source:\n")
         pprint(api_response)
     except Exception as e:
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumGetDagSource200Response**](TitaniumGetDagSource200Response.md)
+[**GetDagSource200Response**](GetDagSource200Response.md)
 
 ### Authorization
 
@@ -306,7 +306,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_dags**
-> TitaniumTitaniumDAGCollection get_dags(limit=limit, offset=offset, order_by=order_by, tags=tags, only_active=only_active, paused=paused, fields=fields, dag_id_pattern=dag_id_pattern)
+> DAGCollection get_dags(limit=limit, offset=offset, order_by=order_by, tags=tags, only_active=only_active, paused=paused, fields=fields, dag_id_pattern=dag_id_pattern)
 
 List DAGs
 
@@ -317,7 +317,7 @@ List DAGs in the database. `dag_id_pattern` can be set to match dags of a specif
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_dag_collection import TitaniumTitaniumDAGCollection
+from titanium_airflow_client.models.dag_collection import DAGCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -329,7 +329,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -343,7 +343,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List DAGs
-        api_response = await api_instance.get_dags(limit=limit, offset=offset, order_by=order_by, tags=tags, only_active=only_active, paused=paused, fields=fields, dag_id_pattern=dag_id_pattern)
+        api_response = api_instance.get_dags(limit=limit, offset=offset, order_by=order_by, tags=tags, only_active=only_active, paused=paused, fields=fields, dag_id_pattern=dag_id_pattern)
         print("The response of DAGApi->get_dags:\n")
         pprint(api_response)
     except Exception as e:
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumDAGCollection**](TitaniumDAGCollection.md)
+[**DAGCollection**](DAGCollection.md)
 
 ### Authorization
 
@@ -389,7 +389,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_task**
-> TitaniumTitaniumTask get_task(dag_id, task_id)
+> Task get_task(dag_id, task_id)
 
 Get simplified representation of a task
 
@@ -398,7 +398,7 @@ Get simplified representation of a task
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_task import TitaniumTitaniumTask
+from titanium_airflow_client.models.task import Task
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -410,7 +410,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -418,7 +418,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get simplified representation of a task
-        api_response = await api_instance.get_task(dag_id, task_id)
+        api_response = api_instance.get_task(dag_id, task_id)
         print("The response of DAGApi->get_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -437,7 +437,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumTask**](TitaniumTask.md)
+[**Task**](Task.md)
 
 ### Authorization
 
@@ -460,7 +460,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_tasks**
-> TitaniumTitaniumTaskCollection get_tasks(dag_id, order_by=order_by)
+> TaskCollection get_tasks(dag_id, order_by=order_by)
 
 Get tasks for DAG
 
@@ -469,7 +469,7 @@ Get tasks for DAG
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_task_collection import TitaniumTitaniumTaskCollection
+from titanium_airflow_client.models.task_collection import TaskCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -481,7 +481,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -489,7 +489,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get tasks for DAG
-        api_response = await api_instance.get_tasks(dag_id, order_by=order_by)
+        api_response = api_instance.get_tasks(dag_id, order_by=order_by)
         print("The response of DAGApi->get_tasks:\n")
         pprint(api_response)
     except Exception as e:
@@ -508,7 +508,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumTaskCollection**](TitaniumTaskCollection.md)
+[**TaskCollection**](TaskCollection.md)
 
 ### Authorization
 
@@ -531,7 +531,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_dag**
-> TitaniumTitaniumDAG patch_dag(dag_id, titanium_dag, update_mask=update_mask)
+> DAG patch_dag(dag_id, dag, update_mask=update_mask)
 
 Update a DAG
 
@@ -540,8 +540,7 @@ Update a DAG
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_dag import TitaniumDAG
-from titanium_airflow_client.models.titanium_titanium_dag import TitaniumTitaniumDAG
+from titanium_airflow_client.models.dag import DAG
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -553,16 +552,16 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
-    titanium_dag = {"is_paused":true} # TitaniumDAG | 
+    dag = {"is_paused":true} # DAG | 
     update_mask = ['update_mask_example'] # List[str] | The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields.  (optional)
 
     try:
         # Update a DAG
-        api_response = await api_instance.patch_dag(dag_id, titanium_dag, update_mask=update_mask)
+        api_response = api_instance.patch_dag(dag_id, dag, update_mask=update_mask)
         print("The response of DAGApi->patch_dag:\n")
         pprint(api_response)
     except Exception as e:
@@ -577,12 +576,12 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dag_id** | **str**| The DAG ID. | 
- **titanium_dag** | [**TitaniumDAG**](TitaniumDAG.md)|  | 
+ **dag** | [**DAG**](DAG.md)|  | 
  **update_mask** | [**List[str]**](str.md)| The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields.  | [optional] 
 
 ### Return type
 
-[**TitaniumTitaniumDAG**](TitaniumDAG.md)
+[**DAG**](DAG.md)
 
 ### Authorization
 
@@ -605,7 +604,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_dags**
-> TitaniumTitaniumDAGCollection patch_dags(dag_id_pattern, titanium_dag, limit=limit, offset=offset, tags=tags, update_mask=update_mask, only_active=only_active)
+> DAGCollection patch_dags(dag_id_pattern, dag, limit=limit, offset=offset, tags=tags, update_mask=update_mask, only_active=only_active)
 
 Update DAGs
 
@@ -616,8 +615,8 @@ Update DAGs of a given dag_id_pattern using UpdateMask. This endpoint allows spe
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_dag import TitaniumDAG
-from titanium_airflow_client.models.titanium_titanium_dag_collection import TitaniumTitaniumDAGCollection
+from titanium_airflow_client.models.dag import DAG
+from titanium_airflow_client.models.dag_collection import DAGCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -629,11 +628,11 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id_pattern = 'dag_id_pattern_example' # str | If set, only update DAGs with dag_ids matching this pattern. 
-    titanium_dag = {"is_paused":true} # TitaniumDAG | 
+    dag = {"is_paused":true} # DAG | 
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
     offset = 56 # int | The number of items to skip before starting to collect the result set. (optional)
     tags = ['tags_example'] # List[str] | List of tags to filter results.  *New in version 2.2.0*  (optional)
@@ -642,7 +641,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Update DAGs
-        api_response = await api_instance.patch_dags(dag_id_pattern, titanium_dag, limit=limit, offset=offset, tags=tags, update_mask=update_mask, only_active=only_active)
+        api_response = api_instance.patch_dags(dag_id_pattern, dag, limit=limit, offset=offset, tags=tags, update_mask=update_mask, only_active=only_active)
         print("The response of DAGApi->patch_dags:\n")
         pprint(api_response)
     except Exception as e:
@@ -657,7 +656,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dag_id_pattern** | **str**| If set, only update DAGs with dag_ids matching this pattern.  | 
- **titanium_dag** | [**TitaniumDAG**](TitaniumDAG.md)|  | 
+ **dag** | [**DAG**](DAG.md)|  | 
  **limit** | **int**| The numbers of items to return. | [optional] [default to 100]
  **offset** | **int**| The number of items to skip before starting to collect the result set. | [optional] 
  **tags** | [**List[str]**](str.md)| List of tags to filter results.  *New in version 2.2.0*  | [optional] 
@@ -666,7 +665,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumDAGCollection**](TitaniumDAGCollection.md)
+[**DAGCollection**](DAGCollection.md)
 
 ### Authorization
 
@@ -689,7 +688,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_clear_task_instances**
-> TitaniumTitaniumTaskInstanceReferenceCollection post_clear_task_instances(dag_id, titanium_clear_task_instances)
+> TaskInstanceReferenceCollection post_clear_task_instances(dag_id, clear_task_instances)
 
 Clear a set of task instances
 
@@ -700,8 +699,8 @@ Clears a set of task instances associated with the DAG for a specified date rang
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_clear_task_instances import TitaniumClearTaskInstances
-from titanium_airflow_client.models.titanium_titanium_task_instance_reference_collection import TitaniumTitaniumTaskInstanceReferenceCollection
+from titanium_airflow_client.models.clear_task_instances import ClearTaskInstances
+from titanium_airflow_client.models.task_instance_reference_collection import TaskInstanceReferenceCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -713,15 +712,15 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
-    titanium_clear_task_instances = titanium_airflow_client.TitaniumClearTaskInstances() # TitaniumClearTaskInstances | Parameters of action
+    clear_task_instances = titanium_airflow_client.ClearTaskInstances() # ClearTaskInstances | Parameters of action
 
     try:
         # Clear a set of task instances
-        api_response = await api_instance.post_clear_task_instances(dag_id, titanium_clear_task_instances)
+        api_response = api_instance.post_clear_task_instances(dag_id, clear_task_instances)
         print("The response of DAGApi->post_clear_task_instances:\n")
         pprint(api_response)
     except Exception as e:
@@ -736,11 +735,11 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dag_id** | **str**| The DAG ID. | 
- **titanium_clear_task_instances** | [**TitaniumClearTaskInstances**](TitaniumClearTaskInstances.md)| Parameters of action | 
+ **clear_task_instances** | [**ClearTaskInstances**](ClearTaskInstances.md)| Parameters of action | 
 
 ### Return type
 
-[**TitaniumTitaniumTaskInstanceReferenceCollection**](TitaniumTaskInstanceReferenceCollection.md)
+[**TaskInstanceReferenceCollection**](TaskInstanceReferenceCollection.md)
 
 ### Authorization
 
@@ -763,7 +762,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_task_instances_state**
-> TitaniumTitaniumTaskInstanceReferenceCollection post_set_task_instances_state(dag_id, titanium_update_task_instances_state)
+> TaskInstanceReferenceCollection post_set_task_instances_state(dag_id, update_task_instances_state)
 
 Set a state of task instances
 
@@ -774,8 +773,8 @@ Updates the state for multiple task instances simultaneously.
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_task_instance_reference_collection import TitaniumTitaniumTaskInstanceReferenceCollection
-from titanium_airflow_client.models.titanium_update_task_instances_state import TitaniumUpdateTaskInstancesState
+from titanium_airflow_client.models.task_instance_reference_collection import TaskInstanceReferenceCollection
+from titanium_airflow_client.models.update_task_instances_state import UpdateTaskInstancesState
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -787,15 +786,15 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
-    titanium_update_task_instances_state = titanium_airflow_client.TitaniumUpdateTaskInstancesState() # TitaniumUpdateTaskInstancesState | Parameters of action
+    update_task_instances_state = titanium_airflow_client.UpdateTaskInstancesState() # UpdateTaskInstancesState | Parameters of action
 
     try:
         # Set a state of task instances
-        api_response = await api_instance.post_set_task_instances_state(dag_id, titanium_update_task_instances_state)
+        api_response = api_instance.post_set_task_instances_state(dag_id, update_task_instances_state)
         print("The response of DAGApi->post_set_task_instances_state:\n")
         pprint(api_response)
     except Exception as e:
@@ -810,11 +809,11 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dag_id** | **str**| The DAG ID. | 
- **titanium_update_task_instances_state** | [**TitaniumUpdateTaskInstancesState**](TitaniumUpdateTaskInstancesState.md)| Parameters of action | 
+ **update_task_instances_state** | [**UpdateTaskInstancesState**](UpdateTaskInstancesState.md)| Parameters of action | 
 
 ### Return type
 
-[**TitaniumTitaniumTaskInstanceReferenceCollection**](TitaniumTaskInstanceReferenceCollection.md)
+[**TaskInstanceReferenceCollection**](TaskInstanceReferenceCollection.md)
 
 ### Authorization
 

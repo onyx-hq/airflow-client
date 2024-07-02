@@ -20,9 +20,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from titanium_airflow_client.models.titanium_titanium_variable import TitaniumTitaniumVariable
-from titanium_airflow_client.models.titanium_titanium_variable_collection import TitaniumTitaniumVariableCollection
-from titanium_airflow_client.models.titanium_variable import TitaniumVariable
+from titanium_airflow_client.models.variable import Variable
+from titanium_airflow_client.models.variable_collection import VariableCollection
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -43,7 +42,7 @@ class VariableApi:
 
 
     @validate_call
-    async def delete_variable(
+    def delete_variable(
         self,
         variable_key: Annotated[StrictStr, Field(description="The variable Key.")],
         _request_timeout: Union[
@@ -96,16 +95,16 @@ class VariableApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -113,7 +112,7 @@ class VariableApi:
 
 
     @validate_call
-    async def delete_variable_with_http_info(
+    def delete_variable_with_http_info(
         self,
         variable_key: Annotated[StrictStr, Field(description="The variable Key.")],
         _request_timeout: Union[
@@ -166,16 +165,16 @@ class VariableApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -183,7 +182,7 @@ class VariableApi:
 
 
     @validate_call
-    async def delete_variable_without_preload_content(
+    def delete_variable_without_preload_content(
         self,
         variable_key: Annotated[StrictStr, Field(description="The variable Key.")],
         _request_timeout: Union[
@@ -236,12 +235,12 @@ class VariableApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -309,7 +308,7 @@ class VariableApi:
 
 
     @validate_call
-    async def get_variable(
+    def get_variable(
         self,
         variable_key: Annotated[StrictStr, Field(description="The variable Key.")],
         _request_timeout: Union[
@@ -324,7 +323,7 @@ class VariableApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumVariable:
+    ) -> Variable:
         """Get a variable
 
         Get a variable by key.
@@ -362,16 +361,16 @@ class VariableApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVariable",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Variable",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -379,7 +378,7 @@ class VariableApi:
 
 
     @validate_call
-    async def get_variable_with_http_info(
+    def get_variable_with_http_info(
         self,
         variable_key: Annotated[StrictStr, Field(description="The variable Key.")],
         _request_timeout: Union[
@@ -394,7 +393,7 @@ class VariableApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumVariable]:
+    ) -> ApiResponse[Variable]:
         """Get a variable
 
         Get a variable by key.
@@ -432,16 +431,16 @@ class VariableApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVariable",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Variable",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -449,7 +448,7 @@ class VariableApi:
 
 
     @validate_call
-    async def get_variable_without_preload_content(
+    def get_variable_without_preload_content(
         self,
         variable_key: Annotated[StrictStr, Field(description="The variable Key.")],
         _request_timeout: Union[
@@ -502,12 +501,12 @@ class VariableApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVariable",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Variable",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -575,7 +574,7 @@ class VariableApi:
 
 
     @validate_call
-    async def get_variables(
+    def get_variables(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -592,7 +591,7 @@ class VariableApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumVariableCollection:
+    ) -> VariableCollection:
         """List variables
 
         The collection does not contain data. To get data, you must get a single entity.
@@ -636,15 +635,15 @@ class VariableApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVariableCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "VariableCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -652,7 +651,7 @@ class VariableApi:
 
 
     @validate_call
-    async def get_variables_with_http_info(
+    def get_variables_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -669,7 +668,7 @@ class VariableApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumVariableCollection]:
+    ) -> ApiResponse[VariableCollection]:
         """List variables
 
         The collection does not contain data. To get data, you must get a single entity.
@@ -713,15 +712,15 @@ class VariableApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVariableCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "VariableCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -729,7 +728,7 @@ class VariableApi:
 
 
     @validate_call
-    async def get_variables_without_preload_content(
+    def get_variables_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -790,11 +789,11 @@ class VariableApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVariableCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "VariableCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -874,10 +873,10 @@ class VariableApi:
 
 
     @validate_call
-    async def patch_variable(
+    def patch_variable(
         self,
         variable_key: Annotated[StrictStr, Field(description="The variable Key.")],
-        titanium_variable: TitaniumVariable,
+        variable: Variable,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -891,15 +890,15 @@ class VariableApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumVariable:
+    ) -> Variable:
         """Update a variable
 
         Update a variable by key.
 
         :param variable_key: The variable Key. (required)
         :type variable_key: str
-        :param titanium_variable: (required)
-        :type titanium_variable: TitaniumVariable
+        :param variable: (required)
+        :type variable: Variable
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -926,7 +925,7 @@ class VariableApi:
 
         _param = self._patch_variable_serialize(
             variable_key=variable_key,
-            titanium_variable=titanium_variable,
+            variable=variable,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -935,17 +934,17 @@ class VariableApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVariable",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Variable",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -953,10 +952,10 @@ class VariableApi:
 
 
     @validate_call
-    async def patch_variable_with_http_info(
+    def patch_variable_with_http_info(
         self,
         variable_key: Annotated[StrictStr, Field(description="The variable Key.")],
-        titanium_variable: TitaniumVariable,
+        variable: Variable,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -970,15 +969,15 @@ class VariableApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumVariable]:
+    ) -> ApiResponse[Variable]:
         """Update a variable
 
         Update a variable by key.
 
         :param variable_key: The variable Key. (required)
         :type variable_key: str
-        :param titanium_variable: (required)
-        :type titanium_variable: TitaniumVariable
+        :param variable: (required)
+        :type variable: Variable
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1005,7 +1004,7 @@ class VariableApi:
 
         _param = self._patch_variable_serialize(
             variable_key=variable_key,
-            titanium_variable=titanium_variable,
+            variable=variable,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1014,17 +1013,17 @@ class VariableApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVariable",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Variable",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1032,10 +1031,10 @@ class VariableApi:
 
 
     @validate_call
-    async def patch_variable_without_preload_content(
+    def patch_variable_without_preload_content(
         self,
         variable_key: Annotated[StrictStr, Field(description="The variable Key.")],
-        titanium_variable: TitaniumVariable,
+        variable: Variable,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -1056,8 +1055,8 @@ class VariableApi:
 
         :param variable_key: The variable Key. (required)
         :type variable_key: str
-        :param titanium_variable: (required)
-        :type titanium_variable: TitaniumVariable
+        :param variable: (required)
+        :type variable: Variable
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1084,7 +1083,7 @@ class VariableApi:
 
         _param = self._patch_variable_serialize(
             variable_key=variable_key,
-            titanium_variable=titanium_variable,
+            variable=variable,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1093,13 +1092,13 @@ class VariableApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVariable",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Variable",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1109,7 +1108,7 @@ class VariableApi:
     def _patch_variable_serialize(
         self,
         variable_key,
-        titanium_variable,
+        variable,
         update_mask,
         _request_auth,
         _content_type,
@@ -1141,8 +1140,8 @@ class VariableApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_variable is not None:
-            _body_params = titanium_variable
+        if variable is not None:
+            _body_params = variable
 
 
         # set the HTTP header `Accept`
@@ -1189,9 +1188,9 @@ class VariableApi:
 
 
     @validate_call
-    async def post_variables(
+    def post_variables(
         self,
-        titanium_variable: TitaniumVariable,
+        variable: Variable,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1204,12 +1203,12 @@ class VariableApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumVariable:
+    ) -> Variable:
         """Create a variable
 
 
-        :param titanium_variable: (required)
-        :type titanium_variable: TitaniumVariable
+        :param variable: (required)
+        :type variable: Variable
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1233,7 +1232,7 @@ class VariableApi:
         """ # noqa: E501
 
         _param = self._post_variables_serialize(
-            titanium_variable=titanium_variable,
+            variable=variable,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1241,16 +1240,16 @@ class VariableApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVariable",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "Variable",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1258,9 +1257,9 @@ class VariableApi:
 
 
     @validate_call
-    async def post_variables_with_http_info(
+    def post_variables_with_http_info(
         self,
-        titanium_variable: TitaniumVariable,
+        variable: Variable,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1273,12 +1272,12 @@ class VariableApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumVariable]:
+    ) -> ApiResponse[Variable]:
         """Create a variable
 
 
-        :param titanium_variable: (required)
-        :type titanium_variable: TitaniumVariable
+        :param variable: (required)
+        :type variable: Variable
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1302,7 +1301,7 @@ class VariableApi:
         """ # noqa: E501
 
         _param = self._post_variables_serialize(
-            titanium_variable=titanium_variable,
+            variable=variable,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1310,16 +1309,16 @@ class VariableApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVariable",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "Variable",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1327,9 +1326,9 @@ class VariableApi:
 
 
     @validate_call
-    async def post_variables_without_preload_content(
+    def post_variables_without_preload_content(
         self,
-        titanium_variable: TitaniumVariable,
+        variable: Variable,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1346,8 +1345,8 @@ class VariableApi:
         """Create a variable
 
 
-        :param titanium_variable: (required)
-        :type titanium_variable: TitaniumVariable
+        :param variable: (required)
+        :type variable: Variable
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1371,7 +1370,7 @@ class VariableApi:
         """ # noqa: E501
 
         _param = self._post_variables_serialize(
-            titanium_variable=titanium_variable,
+            variable=variable,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1379,12 +1378,12 @@ class VariableApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumVariable",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "Variable",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1393,7 +1392,7 @@ class VariableApi:
 
     def _post_variables_serialize(
         self,
-        titanium_variable,
+        variable,
         _request_auth,
         _content_type,
         _headers,
@@ -1417,8 +1416,8 @@ class VariableApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_variable is not None:
-            _body_params = titanium_variable
+        if variable is not None:
+            _body_params = variable
 
 
         # set the HTTP header `Accept`

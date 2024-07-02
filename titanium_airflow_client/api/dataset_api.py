@@ -21,13 +21,13 @@ from datetime import datetime
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from titanium_airflow_client.models.titanium_create_dataset_event import TitaniumCreateDatasetEvent
-from titanium_airflow_client.models.titanium_titanium_dataset import TitaniumTitaniumDataset
-from titanium_airflow_client.models.titanium_titanium_dataset_collection import TitaniumTitaniumDatasetCollection
-from titanium_airflow_client.models.titanium_titanium_dataset_event import TitaniumTitaniumDatasetEvent
-from titanium_airflow_client.models.titanium_titanium_dataset_event_collection import TitaniumTitaniumDatasetEventCollection
-from titanium_airflow_client.models.titanium_titanium_queued_event import TitaniumTitaniumQueuedEvent
-from titanium_airflow_client.models.titanium_titanium_queued_event_collection import TitaniumTitaniumQueuedEventCollection
+from titanium_airflow_client.models.create_dataset_event import CreateDatasetEvent
+from titanium_airflow_client.models.dataset import Dataset
+from titanium_airflow_client.models.dataset_collection import DatasetCollection
+from titanium_airflow_client.models.dataset_event import DatasetEvent
+from titanium_airflow_client.models.dataset_event_collection import DatasetEventCollection
+from titanium_airflow_client.models.queued_event import QueuedEvent
+from titanium_airflow_client.models.queued_event_collection import QueuedEventCollection
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -48,9 +48,9 @@ class DatasetApi:
 
 
     @validate_call
-    async def create_dataset_event(
+    def create_dataset_event(
         self,
-        titanium_create_dataset_event: TitaniumCreateDatasetEvent,
+        create_dataset_event: CreateDatasetEvent,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,13 +63,13 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDatasetEvent:
+    ) -> DatasetEvent:
         """Create dataset event
 
         Create dataset event
 
-        :param titanium_create_dataset_event: (required)
-        :type titanium_create_dataset_event: TitaniumCreateDatasetEvent
+        :param create_dataset_event: (required)
+        :type create_dataset_event: CreateDatasetEvent
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -93,7 +93,7 @@ class DatasetApi:
         """ # noqa: E501
 
         _param = self._create_dataset_event_serialize(
-            titanium_create_dataset_event=titanium_create_dataset_event,
+            create_dataset_event=create_dataset_event,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -101,17 +101,17 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetEvent",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DatasetEvent",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -119,9 +119,9 @@ class DatasetApi:
 
 
     @validate_call
-    async def create_dataset_event_with_http_info(
+    def create_dataset_event_with_http_info(
         self,
-        titanium_create_dataset_event: TitaniumCreateDatasetEvent,
+        create_dataset_event: CreateDatasetEvent,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134,13 +134,13 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDatasetEvent]:
+    ) -> ApiResponse[DatasetEvent]:
         """Create dataset event
 
         Create dataset event
 
-        :param titanium_create_dataset_event: (required)
-        :type titanium_create_dataset_event: TitaniumCreateDatasetEvent
+        :param create_dataset_event: (required)
+        :type create_dataset_event: CreateDatasetEvent
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -164,7 +164,7 @@ class DatasetApi:
         """ # noqa: E501
 
         _param = self._create_dataset_event_serialize(
-            titanium_create_dataset_event=titanium_create_dataset_event,
+            create_dataset_event=create_dataset_event,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -172,17 +172,17 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetEvent",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DatasetEvent",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -190,9 +190,9 @@ class DatasetApi:
 
 
     @validate_call
-    async def create_dataset_event_without_preload_content(
+    def create_dataset_event_without_preload_content(
         self,
-        titanium_create_dataset_event: TitaniumCreateDatasetEvent,
+        create_dataset_event: CreateDatasetEvent,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -210,8 +210,8 @@ class DatasetApi:
 
         Create dataset event
 
-        :param titanium_create_dataset_event: (required)
-        :type titanium_create_dataset_event: TitaniumCreateDatasetEvent
+        :param create_dataset_event: (required)
+        :type create_dataset_event: CreateDatasetEvent
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -235,7 +235,7 @@ class DatasetApi:
         """ # noqa: E501
 
         _param = self._create_dataset_event_serialize(
-            titanium_create_dataset_event=titanium_create_dataset_event,
+            create_dataset_event=create_dataset_event,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -243,13 +243,13 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetEvent",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DatasetEvent",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -258,7 +258,7 @@ class DatasetApi:
 
     def _create_dataset_event_serialize(
         self,
-        titanium_create_dataset_event,
+        create_dataset_event,
         _request_auth,
         _content_type,
         _headers,
@@ -282,8 +282,8 @@ class DatasetApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_create_dataset_event is not None:
-            _body_params = titanium_create_dataset_event
+        if create_dataset_event is not None:
+            _body_params = create_dataset_event
 
 
         # set the HTTP header `Accept`
@@ -330,7 +330,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def delete_dag_dataset_queued_event(
+    def delete_dag_dataset_queued_event(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
@@ -392,16 +392,16 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -409,7 +409,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def delete_dag_dataset_queued_event_with_http_info(
+    def delete_dag_dataset_queued_event_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
@@ -471,16 +471,16 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -488,7 +488,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def delete_dag_dataset_queued_event_without_preload_content(
+    def delete_dag_dataset_queued_event_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
@@ -550,12 +550,12 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -640,7 +640,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def delete_dag_dataset_queued_events(
+    def delete_dag_dataset_queued_events(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -698,16 +698,16 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -715,7 +715,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def delete_dag_dataset_queued_events_with_http_info(
+    def delete_dag_dataset_queued_events_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -773,16 +773,16 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -790,7 +790,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def delete_dag_dataset_queued_events_without_preload_content(
+    def delete_dag_dataset_queued_events_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -848,12 +848,12 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -935,7 +935,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def delete_dataset_queued_events(
+    def delete_dataset_queued_events(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -993,16 +993,16 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1010,7 +1010,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def delete_dataset_queued_events_with_http_info(
+    def delete_dataset_queued_events_with_http_info(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -1068,16 +1068,16 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1085,7 +1085,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def delete_dataset_queued_events_without_preload_content(
+    def delete_dataset_queued_events_without_preload_content(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -1143,12 +1143,12 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1230,7 +1230,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dag_dataset_queued_event(
+    def get_dag_dataset_queued_event(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
@@ -1247,7 +1247,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumQueuedEvent:
+    ) -> QueuedEvent:
         """Get a queued Dataset event for a DAG
 
         Get a queued Dataset event for a DAG.  *New in version 2.9.0* 
@@ -1291,16 +1291,16 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumQueuedEvent",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "QueuedEvent",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1308,7 +1308,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dag_dataset_queued_event_with_http_info(
+    def get_dag_dataset_queued_event_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
@@ -1325,7 +1325,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumQueuedEvent]:
+    ) -> ApiResponse[QueuedEvent]:
         """Get a queued Dataset event for a DAG
 
         Get a queued Dataset event for a DAG.  *New in version 2.9.0* 
@@ -1369,16 +1369,16 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumQueuedEvent",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "QueuedEvent",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1386,7 +1386,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dag_dataset_queued_event_without_preload_content(
+    def get_dag_dataset_queued_event_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
@@ -1447,12 +1447,12 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumQueuedEvent",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "QueuedEvent",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1537,7 +1537,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dag_dataset_queued_events(
+    def get_dag_dataset_queued_events(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -1553,7 +1553,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumQueuedEventCollection:
+    ) -> QueuedEventCollection:
         """Get queued Dataset events for a DAG.
 
         Get queued Dataset events for a DAG.  *New in version 2.9.0* 
@@ -1594,16 +1594,16 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumQueuedEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "QueuedEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1611,7 +1611,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dag_dataset_queued_events_with_http_info(
+    def get_dag_dataset_queued_events_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -1627,7 +1627,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumQueuedEventCollection]:
+    ) -> ApiResponse[QueuedEventCollection]:
         """Get queued Dataset events for a DAG.
 
         Get queued Dataset events for a DAG.  *New in version 2.9.0* 
@@ -1668,16 +1668,16 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumQueuedEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "QueuedEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1685,7 +1685,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dag_dataset_queued_events_without_preload_content(
+    def get_dag_dataset_queued_events_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -1742,12 +1742,12 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumQueuedEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "QueuedEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1829,7 +1829,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dataset(
+    def get_dataset(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         _request_timeout: Union[
@@ -1844,7 +1844,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDataset:
+    ) -> Dataset:
         """Get a dataset
 
         Get a dataset by uri.
@@ -1882,16 +1882,16 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDataset",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Dataset",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1899,7 +1899,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dataset_with_http_info(
+    def get_dataset_with_http_info(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         _request_timeout: Union[
@@ -1914,7 +1914,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDataset]:
+    ) -> ApiResponse[Dataset]:
         """Get a dataset
 
         Get a dataset by uri.
@@ -1952,16 +1952,16 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDataset",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Dataset",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1969,7 +1969,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dataset_without_preload_content(
+    def get_dataset_without_preload_content(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         _request_timeout: Union[
@@ -2022,12 +2022,12 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDataset",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Dataset",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2095,7 +2095,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dataset_events(
+    def get_dataset_events(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -2117,7 +2117,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDatasetEventCollection:
+    ) -> DatasetEventCollection:
         """Get dataset events
 
         Get dataset events
@@ -2176,16 +2176,16 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DatasetEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2193,7 +2193,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dataset_events_with_http_info(
+    def get_dataset_events_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -2215,7 +2215,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDatasetEventCollection]:
+    ) -> ApiResponse[DatasetEventCollection]:
         """Get dataset events
 
         Get dataset events
@@ -2274,16 +2274,16 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DatasetEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2291,7 +2291,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dataset_events_without_preload_content(
+    def get_dataset_events_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -2372,12 +2372,12 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DatasetEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2482,7 +2482,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dataset_queued_events(
+    def get_dataset_queued_events(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -2498,7 +2498,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumQueuedEventCollection:
+    ) -> QueuedEventCollection:
         """Get queued Dataset events for a Dataset.
 
         Get queued Dataset events for a Dataset  *New in version 2.9.0* 
@@ -2539,16 +2539,16 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumQueuedEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "QueuedEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2556,7 +2556,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dataset_queued_events_with_http_info(
+    def get_dataset_queued_events_with_http_info(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -2572,7 +2572,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumQueuedEventCollection]:
+    ) -> ApiResponse[QueuedEventCollection]:
         """Get queued Dataset events for a Dataset.
 
         Get queued Dataset events for a Dataset  *New in version 2.9.0* 
@@ -2613,16 +2613,16 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumQueuedEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "QueuedEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2630,7 +2630,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_dataset_queued_events_without_preload_content(
+    def get_dataset_queued_events_without_preload_content(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -2687,12 +2687,12 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumQueuedEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "QueuedEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2774,7 +2774,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_datasets(
+    def get_datasets(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -2793,7 +2793,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDatasetCollection:
+    ) -> DatasetCollection:
         """List datasets
 
 
@@ -2842,15 +2842,15 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "DatasetCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2858,7 +2858,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_datasets_with_http_info(
+    def get_datasets_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -2877,7 +2877,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDatasetCollection]:
+    ) -> ApiResponse[DatasetCollection]:
         """List datasets
 
 
@@ -2926,15 +2926,15 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "DatasetCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2942,7 +2942,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_datasets_without_preload_content(
+    def get_datasets_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -3010,11 +3010,11 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "DatasetCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3104,7 +3104,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_upstream_dataset_events(
+    def get_upstream_dataset_events(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3120,7 +3120,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumDatasetEventCollection:
+    ) -> DatasetEventCollection:
         """Get dataset events for a DAG run
 
         Get datasets for a dag run.  *New in version 2.4.0* 
@@ -3161,16 +3161,16 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DatasetEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3178,7 +3178,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_upstream_dataset_events_with_http_info(
+    def get_upstream_dataset_events_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3194,7 +3194,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumDatasetEventCollection]:
+    ) -> ApiResponse[DatasetEventCollection]:
         """Get dataset events for a DAG run
 
         Get datasets for a dag run.  *New in version 2.4.0* 
@@ -3235,16 +3235,16 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DatasetEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3252,7 +3252,7 @@ class DatasetApi:
 
 
     @validate_call
-    async def get_upstream_dataset_events_without_preload_content(
+    def get_upstream_dataset_events_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3309,12 +3309,12 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumDatasetEventCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "DatasetEventCollection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

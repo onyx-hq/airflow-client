@@ -34,14 +34,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.UserApi(api_client)
     username = 'username_example' # str | The username of the user.  *New in version 2.1.0* 
 
     try:
         # Delete a user
-        await api_instance.delete_user(username)
+        api_instance.delete_user(username)
     except Exception as e:
         print("Exception when calling UserApi->delete_user: %s\n" % e)
 ```
@@ -81,7 +81,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user**
-> TitaniumTitaniumUserCollectionItem get_user(username)
+> UserCollectionItem get_user(username)
 
 Get a user
 
@@ -92,7 +92,7 @@ Get a user with a specific username.  *This API endpoint is deprecated, please u
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_user_collection_item import TitaniumTitaniumUserCollectionItem
+from titanium_airflow_client.models.user_collection_item import UserCollectionItem
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -104,14 +104,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.UserApi(api_client)
     username = 'username_example' # str | The username of the user.  *New in version 2.1.0* 
 
     try:
         # Get a user
-        api_response = await api_instance.get_user(username)
+        api_response = api_instance.get_user(username)
         print("The response of UserApi->get_user:\n")
         pprint(api_response)
     except Exception as e:
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumUserCollectionItem**](TitaniumUserCollectionItem.md)
+[**UserCollectionItem**](UserCollectionItem.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_users**
-> TitaniumTitaniumUserCollection get_users(limit=limit, offset=offset, order_by=order_by)
+> UserCollection get_users(limit=limit, offset=offset, order_by=order_by)
 
 List users
 
@@ -163,7 +163,7 @@ Get a list of users.  *This API endpoint is deprecated, please use the endpoint 
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_user_collection import TitaniumTitaniumUserCollection
+from titanium_airflow_client.models.user_collection import UserCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -175,7 +175,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.UserApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -184,7 +184,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List users
-        api_response = await api_instance.get_users(limit=limit, offset=offset, order_by=order_by)
+        api_response = api_instance.get_users(limit=limit, offset=offset, order_by=order_by)
         print("The response of UserApi->get_users:\n")
         pprint(api_response)
     except Exception as e:
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumUserCollection**](TitaniumUserCollection.md)
+[**UserCollection**](UserCollection.md)
 
 ### Authorization
 
@@ -226,7 +226,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_user**
-> TitaniumTitaniumUserCollectionItem patch_user(username, titanium_user, update_mask=update_mask)
+> UserCollectionItem patch_user(username, user, update_mask=update_mask)
 
 Update a user
 
@@ -237,8 +237,8 @@ Update fields for a user.  *This API endpoint is deprecated, please use the endp
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_user_collection_item import TitaniumTitaniumUserCollectionItem
-from titanium_airflow_client.models.titanium_user import TitaniumUser
+from titanium_airflow_client.models.user import User
+from titanium_airflow_client.models.user_collection_item import UserCollectionItem
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -250,16 +250,16 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.UserApi(api_client)
     username = 'username_example' # str | The username of the user.  *New in version 2.1.0* 
-    titanium_user = titanium_airflow_client.TitaniumUser() # TitaniumUser | 
+    user = titanium_airflow_client.User() # User | 
     update_mask = ['update_mask_example'] # List[str] | The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields.  (optional)
 
     try:
         # Update a user
-        api_response = await api_instance.patch_user(username, titanium_user, update_mask=update_mask)
+        api_response = api_instance.patch_user(username, user, update_mask=update_mask)
         print("The response of UserApi->patch_user:\n")
         pprint(api_response)
     except Exception as e:
@@ -274,12 +274,12 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| The username of the user.  *New in version 2.1.0*  | 
- **titanium_user** | [**TitaniumUser**](TitaniumUser.md)|  | 
+ **user** | [**User**](User.md)|  | 
  **update_mask** | [**List[str]**](str.md)| The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields.  | [optional] 
 
 ### Return type
 
-[**TitaniumTitaniumUserCollectionItem**](TitaniumUserCollectionItem.md)
+[**UserCollectionItem**](UserCollectionItem.md)
 
 ### Authorization
 
@@ -303,7 +303,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_user**
-> TitaniumTitaniumUser post_user(titanium_user)
+> User post_user(user)
 
 Create a user
 
@@ -314,8 +314,7 @@ Create a new user with unique username and email.  *This API endpoint is depreca
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_user import TitaniumTitaniumUser
-from titanium_airflow_client.models.titanium_user import TitaniumUser
+from titanium_airflow_client.models.user import User
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -327,14 +326,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.UserApi(api_client)
-    titanium_user = titanium_airflow_client.TitaniumUser() # TitaniumUser | 
+    user = titanium_airflow_client.User() # User | 
 
     try:
         # Create a user
-        api_response = await api_instance.post_user(titanium_user)
+        api_response = api_instance.post_user(user)
         print("The response of UserApi->post_user:\n")
         pprint(api_response)
     except Exception as e:
@@ -348,11 +347,11 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **titanium_user** | [**TitaniumUser**](TitaniumUser.md)|  | 
+ **user** | [**User**](User.md)|  | 
 
 ### Return type
 
-[**TitaniumTitaniumUser**](TitaniumUser.md)
+[**User**](User.md)
 
 ### Authorization
 

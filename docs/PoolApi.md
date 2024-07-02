@@ -32,14 +32,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.PoolApi(api_client)
     pool_name = 'pool_name_example' # str | The pool name.
 
     try:
         # Delete a pool
-        await api_instance.delete_pool(pool_name)
+        api_instance.delete_pool(pool_name)
     except Exception as e:
         print("Exception when calling PoolApi->delete_pool: %s\n" % e)
 ```
@@ -79,7 +79,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pool**
-> TitaniumTitaniumPool get_pool(pool_name)
+> Pool get_pool(pool_name)
 
 Get a pool
 
@@ -88,7 +88,7 @@ Get a pool
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_pool import TitaniumTitaniumPool
+from titanium_airflow_client.models.pool import Pool
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -100,14 +100,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.PoolApi(api_client)
     pool_name = 'pool_name_example' # str | The pool name.
 
     try:
         # Get a pool
-        api_response = await api_instance.get_pool(pool_name)
+        api_response = api_instance.get_pool(pool_name)
         print("The response of PoolApi->get_pool:\n")
         pprint(api_response)
     except Exception as e:
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumPool**](TitaniumPool.md)
+[**Pool**](Pool.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pools**
-> TitaniumTitaniumPoolCollection get_pools(limit=limit, offset=offset, order_by=order_by)
+> PoolCollection get_pools(limit=limit, offset=offset, order_by=order_by)
 
 List pools
 
@@ -157,7 +157,7 @@ List pools
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_pool_collection import TitaniumTitaniumPoolCollection
+from titanium_airflow_client.models.pool_collection import PoolCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -169,7 +169,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.PoolApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -178,7 +178,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List pools
-        api_response = await api_instance.get_pools(limit=limit, offset=offset, order_by=order_by)
+        api_response = api_instance.get_pools(limit=limit, offset=offset, order_by=order_by)
         print("The response of PoolApi->get_pools:\n")
         pprint(api_response)
     except Exception as e:
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumPoolCollection**](TitaniumPoolCollection.md)
+[**PoolCollection**](PoolCollection.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_pool**
-> TitaniumTitaniumPool patch_pool(pool_name, titanium_pool, update_mask=update_mask)
+> Pool patch_pool(pool_name, pool, update_mask=update_mask)
 
 Update a pool
 
@@ -229,8 +229,7 @@ Update a pool
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_pool import TitaniumPool
-from titanium_airflow_client.models.titanium_titanium_pool import TitaniumTitaniumPool
+from titanium_airflow_client.models.pool import Pool
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -242,16 +241,16 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.PoolApi(api_client)
     pool_name = 'pool_name_example' # str | The pool name.
-    titanium_pool = titanium_airflow_client.TitaniumPool() # TitaniumPool | 
+    pool = titanium_airflow_client.Pool() # Pool | 
     update_mask = ['update_mask_example'] # List[str] | The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields.  (optional)
 
     try:
         # Update a pool
-        api_response = await api_instance.patch_pool(pool_name, titanium_pool, update_mask=update_mask)
+        api_response = api_instance.patch_pool(pool_name, pool, update_mask=update_mask)
         print("The response of PoolApi->patch_pool:\n")
         pprint(api_response)
     except Exception as e:
@@ -266,12 +265,12 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pool_name** | **str**| The pool name. | 
- **titanium_pool** | [**TitaniumPool**](TitaniumPool.md)|  | 
+ **pool** | [**Pool**](Pool.md)|  | 
  **update_mask** | [**List[str]**](str.md)| The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields.  | [optional] 
 
 ### Return type
 
-[**TitaniumTitaniumPool**](TitaniumPool.md)
+[**Pool**](Pool.md)
 
 ### Authorization
 
@@ -296,7 +295,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_pool**
-> TitaniumTitaniumPool post_pool(titanium_pool)
+> Pool post_pool(pool)
 
 Create a pool
 
@@ -305,8 +304,7 @@ Create a pool
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_pool import TitaniumPool
-from titanium_airflow_client.models.titanium_titanium_pool import TitaniumTitaniumPool
+from titanium_airflow_client.models.pool import Pool
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -318,14 +316,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.PoolApi(api_client)
-    titanium_pool = titanium_airflow_client.TitaniumPool() # TitaniumPool | 
+    pool = titanium_airflow_client.Pool() # Pool | 
 
     try:
         # Create a pool
-        api_response = await api_instance.post_pool(titanium_pool)
+        api_response = api_instance.post_pool(pool)
         print("The response of PoolApi->post_pool:\n")
         pprint(api_response)
     except Exception as e:
@@ -339,11 +337,11 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **titanium_pool** | [**TitaniumPool**](TitaniumPool.md)|  | 
+ **pool** | [**Pool**](Pool.md)|  | 
 
 ### Return type
 
-[**TitaniumTitaniumPool**](TitaniumPool.md)
+[**Pool**](Pool.md)
 
 ### Authorization
 

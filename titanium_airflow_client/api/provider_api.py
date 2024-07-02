@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from titanium_airflow_client.models.titanium_titanium_get_providers200_response import TitaniumTitaniumGetProviders200Response
+from titanium_airflow_client.models.get_providers200_response import GetProviders200Response
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -38,7 +38,7 @@ class ProviderApi:
 
 
     @validate_call
-    async def get_providers(
+    def get_providers(
         self,
         _request_timeout: Union[
             None,
@@ -52,7 +52,7 @@ class ProviderApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumGetProviders200Response:
+    ) -> GetProviders200Response:
         """List providers
 
         Get a list of providers.  *New in version 2.1.0* 
@@ -87,15 +87,15 @@ class ProviderApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumGetProviders200Response",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "GetProviders200Response",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -103,7 +103,7 @@ class ProviderApi:
 
 
     @validate_call
-    async def get_providers_with_http_info(
+    def get_providers_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -117,7 +117,7 @@ class ProviderApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumGetProviders200Response]:
+    ) -> ApiResponse[GetProviders200Response]:
         """List providers
 
         Get a list of providers.  *New in version 2.1.0* 
@@ -152,15 +152,15 @@ class ProviderApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumGetProviders200Response",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "GetProviders200Response",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -168,7 +168,7 @@ class ProviderApi:
 
 
     @validate_call
-    async def get_providers_without_preload_content(
+    def get_providers_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -217,11 +217,11 @@ class ProviderApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumGetProviders200Response",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "GetProviders200Response",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

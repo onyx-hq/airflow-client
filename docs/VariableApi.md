@@ -32,14 +32,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.VariableApi(api_client)
     variable_key = 'variable_key_example' # str | The variable Key.
 
     try:
         # Delete a variable
-        await api_instance.delete_variable(variable_key)
+        api_instance.delete_variable(variable_key)
     except Exception as e:
         print("Exception when calling VariableApi->delete_variable: %s\n" % e)
 ```
@@ -79,7 +79,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_variable**
-> TitaniumTitaniumVariable get_variable(variable_key)
+> Variable get_variable(variable_key)
 
 Get a variable
 
@@ -90,7 +90,7 @@ Get a variable by key.
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_variable import TitaniumTitaniumVariable
+from titanium_airflow_client.models.variable import Variable
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -102,14 +102,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.VariableApi(api_client)
     variable_key = 'variable_key_example' # str | The variable Key.
 
     try:
         # Get a variable
-        api_response = await api_instance.get_variable(variable_key)
+        api_response = api_instance.get_variable(variable_key)
         print("The response of VariableApi->get_variable:\n")
         pprint(api_response)
     except Exception as e:
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumVariable**](TitaniumVariable.md)
+[**Variable**](Variable.md)
 
 ### Authorization
 
@@ -150,7 +150,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_variables**
-> TitaniumTitaniumVariableCollection get_variables(limit=limit, offset=offset, order_by=order_by)
+> VariableCollection get_variables(limit=limit, offset=offset, order_by=order_by)
 
 List variables
 
@@ -161,7 +161,7 @@ The collection does not contain data. To get data, you must get a single entity.
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_variable_collection import TitaniumTitaniumVariableCollection
+from titanium_airflow_client.models.variable_collection import VariableCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -173,7 +173,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.VariableApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -182,7 +182,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List variables
-        api_response = await api_instance.get_variables(limit=limit, offset=offset, order_by=order_by)
+        api_response = api_instance.get_variables(limit=limit, offset=offset, order_by=order_by)
         print("The response of VariableApi->get_variables:\n")
         pprint(api_response)
     except Exception as e:
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumVariableCollection**](TitaniumVariableCollection.md)
+[**VariableCollection**](VariableCollection.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_variable**
-> TitaniumTitaniumVariable patch_variable(variable_key, titanium_variable, update_mask=update_mask)
+> Variable patch_variable(variable_key, variable, update_mask=update_mask)
 
 Update a variable
 
@@ -235,8 +235,7 @@ Update a variable by key.
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_variable import TitaniumTitaniumVariable
-from titanium_airflow_client.models.titanium_variable import TitaniumVariable
+from titanium_airflow_client.models.variable import Variable
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -248,16 +247,16 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.VariableApi(api_client)
     variable_key = 'variable_key_example' # str | The variable Key.
-    titanium_variable = titanium_airflow_client.TitaniumVariable() # TitaniumVariable | 
+    variable = titanium_airflow_client.Variable() # Variable | 
     update_mask = ['update_mask_example'] # List[str] | The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields.  (optional)
 
     try:
         # Update a variable
-        api_response = await api_instance.patch_variable(variable_key, titanium_variable, update_mask=update_mask)
+        api_response = api_instance.patch_variable(variable_key, variable, update_mask=update_mask)
         print("The response of VariableApi->patch_variable:\n")
         pprint(api_response)
     except Exception as e:
@@ -272,12 +271,12 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **variable_key** | **str**| The variable Key. | 
- **titanium_variable** | [**TitaniumVariable**](TitaniumVariable.md)|  | 
+ **variable** | [**Variable**](Variable.md)|  | 
  **update_mask** | [**List[str]**](str.md)| The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields.  | [optional] 
 
 ### Return type
 
-[**TitaniumTitaniumVariable**](TitaniumVariable.md)
+[**Variable**](Variable.md)
 
 ### Authorization
 
@@ -301,7 +300,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_variables**
-> TitaniumTitaniumVariable post_variables(titanium_variable)
+> Variable post_variables(variable)
 
 Create a variable
 
@@ -310,8 +309,7 @@ Create a variable
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_variable import TitaniumTitaniumVariable
-from titanium_airflow_client.models.titanium_variable import TitaniumVariable
+from titanium_airflow_client.models.variable import Variable
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -323,14 +321,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.VariableApi(api_client)
-    titanium_variable = titanium_airflow_client.TitaniumVariable() # TitaniumVariable | 
+    variable = titanium_airflow_client.Variable() # Variable | 
 
     try:
         # Create a variable
-        api_response = await api_instance.post_variables(titanium_variable)
+        api_response = api_instance.post_variables(variable)
         print("The response of VariableApi->post_variables:\n")
         pprint(api_response)
     except Exception as e:
@@ -344,11 +342,11 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **titanium_variable** | [**TitaniumVariable**](TitaniumVariable.md)|  | 
+ **variable** | [**Variable**](Variable.md)|  | 
 
 ### Return type
 
-[**TitaniumTitaniumVariable**](TitaniumVariable.md)
+[**Variable**](Variable.md)
 
 ### Authorization
 

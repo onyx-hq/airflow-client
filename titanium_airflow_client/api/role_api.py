@@ -20,9 +20,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from titanium_airflow_client.models.titanium_role import TitaniumRole
-from titanium_airflow_client.models.titanium_titanium_role import TitaniumTitaniumRole
-from titanium_airflow_client.models.titanium_titanium_role_collection import TitaniumTitaniumRoleCollection
+from titanium_airflow_client.models.role import Role
+from titanium_airflow_client.models.role_collection import RoleCollection
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -43,7 +42,7 @@ class RoleApi:
 
 
     @validate_call
-    async def delete_role(
+    def delete_role(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         _request_timeout: Union[
@@ -98,16 +97,16 @@ class RoleApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -115,7 +114,7 @@ class RoleApi:
 
 
     @validate_call
-    async def delete_role_with_http_info(
+    def delete_role_with_http_info(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         _request_timeout: Union[
@@ -170,16 +169,16 @@ class RoleApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -187,7 +186,7 @@ class RoleApi:
 
 
     @validate_call
-    async def delete_role_without_preload_content(
+    def delete_role_without_preload_content(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         _request_timeout: Union[
@@ -242,12 +241,12 @@ class RoleApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -315,7 +314,7 @@ class RoleApi:
 
 
     @validate_call
-    async def get_role(
+    def get_role(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         _request_timeout: Union[
@@ -330,7 +329,7 @@ class RoleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumRole:
+    ) -> Role:
         """(Deprecated) Get a role
 
         Get a role.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
@@ -369,16 +368,16 @@ class RoleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumRole",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Role",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -386,7 +385,7 @@ class RoleApi:
 
 
     @validate_call
-    async def get_role_with_http_info(
+    def get_role_with_http_info(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         _request_timeout: Union[
@@ -401,7 +400,7 @@ class RoleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumRole]:
+    ) -> ApiResponse[Role]:
         """(Deprecated) Get a role
 
         Get a role.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
@@ -440,16 +439,16 @@ class RoleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumRole",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Role",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -457,7 +456,7 @@ class RoleApi:
 
 
     @validate_call
-    async def get_role_without_preload_content(
+    def get_role_without_preload_content(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         _request_timeout: Union[
@@ -511,12 +510,12 @@ class RoleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumRole",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Role",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -584,7 +583,7 @@ class RoleApi:
 
 
     @validate_call
-    async def get_roles(
+    def get_roles(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -601,7 +600,7 @@ class RoleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumRoleCollection:
+    ) -> RoleCollection:
         """(Deprecated) List roles
 
         Get a list of roles.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
@@ -646,15 +645,15 @@ class RoleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumRoleCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "RoleCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -662,7 +661,7 @@ class RoleApi:
 
 
     @validate_call
-    async def get_roles_with_http_info(
+    def get_roles_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -679,7 +678,7 @@ class RoleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumRoleCollection]:
+    ) -> ApiResponse[RoleCollection]:
         """(Deprecated) List roles
 
         Get a list of roles.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
@@ -724,15 +723,15 @@ class RoleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumRoleCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "RoleCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -740,7 +739,7 @@ class RoleApi:
 
 
     @validate_call
-    async def get_roles_without_preload_content(
+    def get_roles_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -802,11 +801,11 @@ class RoleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumRoleCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "RoleCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -886,10 +885,10 @@ class RoleApi:
 
 
     @validate_call
-    async def patch_role(
+    def patch_role(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
-        titanium_role: TitaniumRole,
+        role: Role,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -903,15 +902,15 @@ class RoleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumRole:
+    ) -> Role:
         """(Deprecated) Update a role
 
         Update a role.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
 
         :param role_name: The role name (required)
         :type role_name: str
-        :param titanium_role: (required)
-        :type titanium_role: TitaniumRole
+        :param role: (required)
+        :type role: Role
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -939,7 +938,7 @@ class RoleApi:
 
         _param = self._patch_role_serialize(
             role_name=role_name,
-            titanium_role=titanium_role,
+            role=role,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -948,17 +947,17 @@ class RoleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumRole",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Role",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -966,10 +965,10 @@ class RoleApi:
 
 
     @validate_call
-    async def patch_role_with_http_info(
+    def patch_role_with_http_info(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
-        titanium_role: TitaniumRole,
+        role: Role,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -983,15 +982,15 @@ class RoleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumRole]:
+    ) -> ApiResponse[Role]:
         """(Deprecated) Update a role
 
         Update a role.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
 
         :param role_name: The role name (required)
         :type role_name: str
-        :param titanium_role: (required)
-        :type titanium_role: TitaniumRole
+        :param role: (required)
+        :type role: Role
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1019,7 +1018,7 @@ class RoleApi:
 
         _param = self._patch_role_serialize(
             role_name=role_name,
-            titanium_role=titanium_role,
+            role=role,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1028,17 +1027,17 @@ class RoleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumRole",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Role",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1046,10 +1045,10 @@ class RoleApi:
 
 
     @validate_call
-    async def patch_role_without_preload_content(
+    def patch_role_without_preload_content(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
-        titanium_role: TitaniumRole,
+        role: Role,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -1070,8 +1069,8 @@ class RoleApi:
 
         :param role_name: The role name (required)
         :type role_name: str
-        :param titanium_role: (required)
-        :type titanium_role: TitaniumRole
+        :param role: (required)
+        :type role: Role
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1099,7 +1098,7 @@ class RoleApi:
 
         _param = self._patch_role_serialize(
             role_name=role_name,
-            titanium_role=titanium_role,
+            role=role,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1108,13 +1107,13 @@ class RoleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumRole",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Role",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1124,7 +1123,7 @@ class RoleApi:
     def _patch_role_serialize(
         self,
         role_name,
-        titanium_role,
+        role,
         update_mask,
         _request_auth,
         _content_type,
@@ -1156,8 +1155,8 @@ class RoleApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_role is not None:
-            _body_params = titanium_role
+        if role is not None:
+            _body_params = role
 
 
         # set the HTTP header `Accept`
@@ -1204,9 +1203,9 @@ class RoleApi:
 
 
     @validate_call
-    async def post_role(
+    def post_role(
         self,
-        titanium_role: TitaniumRole,
+        role: Role,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1219,13 +1218,13 @@ class RoleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumRole:
+    ) -> Role:
         """(Deprecated) Create a role
 
         Create a new role.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
 
-        :param titanium_role: (required)
-        :type titanium_role: TitaniumRole
+        :param role: (required)
+        :type role: Role
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1250,7 +1249,7 @@ class RoleApi:
         warnings.warn("POST /roles is deprecated.", DeprecationWarning)
 
         _param = self._post_role_serialize(
-            titanium_role=titanium_role,
+            role=role,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1258,16 +1257,16 @@ class RoleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumRole",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "Role",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1275,9 +1274,9 @@ class RoleApi:
 
 
     @validate_call
-    async def post_role_with_http_info(
+    def post_role_with_http_info(
         self,
-        titanium_role: TitaniumRole,
+        role: Role,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1290,13 +1289,13 @@ class RoleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumRole]:
+    ) -> ApiResponse[Role]:
         """(Deprecated) Create a role
 
         Create a new role.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
 
-        :param titanium_role: (required)
-        :type titanium_role: TitaniumRole
+        :param role: (required)
+        :type role: Role
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1321,7 +1320,7 @@ class RoleApi:
         warnings.warn("POST /roles is deprecated.", DeprecationWarning)
 
         _param = self._post_role_serialize(
-            titanium_role=titanium_role,
+            role=role,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1329,16 +1328,16 @@ class RoleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumRole",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "Role",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1346,9 +1345,9 @@ class RoleApi:
 
 
     @validate_call
-    async def post_role_without_preload_content(
+    def post_role_without_preload_content(
         self,
-        titanium_role: TitaniumRole,
+        role: Role,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1366,8 +1365,8 @@ class RoleApi:
 
         Create a new role.  *This API endpoint is deprecated, please use the endpoint `/auth/fab/v1` for this operation instead.* 
 
-        :param titanium_role: (required)
-        :type titanium_role: TitaniumRole
+        :param role: (required)
+        :type role: Role
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1392,7 +1391,7 @@ class RoleApi:
         warnings.warn("POST /roles is deprecated.", DeprecationWarning)
 
         _param = self._post_role_serialize(
-            titanium_role=titanium_role,
+            role=role,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1400,12 +1399,12 @@ class RoleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumRole",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "Role",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1414,7 +1413,7 @@ class RoleApi:
 
     def _post_role_serialize(
         self,
-        titanium_role,
+        role,
         _request_auth,
         _content_type,
         _headers,
@@ -1438,8 +1437,8 @@ class RoleApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_role is not None:
-            _body_params = titanium_role
+        if role is not None:
+            _body_params = role
 
 
         # set the HTTP header `Accept`

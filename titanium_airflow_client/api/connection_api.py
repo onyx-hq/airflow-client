@@ -20,10 +20,9 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from titanium_airflow_client.models.titanium_connection import TitaniumConnection
-from titanium_airflow_client.models.titanium_titanium_connection import TitaniumTitaniumConnection
-from titanium_airflow_client.models.titanium_titanium_connection_collection import TitaniumTitaniumConnectionCollection
-from titanium_airflow_client.models.titanium_titanium_connection_test import TitaniumTitaniumConnectionTest
+from titanium_airflow_client.models.connection import Connection
+from titanium_airflow_client.models.connection_collection import ConnectionCollection
+from titanium_airflow_client.models.connection_test import ConnectionTest
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -44,7 +43,7 @@ class ConnectionApi:
 
 
     @validate_call
-    async def delete_connection(
+    def delete_connection(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         _request_timeout: Union[
@@ -97,16 +96,16 @@ class ConnectionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -114,7 +113,7 @@ class ConnectionApi:
 
 
     @validate_call
-    async def delete_connection_with_http_info(
+    def delete_connection_with_http_info(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         _request_timeout: Union[
@@ -167,16 +166,16 @@ class ConnectionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -184,7 +183,7 @@ class ConnectionApi:
 
 
     @validate_call
-    async def delete_connection_without_preload_content(
+    def delete_connection_without_preload_content(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         _request_timeout: Union[
@@ -237,12 +236,12 @@ class ConnectionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -310,7 +309,7 @@ class ConnectionApi:
 
 
     @validate_call
-    async def get_connection(
+    def get_connection(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         _request_timeout: Union[
@@ -325,7 +324,7 @@ class ConnectionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumConnection:
+    ) -> Connection:
         """Get a connection
 
 
@@ -362,16 +361,16 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Connection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -379,7 +378,7 @@ class ConnectionApi:
 
 
     @validate_call
-    async def get_connection_with_http_info(
+    def get_connection_with_http_info(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         _request_timeout: Union[
@@ -394,7 +393,7 @@ class ConnectionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumConnection]:
+    ) -> ApiResponse[Connection]:
         """Get a connection
 
 
@@ -431,16 +430,16 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Connection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -448,7 +447,7 @@ class ConnectionApi:
 
 
     @validate_call
-    async def get_connection_without_preload_content(
+    def get_connection_without_preload_content(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         _request_timeout: Union[
@@ -500,12 +499,12 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Connection",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -573,7 +572,7 @@ class ConnectionApi:
 
 
     @validate_call
-    async def get_connections(
+    def get_connections(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -590,7 +589,7 @@ class ConnectionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumConnectionCollection:
+    ) -> ConnectionCollection:
         """List connections
 
 
@@ -633,15 +632,15 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnectionCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "ConnectionCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -649,7 +648,7 @@ class ConnectionApi:
 
 
     @validate_call
-    async def get_connections_with_http_info(
+    def get_connections_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -666,7 +665,7 @@ class ConnectionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumConnectionCollection]:
+    ) -> ApiResponse[ConnectionCollection]:
         """List connections
 
 
@@ -709,15 +708,15 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnectionCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "ConnectionCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -725,7 +724,7 @@ class ConnectionApi:
 
 
     @validate_call
-    async def get_connections_without_preload_content(
+    def get_connections_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -785,11 +784,11 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnectionCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "ConnectionCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -869,10 +868,10 @@ class ConnectionApi:
 
 
     @validate_call
-    async def patch_connection(
+    def patch_connection(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
-        titanium_connection: TitaniumConnection,
+        connection: Connection,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -886,14 +885,14 @@ class ConnectionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumConnection:
+    ) -> Connection:
         """Update a connection
 
 
         :param connection_id: The connection ID. (required)
         :type connection_id: str
-        :param titanium_connection: (required)
-        :type titanium_connection: TitaniumConnection
+        :param connection: (required)
+        :type connection: Connection
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -920,7 +919,7 @@ class ConnectionApi:
 
         _param = self._patch_connection_serialize(
             connection_id=connection_id,
-            titanium_connection=titanium_connection,
+            connection=connection,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -929,17 +928,17 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnection",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Connection",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -947,10 +946,10 @@ class ConnectionApi:
 
 
     @validate_call
-    async def patch_connection_with_http_info(
+    def patch_connection_with_http_info(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
-        titanium_connection: TitaniumConnection,
+        connection: Connection,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -964,14 +963,14 @@ class ConnectionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumConnection]:
+    ) -> ApiResponse[Connection]:
         """Update a connection
 
 
         :param connection_id: The connection ID. (required)
         :type connection_id: str
-        :param titanium_connection: (required)
-        :type titanium_connection: TitaniumConnection
+        :param connection: (required)
+        :type connection: Connection
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -998,7 +997,7 @@ class ConnectionApi:
 
         _param = self._patch_connection_serialize(
             connection_id=connection_id,
-            titanium_connection=titanium_connection,
+            connection=connection,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1007,17 +1006,17 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnection",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Connection",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1025,10 +1024,10 @@ class ConnectionApi:
 
 
     @validate_call
-    async def patch_connection_without_preload_content(
+    def patch_connection_without_preload_content(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
-        titanium_connection: TitaniumConnection,
+        connection: Connection,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -1048,8 +1047,8 @@ class ConnectionApi:
 
         :param connection_id: The connection ID. (required)
         :type connection_id: str
-        :param titanium_connection: (required)
-        :type titanium_connection: TitaniumConnection
+        :param connection: (required)
+        :type connection: Connection
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1076,7 +1075,7 @@ class ConnectionApi:
 
         _param = self._patch_connection_serialize(
             connection_id=connection_id,
-            titanium_connection=titanium_connection,
+            connection=connection,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1085,13 +1084,13 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnection",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Connection",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1101,7 +1100,7 @@ class ConnectionApi:
     def _patch_connection_serialize(
         self,
         connection_id,
-        titanium_connection,
+        connection,
         update_mask,
         _request_auth,
         _content_type,
@@ -1133,8 +1132,8 @@ class ConnectionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_connection is not None:
-            _body_params = titanium_connection
+        if connection is not None:
+            _body_params = connection
 
 
         # set the HTTP header `Accept`
@@ -1181,9 +1180,9 @@ class ConnectionApi:
 
 
     @validate_call
-    async def post_connection(
+    def post_connection(
         self,
-        titanium_connection: TitaniumConnection,
+        connection: Connection,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1196,12 +1195,12 @@ class ConnectionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumConnection:
+    ) -> Connection:
         """Create a connection
 
 
-        :param titanium_connection: (required)
-        :type titanium_connection: TitaniumConnection
+        :param connection: (required)
+        :type connection: Connection
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1225,7 +1224,7 @@ class ConnectionApi:
         """ # noqa: E501
 
         _param = self._post_connection_serialize(
-            titanium_connection=titanium_connection,
+            connection=connection,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1233,16 +1232,16 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnection",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "Connection",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1250,9 +1249,9 @@ class ConnectionApi:
 
 
     @validate_call
-    async def post_connection_with_http_info(
+    def post_connection_with_http_info(
         self,
-        titanium_connection: TitaniumConnection,
+        connection: Connection,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1265,12 +1264,12 @@ class ConnectionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumConnection]:
+    ) -> ApiResponse[Connection]:
         """Create a connection
 
 
-        :param titanium_connection: (required)
-        :type titanium_connection: TitaniumConnection
+        :param connection: (required)
+        :type connection: Connection
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1294,7 +1293,7 @@ class ConnectionApi:
         """ # noqa: E501
 
         _param = self._post_connection_serialize(
-            titanium_connection=titanium_connection,
+            connection=connection,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1302,16 +1301,16 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnection",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "Connection",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1319,9 +1318,9 @@ class ConnectionApi:
 
 
     @validate_call
-    async def post_connection_without_preload_content(
+    def post_connection_without_preload_content(
         self,
-        titanium_connection: TitaniumConnection,
+        connection: Connection,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1338,8 +1337,8 @@ class ConnectionApi:
         """Create a connection
 
 
-        :param titanium_connection: (required)
-        :type titanium_connection: TitaniumConnection
+        :param connection: (required)
+        :type connection: Connection
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1363,7 +1362,7 @@ class ConnectionApi:
         """ # noqa: E501
 
         _param = self._post_connection_serialize(
-            titanium_connection=titanium_connection,
+            connection=connection,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1371,12 +1370,12 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnection",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "Connection",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1385,7 +1384,7 @@ class ConnectionApi:
 
     def _post_connection_serialize(
         self,
-        titanium_connection,
+        connection,
         _request_auth,
         _content_type,
         _headers,
@@ -1409,8 +1408,8 @@ class ConnectionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_connection is not None:
-            _body_params = titanium_connection
+        if connection is not None:
+            _body_params = connection
 
 
         # set the HTTP header `Accept`
@@ -1457,9 +1456,9 @@ class ConnectionApi:
 
 
     @validate_call
-    async def test_connection(
+    def test_connection(
         self,
-        titanium_connection: TitaniumConnection,
+        connection: Connection,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1472,13 +1471,13 @@ class ConnectionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumConnectionTest:
+    ) -> ConnectionTest:
         """Test a connection
 
         Test a connection.  For security reasons, the test connection functionality is disabled by default across Airflow UI, API and CLI. For more information on capabilities of users, see the documentation: https://airflow.apache.org/docs/apache-airflow/stable/security/security_model.html#capabilities-of-authenticated-ui-users. It is strongly advised to not enable the feature until you make sure that only highly trusted UI/API users have \"edit connection\" permissions.  Set the \"test_connection\" flag to \"Enabled\" in the \"core\" section of Airflow configuration (airflow.cfg) to enable testing of collections. It can also be controlled by the environment variable `AIRFLOW__CORE__TEST_CONNECTION`.  *New in version 2.2.0* 
 
-        :param titanium_connection: (required)
-        :type titanium_connection: TitaniumConnection
+        :param connection: (required)
+        :type connection: Connection
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1502,7 +1501,7 @@ class ConnectionApi:
         """ # noqa: E501
 
         _param = self._test_connection_serialize(
-            titanium_connection=titanium_connection,
+            connection=connection,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1510,17 +1509,17 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnectionTest",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "ConnectionTest",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1528,9 +1527,9 @@ class ConnectionApi:
 
 
     @validate_call
-    async def test_connection_with_http_info(
+    def test_connection_with_http_info(
         self,
-        titanium_connection: TitaniumConnection,
+        connection: Connection,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1543,13 +1542,13 @@ class ConnectionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumConnectionTest]:
+    ) -> ApiResponse[ConnectionTest]:
         """Test a connection
 
         Test a connection.  For security reasons, the test connection functionality is disabled by default across Airflow UI, API and CLI. For more information on capabilities of users, see the documentation: https://airflow.apache.org/docs/apache-airflow/stable/security/security_model.html#capabilities-of-authenticated-ui-users. It is strongly advised to not enable the feature until you make sure that only highly trusted UI/API users have \"edit connection\" permissions.  Set the \"test_connection\" flag to \"Enabled\" in the \"core\" section of Airflow configuration (airflow.cfg) to enable testing of collections. It can also be controlled by the environment variable `AIRFLOW__CORE__TEST_CONNECTION`.  *New in version 2.2.0* 
 
-        :param titanium_connection: (required)
-        :type titanium_connection: TitaniumConnection
+        :param connection: (required)
+        :type connection: Connection
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1573,7 +1572,7 @@ class ConnectionApi:
         """ # noqa: E501
 
         _param = self._test_connection_serialize(
-            titanium_connection=titanium_connection,
+            connection=connection,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1581,17 +1580,17 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnectionTest",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "ConnectionTest",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1599,9 +1598,9 @@ class ConnectionApi:
 
 
     @validate_call
-    async def test_connection_without_preload_content(
+    def test_connection_without_preload_content(
         self,
-        titanium_connection: TitaniumConnection,
+        connection: Connection,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1619,8 +1618,8 @@ class ConnectionApi:
 
         Test a connection.  For security reasons, the test connection functionality is disabled by default across Airflow UI, API and CLI. For more information on capabilities of users, see the documentation: https://airflow.apache.org/docs/apache-airflow/stable/security/security_model.html#capabilities-of-authenticated-ui-users. It is strongly advised to not enable the feature until you make sure that only highly trusted UI/API users have \"edit connection\" permissions.  Set the \"test_connection\" flag to \"Enabled\" in the \"core\" section of Airflow configuration (airflow.cfg) to enable testing of collections. It can also be controlled by the environment variable `AIRFLOW__CORE__TEST_CONNECTION`.  *New in version 2.2.0* 
 
-        :param titanium_connection: (required)
-        :type titanium_connection: TitaniumConnection
+        :param connection: (required)
+        :type connection: Connection
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1644,7 +1643,7 @@ class ConnectionApi:
         """ # noqa: E501
 
         _param = self._test_connection_serialize(
-            titanium_connection=titanium_connection,
+            connection=connection,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1652,13 +1651,13 @@ class ConnectionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumConnectionTest",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "ConnectionTest",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1667,7 +1666,7 @@ class ConnectionApi:
 
     def _test_connection_serialize(
         self,
-        titanium_connection,
+        connection,
         _request_auth,
         _content_type,
         _headers,
@@ -1691,8 +1690,8 @@ class ConnectionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_connection is not None:
-            _body_params = titanium_connection
+        if connection is not None:
+            _body_params = connection
 
 
         # set the HTTP header `Accept`

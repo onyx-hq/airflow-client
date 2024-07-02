@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_health**
-> TitaniumTitaniumHealthInfo get_health()
+> HealthInfo get_health()
 
 Get instance status
 
@@ -20,7 +20,7 @@ Get the status of Airflow's metadatabase, triggerer and scheduler. It includes i
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_health_info import TitaniumTitaniumHealthInfo
+from titanium_airflow_client.models.health_info import HealthInfo
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -32,13 +32,13 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.MonitoringApi(api_client)
 
     try:
         # Get instance status
-        api_response = await api_instance.get_health()
+        api_response = api_instance.get_health()
         print("The response of MonitoringApi->get_health:\n")
         pprint(api_response)
     except Exception as e:
@@ -53,7 +53,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TitaniumTitaniumHealthInfo**](TitaniumHealthInfo.md)
+[**HealthInfo**](HealthInfo.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_version**
-> TitaniumTitaniumVersionInfo get_version()
+> VersionInfo get_version()
 
 Get version information
 
@@ -82,7 +82,7 @@ Get version information
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_version_info import TitaniumTitaniumVersionInfo
+from titanium_airflow_client.models.version_info import VersionInfo
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -94,13 +94,13 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.MonitoringApi(api_client)
 
     try:
         # Get version information
-        api_response = await api_instance.get_version()
+        api_response = api_instance.get_version()
         print("The response of MonitoringApi->get_version:\n")
         pprint(api_response)
     except Exception as e:
@@ -115,7 +115,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TitaniumTitaniumVersionInfo**](TitaniumVersionInfo.md)
+[**VersionInfo**](VersionInfo.md)
 
 ### Authorization
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_config**
-> TitaniumTitaniumConfig get_config(section=section)
+> Config get_config(section=section)
 
 Get current configuration
 
@@ -18,7 +18,7 @@ Get current configuration
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_config import TitaniumTitaniumConfig
+from titanium_airflow_client.models.config import Config
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -30,14 +30,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ConfigApi(api_client)
     section = 'section_example' # str | If given, only return config of this section. (optional)
 
     try:
         # Get current configuration
-        api_response = await api_instance.get_config(section=section)
+        api_response = api_instance.get_config(section=section)
         print("The response of ConfigApi->get_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumConfig**](TitaniumConfig.md)
+[**Config**](Config.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_value**
-> TitaniumTitaniumConfig get_value(section, option)
+> Config get_value(section, option)
 
 Get a option from configuration
 
@@ -87,7 +87,7 @@ Get a option from configuration
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_config import TitaniumTitaniumConfig
+from titanium_airflow_client.models.config import Config
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -99,7 +99,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ConfigApi(api_client)
     section = 'section_example' # str | 
@@ -107,7 +107,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get a option from configuration
-        api_response = await api_instance.get_value(section, option)
+        api_response = api_instance.get_value(section, option)
         print("The response of ConfigApi->get_value:\n")
         pprint(api_response)
     except Exception as e:
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumConfig**](TitaniumConfig.md)
+[**Config**](Config.md)
 
 ### Authorization
 

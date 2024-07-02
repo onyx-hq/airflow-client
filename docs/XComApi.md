@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_xcom_entries**
-> TitaniumTitaniumXComCollection get_xcom_entries(dag_id, dag_run_id, task_id, map_index=map_index, xcom_key=xcom_key, limit=limit, offset=offset)
+> XComCollection get_xcom_entries(dag_id, dag_run_id, task_id, map_index=map_index, xcom_key=xcom_key, limit=limit, offset=offset)
 
 List XCom entries
 
@@ -20,7 +20,7 @@ This endpoint allows specifying `~` as the dag_id, dag_run_id, task_id to retrie
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_x_com_collection import TitaniumTitaniumXComCollection
+from titanium_airflow_client.models.x_com_collection import XComCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -32,7 +32,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.XComApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -45,7 +45,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List XCom entries
-        api_response = await api_instance.get_xcom_entries(dag_id, dag_run_id, task_id, map_index=map_index, xcom_key=xcom_key, limit=limit, offset=offset)
+        api_response = api_instance.get_xcom_entries(dag_id, dag_run_id, task_id, map_index=map_index, xcom_key=xcom_key, limit=limit, offset=offset)
         print("The response of XComApi->get_xcom_entries:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumXComCollection**](TitaniumXComCollection.md)
+[**XComCollection**](XComCollection.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_xcom_entry**
-> TitaniumTitaniumXCom get_xcom_entry(dag_id, dag_run_id, task_id, xcom_key, map_index=map_index, deserialize=deserialize)
+> XCom get_xcom_entry(dag_id, dag_run_id, task_id, xcom_key, map_index=map_index, deserialize=deserialize)
 
 Get an XCom entry
 
@@ -100,7 +100,7 @@ Get an XCom entry
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_x_com import TitaniumTitaniumXCom
+from titanium_airflow_client.models.x_com import XCom
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -112,7 +112,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.XComApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -124,7 +124,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get an XCom entry
-        api_response = await api_instance.get_xcom_entry(dag_id, dag_run_id, task_id, xcom_key, map_index=map_index, deserialize=deserialize)
+        api_response = api_instance.get_xcom_entry(dag_id, dag_run_id, task_id, xcom_key, map_index=map_index, deserialize=deserialize)
         print("The response of XComApi->get_xcom_entry:\n")
         pprint(api_response)
     except Exception as e:
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumXCom**](TitaniumXCom.md)
+[**XCom**](XCom.md)
 
 ### Authorization
 

@@ -20,9 +20,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from titanium_airflow_client.models.titanium_pool import TitaniumPool
-from titanium_airflow_client.models.titanium_titanium_pool import TitaniumTitaniumPool
-from titanium_airflow_client.models.titanium_titanium_pool_collection import TitaniumTitaniumPoolCollection
+from titanium_airflow_client.models.pool import Pool
+from titanium_airflow_client.models.pool_collection import PoolCollection
 
 from titanium_airflow_client.api_client import ApiClient, RequestSerialized
 from titanium_airflow_client.api_response import ApiResponse
@@ -43,7 +42,7 @@ class PoolApi:
 
 
     @validate_call
-    async def delete_pool(
+    def delete_pool(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         _request_timeout: Union[
@@ -96,16 +95,16 @@ class PoolApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -113,7 +112,7 @@ class PoolApi:
 
 
     @validate_call
-    async def delete_pool_with_http_info(
+    def delete_pool_with_http_info(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         _request_timeout: Union[
@@ -166,16 +165,16 @@ class PoolApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -183,7 +182,7 @@ class PoolApi:
 
 
     @validate_call
-    async def delete_pool_without_preload_content(
+    def delete_pool_without_preload_content(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         _request_timeout: Union[
@@ -236,12 +235,12 @@ class PoolApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -309,7 +308,7 @@ class PoolApi:
 
 
     @validate_call
-    async def get_pool(
+    def get_pool(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         _request_timeout: Union[
@@ -324,7 +323,7 @@ class PoolApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumPool:
+    ) -> Pool:
         """Get a pool
 
 
@@ -361,16 +360,16 @@ class PoolApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumPool",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Pool",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -378,7 +377,7 @@ class PoolApi:
 
 
     @validate_call
-    async def get_pool_with_http_info(
+    def get_pool_with_http_info(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         _request_timeout: Union[
@@ -393,7 +392,7 @@ class PoolApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumPool]:
+    ) -> ApiResponse[Pool]:
         """Get a pool
 
 
@@ -430,16 +429,16 @@ class PoolApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumPool",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Pool",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -447,7 +446,7 @@ class PoolApi:
 
 
     @validate_call
-    async def get_pool_without_preload_content(
+    def get_pool_without_preload_content(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         _request_timeout: Union[
@@ -499,12 +498,12 @@ class PoolApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumPool",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
+            '200': "Pool",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -572,7 +571,7 @@ class PoolApi:
 
 
     @validate_call
-    async def get_pools(
+    def get_pools(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -589,7 +588,7 @@ class PoolApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumPoolCollection:
+    ) -> PoolCollection:
         """List pools
 
 
@@ -632,15 +631,15 @@ class PoolApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumPoolCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "PoolCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -648,7 +647,7 @@ class PoolApi:
 
 
     @validate_call
-    async def get_pools_with_http_info(
+    def get_pools_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -665,7 +664,7 @@ class PoolApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumPoolCollection]:
+    ) -> ApiResponse[PoolCollection]:
         """List pools
 
 
@@ -708,15 +707,15 @@ class PoolApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumPoolCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "PoolCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -724,7 +723,7 @@ class PoolApi:
 
 
     @validate_call
-    async def get_pools_without_preload_content(
+    def get_pools_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -784,11 +783,11 @@ class PoolApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumPoolCollection",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "PoolCollection",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -868,10 +867,10 @@ class PoolApi:
 
 
     @validate_call
-    async def patch_pool(
+    def patch_pool(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
-        titanium_pool: TitaniumPool,
+        pool: Pool,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -885,14 +884,14 @@ class PoolApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumPool:
+    ) -> Pool:
         """Update a pool
 
 
         :param pool_name: The pool name. (required)
         :type pool_name: str
-        :param titanium_pool: (required)
-        :type titanium_pool: TitaniumPool
+        :param pool: (required)
+        :type pool: Pool
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -919,7 +918,7 @@ class PoolApi:
 
         _param = self._patch_pool_serialize(
             pool_name=pool_name,
-            titanium_pool=titanium_pool,
+            pool=pool,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -928,18 +927,18 @@ class PoolApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumPool",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
-            '409': "TitaniumTitaniumError",
+            '200': "Pool",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -947,10 +946,10 @@ class PoolApi:
 
 
     @validate_call
-    async def patch_pool_with_http_info(
+    def patch_pool_with_http_info(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
-        titanium_pool: TitaniumPool,
+        pool: Pool,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -964,14 +963,14 @@ class PoolApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumPool]:
+    ) -> ApiResponse[Pool]:
         """Update a pool
 
 
         :param pool_name: The pool name. (required)
         :type pool_name: str
-        :param titanium_pool: (required)
-        :type titanium_pool: TitaniumPool
+        :param pool: (required)
+        :type pool: Pool
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -998,7 +997,7 @@ class PoolApi:
 
         _param = self._patch_pool_serialize(
             pool_name=pool_name,
-            titanium_pool=titanium_pool,
+            pool=pool,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1007,18 +1006,18 @@ class PoolApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumPool",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
-            '409': "TitaniumTitaniumError",
+            '200': "Pool",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1026,10 +1025,10 @@ class PoolApi:
 
 
     @validate_call
-    async def patch_pool_without_preload_content(
+    def patch_pool_without_preload_content(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
-        titanium_pool: TitaniumPool,
+        pool: Pool,
         update_mask: Annotated[Optional[List[StrictStr]], Field(description="The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. ")] = None,
         _request_timeout: Union[
             None,
@@ -1049,8 +1048,8 @@ class PoolApi:
 
         :param pool_name: The pool name. (required)
         :type pool_name: str
-        :param titanium_pool: (required)
-        :type titanium_pool: TitaniumPool
+        :param pool: (required)
+        :type pool: Pool
         :param update_mask: The fields to update on the resource. If absent or empty, all modifiable fields are updated. A comma-separated list of fully qualified names of fields. 
         :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1077,7 +1076,7 @@ class PoolApi:
 
         _param = self._patch_pool_serialize(
             pool_name=pool_name,
-            titanium_pool=titanium_pool,
+            pool=pool,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1086,14 +1085,14 @@ class PoolApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumPool",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
-            '404': "TitaniumTitaniumError",
-            '409': "TitaniumTitaniumError",
+            '200': "Pool",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1103,7 +1102,7 @@ class PoolApi:
     def _patch_pool_serialize(
         self,
         pool_name,
-        titanium_pool,
+        pool,
         update_mask,
         _request_auth,
         _content_type,
@@ -1135,8 +1134,8 @@ class PoolApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_pool is not None:
-            _body_params = titanium_pool
+        if pool is not None:
+            _body_params = pool
 
 
         # set the HTTP header `Accept`
@@ -1183,9 +1182,9 @@ class PoolApi:
 
 
     @validate_call
-    async def post_pool(
+    def post_pool(
         self,
-        titanium_pool: TitaniumPool,
+        pool: Pool,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1198,12 +1197,12 @@ class PoolApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TitaniumTitaniumPool:
+    ) -> Pool:
         """Create a pool
 
 
-        :param titanium_pool: (required)
-        :type titanium_pool: TitaniumPool
+        :param pool: (required)
+        :type pool: Pool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1227,7 +1226,7 @@ class PoolApi:
         """ # noqa: E501
 
         _param = self._post_pool_serialize(
-            titanium_pool=titanium_pool,
+            pool=pool,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1235,16 +1234,16 @@ class PoolApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumPool",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "Pool",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1252,9 +1251,9 @@ class PoolApi:
 
 
     @validate_call
-    async def post_pool_with_http_info(
+    def post_pool_with_http_info(
         self,
-        titanium_pool: TitaniumPool,
+        pool: Pool,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1267,12 +1266,12 @@ class PoolApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TitaniumTitaniumPool]:
+    ) -> ApiResponse[Pool]:
         """Create a pool
 
 
-        :param titanium_pool: (required)
-        :type titanium_pool: TitaniumPool
+        :param pool: (required)
+        :type pool: Pool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1296,7 +1295,7 @@ class PoolApi:
         """ # noqa: E501
 
         _param = self._post_pool_serialize(
-            titanium_pool=titanium_pool,
+            pool=pool,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1304,16 +1303,16 @@ class PoolApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumPool",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "Pool",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1321,9 +1320,9 @@ class PoolApi:
 
 
     @validate_call
-    async def post_pool_without_preload_content(
+    def post_pool_without_preload_content(
         self,
-        titanium_pool: TitaniumPool,
+        pool: Pool,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1340,8 +1339,8 @@ class PoolApi:
         """Create a pool
 
 
-        :param titanium_pool: (required)
-        :type titanium_pool: TitaniumPool
+        :param pool: (required)
+        :type pool: Pool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1365,7 +1364,7 @@ class PoolApi:
         """ # noqa: E501
 
         _param = self._post_pool_serialize(
-            titanium_pool=titanium_pool,
+            pool=pool,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1373,12 +1372,12 @@ class PoolApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TitaniumTitaniumPool",
-            '400': "TitaniumTitaniumError",
-            '401': "TitaniumTitaniumError",
-            '403': "TitaniumTitaniumError",
+            '200': "Pool",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1387,7 +1386,7 @@ class PoolApi:
 
     def _post_pool_serialize(
         self,
-        titanium_pool,
+        pool,
         _request_auth,
         _content_type,
         _headers,
@@ -1411,8 +1410,8 @@ class PoolApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if titanium_pool is not None:
-            _body_params = titanium_pool
+        if pool is not None:
+            _body_params = pool
 
 
         # set the HTTP header `Accept`

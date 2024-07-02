@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **clear_dag_run**
-> TitaniumTitaniumClearDagRun200Response clear_dag_run(dag_id, dag_run_id, titanium_clear_dag_run)
+> ClearDagRun200Response clear_dag_run(dag_id, dag_run_id, clear_dag_run)
 
 Clear a DAG run
 
@@ -27,8 +27,8 @@ Clear a DAG run.  *New in version 2.4.0*
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_clear_dag_run import TitaniumClearDagRun
-from titanium_airflow_client.models.titanium_titanium_clear_dag_run200_response import TitaniumTitaniumClearDagRun200Response
+from titanium_airflow_client.models.clear_dag_run import ClearDagRun
+from titanium_airflow_client.models.clear_dag_run200_response import ClearDagRun200Response
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -40,16 +40,16 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
     dag_run_id = 'dag_run_id_example' # str | The DAG run ID.
-    titanium_clear_dag_run = titanium_airflow_client.TitaniumClearDagRun() # TitaniumClearDagRun | 
+    clear_dag_run = titanium_airflow_client.ClearDagRun() # ClearDagRun | 
 
     try:
         # Clear a DAG run
-        api_response = await api_instance.clear_dag_run(dag_id, dag_run_id, titanium_clear_dag_run)
+        api_response = api_instance.clear_dag_run(dag_id, dag_run_id, clear_dag_run)
         print("The response of DAGRunApi->clear_dag_run:\n")
         pprint(api_response)
     except Exception as e:
@@ -65,11 +65,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dag_id** | **str**| The DAG ID. | 
  **dag_run_id** | **str**| The DAG run ID. | 
- **titanium_clear_dag_run** | [**TitaniumClearDagRun**](TitaniumClearDagRun.md)|  | 
+ **clear_dag_run** | [**ClearDagRun**](ClearDagRun.md)|  | 
 
 ### Return type
 
-[**TitaniumTitaniumClearDagRun200Response**](TitaniumClearDagRun200Response.md)
+[**ClearDagRun200Response**](ClearDagRun200Response.md)
 
 ### Authorization
 
@@ -113,7 +113,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -121,7 +121,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a DAG run
-        await api_instance.delete_dag_run(dag_id, dag_run_id)
+        api_instance.delete_dag_run(dag_id, dag_run_id)
     except Exception as e:
         print("Exception when calling DAGRunApi->delete_dag_run: %s\n" % e)
 ```
@@ -162,7 +162,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_dag_run**
-> TitaniumTitaniumDAGRun get_dag_run(dag_id, dag_run_id, fields=fields)
+> DAGRun get_dag_run(dag_id, dag_run_id, fields=fields)
 
 Get a DAG run
 
@@ -171,7 +171,7 @@ Get a DAG run
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_dag_run import TitaniumTitaniumDAGRun
+from titanium_airflow_client.models.dag_run import DAGRun
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -183,7 +183,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -192,7 +192,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get a DAG run
-        api_response = await api_instance.get_dag_run(dag_id, dag_run_id, fields=fields)
+        api_response = api_instance.get_dag_run(dag_id, dag_run_id, fields=fields)
         print("The response of DAGRunApi->get_dag_run:\n")
         pprint(api_response)
     except Exception as e:
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumDAGRun**](TitaniumDAGRun.md)
+[**DAGRun**](DAGRun.md)
 
 ### Authorization
 
@@ -235,7 +235,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_dag_runs**
-> TitaniumTitaniumDAGRunCollection get_dag_runs(dag_id, limit=limit, offset=offset, execution_date_gte=execution_date_gte, execution_date_lte=execution_date_lte, start_date_gte=start_date_gte, start_date_lte=start_date_lte, end_date_gte=end_date_gte, end_date_lte=end_date_lte, updated_at_gte=updated_at_gte, updated_at_lte=updated_at_lte, state=state, order_by=order_by, fields=fields)
+> DAGRunCollection get_dag_runs(dag_id, limit=limit, offset=offset, execution_date_gte=execution_date_gte, execution_date_lte=execution_date_lte, start_date_gte=start_date_gte, start_date_lte=start_date_lte, end_date_gte=end_date_gte, end_date_lte=end_date_lte, updated_at_gte=updated_at_gte, updated_at_lte=updated_at_lte, state=state, order_by=order_by, fields=fields)
 
 List DAG runs
 
@@ -246,7 +246,7 @@ This endpoint allows specifying `~` as the dag_id to retrieve DAG runs for all D
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_dag_run_collection import TitaniumTitaniumDAGRunCollection
+from titanium_airflow_client.models.dag_run_collection import DAGRunCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -258,7 +258,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -278,7 +278,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List DAG runs
-        api_response = await api_instance.get_dag_runs(dag_id, limit=limit, offset=offset, execution_date_gte=execution_date_gte, execution_date_lte=execution_date_lte, start_date_gte=start_date_gte, start_date_lte=start_date_lte, end_date_gte=end_date_gte, end_date_lte=end_date_lte, updated_at_gte=updated_at_gte, updated_at_lte=updated_at_lte, state=state, order_by=order_by, fields=fields)
+        api_response = api_instance.get_dag_runs(dag_id, limit=limit, offset=offset, execution_date_gte=execution_date_gte, execution_date_lte=execution_date_lte, start_date_gte=start_date_gte, start_date_lte=start_date_lte, end_date_gte=end_date_gte, end_date_lte=end_date_lte, updated_at_gte=updated_at_gte, updated_at_lte=updated_at_lte, state=state, order_by=order_by, fields=fields)
         print("The response of DAGRunApi->get_dag_runs:\n")
         pprint(api_response)
     except Exception as e:
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumDAGRunCollection**](TitaniumDAGRunCollection.md)
+[**DAGRunCollection**](DAGRunCollection.md)
 
 ### Authorization
 
@@ -330,7 +330,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_dag_runs_batch**
-> TitaniumTitaniumDAGRunCollection get_dag_runs_batch(titanium_list_dag_runs_form)
+> DAGRunCollection get_dag_runs_batch(list_dag_runs_form)
 
 List DAG runs (batch)
 
@@ -341,8 +341,8 @@ This endpoint is a POST to allow filtering across a large number of DAG IDs, whe
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_list_dag_runs_form import TitaniumListDagRunsForm
-from titanium_airflow_client.models.titanium_titanium_dag_run_collection import TitaniumTitaniumDAGRunCollection
+from titanium_airflow_client.models.dag_run_collection import DAGRunCollection
+from titanium_airflow_client.models.list_dag_runs_form import ListDagRunsForm
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -354,14 +354,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
-    titanium_list_dag_runs_form = titanium_airflow_client.TitaniumListDagRunsForm() # TitaniumListDagRunsForm | 
+    list_dag_runs_form = titanium_airflow_client.ListDagRunsForm() # ListDagRunsForm | 
 
     try:
         # List DAG runs (batch)
-        api_response = await api_instance.get_dag_runs_batch(titanium_list_dag_runs_form)
+        api_response = api_instance.get_dag_runs_batch(list_dag_runs_form)
         print("The response of DAGRunApi->get_dag_runs_batch:\n")
         pprint(api_response)
     except Exception as e:
@@ -375,11 +375,11 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **titanium_list_dag_runs_form** | [**TitaniumListDagRunsForm**](TitaniumListDagRunsForm.md)|  | 
+ **list_dag_runs_form** | [**ListDagRunsForm**](ListDagRunsForm.md)|  | 
 
 ### Return type
 
-[**TitaniumTitaniumDAGRunCollection**](TitaniumDAGRunCollection.md)
+[**DAGRunCollection**](DAGRunCollection.md)
 
 ### Authorization
 
@@ -402,7 +402,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_upstream_dataset_events**
-> TitaniumTitaniumDatasetEventCollection get_upstream_dataset_events(dag_id, dag_run_id)
+> DatasetEventCollection get_upstream_dataset_events(dag_id, dag_run_id)
 
 Get dataset events for a DAG run
 
@@ -413,7 +413,7 @@ Get datasets for a dag run.  *New in version 2.4.0*
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_dataset_event_collection import TitaniumTitaniumDatasetEventCollection
+from titanium_airflow_client.models.dataset_event_collection import DatasetEventCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -425,7 +425,7 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -433,7 +433,7 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get dataset events for a DAG run
-        api_response = await api_instance.get_upstream_dataset_events(dag_id, dag_run_id)
+        api_response = api_instance.get_upstream_dataset_events(dag_id, dag_run_id)
         print("The response of DAGRunApi->get_upstream_dataset_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TitaniumTitaniumDatasetEventCollection**](TitaniumDatasetEventCollection.md)
+[**DatasetEventCollection**](DatasetEventCollection.md)
 
 ### Authorization
 
@@ -475,7 +475,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_dag_run**
-> TitaniumTitaniumDAGRun post_dag_run(dag_id, titanium_dag_run)
+> DAGRun post_dag_run(dag_id, dag_run)
 
 Trigger a new DAG run.
 
@@ -486,8 +486,7 @@ This will initiate a dagrun. If DAG is paused then dagrun state will remain queu
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_dag_run import TitaniumDAGRun
-from titanium_airflow_client.models.titanium_titanium_dag_run import TitaniumTitaniumDAGRun
+from titanium_airflow_client.models.dag_run import DAGRun
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -499,15 +498,15 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
-    titanium_dag_run = titanium_airflow_client.TitaniumDAGRun() # TitaniumDAGRun | 
+    dag_run = titanium_airflow_client.DAGRun() # DAGRun | 
 
     try:
         # Trigger a new DAG run.
-        api_response = await api_instance.post_dag_run(dag_id, titanium_dag_run)
+        api_response = api_instance.post_dag_run(dag_id, dag_run)
         print("The response of DAGRunApi->post_dag_run:\n")
         pprint(api_response)
     except Exception as e:
@@ -522,11 +521,11 @@ async with titanium_airflow_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dag_id** | **str**| The DAG ID. | 
- **titanium_dag_run** | [**TitaniumDAGRun**](TitaniumDAGRun.md)|  | 
+ **dag_run** | [**DAGRun**](DAGRun.md)|  | 
 
 ### Return type
 
-[**TitaniumTitaniumDAGRun**](TitaniumDAGRun.md)
+[**DAGRun**](DAGRun.md)
 
 ### Authorization
 
@@ -551,7 +550,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_dag_run_note**
-> TitaniumTitaniumDAGRun set_dag_run_note(dag_id, dag_run_id, titanium_set_dag_run_note)
+> DAGRun set_dag_run_note(dag_id, dag_run_id, set_dag_run_note)
 
 Update the DagRun note.
 
@@ -562,8 +561,8 @@ Update the manual user note of a DagRun.  *New in version 2.5.0*
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_set_dag_run_note import TitaniumSetDagRunNote
-from titanium_airflow_client.models.titanium_titanium_dag_run import TitaniumTitaniumDAGRun
+from titanium_airflow_client.models.dag_run import DAGRun
+from titanium_airflow_client.models.set_dag_run_note import SetDagRunNote
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -575,16 +574,16 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
     dag_run_id = 'dag_run_id_example' # str | The DAG run ID.
-    titanium_set_dag_run_note = titanium_airflow_client.TitaniumSetDagRunNote() # TitaniumSetDagRunNote | Parameters of set DagRun note.
+    set_dag_run_note = titanium_airflow_client.SetDagRunNote() # SetDagRunNote | Parameters of set DagRun note.
 
     try:
         # Update the DagRun note.
-        api_response = await api_instance.set_dag_run_note(dag_id, dag_run_id, titanium_set_dag_run_note)
+        api_response = api_instance.set_dag_run_note(dag_id, dag_run_id, set_dag_run_note)
         print("The response of DAGRunApi->set_dag_run_note:\n")
         pprint(api_response)
     except Exception as e:
@@ -600,11 +599,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dag_id** | **str**| The DAG ID. | 
  **dag_run_id** | **str**| The DAG run ID. | 
- **titanium_set_dag_run_note** | [**TitaniumSetDagRunNote**](TitaniumSetDagRunNote.md)| Parameters of set DagRun note. | 
+ **set_dag_run_note** | [**SetDagRunNote**](SetDagRunNote.md)| Parameters of set DagRun note. | 
 
 ### Return type
 
-[**TitaniumTitaniumDAGRun**](TitaniumDAGRun.md)
+[**DAGRun**](DAGRun.md)
 
 ### Authorization
 
@@ -628,7 +627,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_dag_run_state**
-> TitaniumTitaniumDAGRun update_dag_run_state(dag_id, dag_run_id, titanium_update_dag_run_state)
+> DAGRun update_dag_run_state(dag_id, dag_run_id, update_dag_run_state)
 
 Modify a DAG run
 
@@ -639,8 +638,8 @@ Modify a DAG run.  *New in version 2.2.0*
 
 ```python
 import titanium_airflow_client
-from titanium_airflow_client.models.titanium_titanium_dag_run import TitaniumTitaniumDAGRun
-from titanium_airflow_client.models.titanium_update_dag_run_state import TitaniumUpdateDagRunState
+from titanium_airflow_client.models.dag_run import DAGRun
+from titanium_airflow_client.models.update_dag_run_state import UpdateDagRunState
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
@@ -652,16 +651,16 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-async with titanium_airflow_client.ApiClient(configuration) as api_client:
+with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
     dag_run_id = 'dag_run_id_example' # str | The DAG run ID.
-    titanium_update_dag_run_state = titanium_airflow_client.TitaniumUpdateDagRunState() # TitaniumUpdateDagRunState | 
+    update_dag_run_state = titanium_airflow_client.UpdateDagRunState() # UpdateDagRunState | 
 
     try:
         # Modify a DAG run
-        api_response = await api_instance.update_dag_run_state(dag_id, dag_run_id, titanium_update_dag_run_state)
+        api_response = api_instance.update_dag_run_state(dag_id, dag_run_id, update_dag_run_state)
         print("The response of DAGRunApi->update_dag_run_state:\n")
         pprint(api_response)
     except Exception as e:
@@ -677,11 +676,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dag_id** | **str**| The DAG ID. | 
  **dag_run_id** | **str**| The DAG run ID. | 
- **titanium_update_dag_run_state** | [**TitaniumUpdateDagRunState**](TitaniumUpdateDagRunState.md)|  | 
+ **update_dag_run_state** | [**UpdateDagRunState**](UpdateDagRunState.md)|  | 
 
 ### Return type
 
-[**TitaniumTitaniumDAGRun**](TitaniumDAGRun.md)
+[**DAGRun**](DAGRun.md)
 
 ### Authorization
 
