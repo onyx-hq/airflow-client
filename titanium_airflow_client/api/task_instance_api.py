@@ -324,6 +324,9 @@ class TaskInstanceApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'Basic', 
+            'Kerberos', 
+            'GoogleOpenId'
         ]
 
         return self.api_client.param_serialize(
@@ -690,6 +693,9 @@ class TaskInstanceApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'Basic', 
+            'Kerberos', 
+            'GoogleOpenId'
         ]
 
         return self.api_client.param_serialize(
@@ -1001,6 +1007,9 @@ class TaskInstanceApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'Basic', 
+            'Kerberos', 
+            'GoogleOpenId'
         ]
 
         return self.api_client.param_serialize(
@@ -1644,6 +1653,9 @@ class TaskInstanceApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'Basic', 
+            'Kerberos', 
+            'GoogleOpenId'
         ]
 
         return self.api_client.param_serialize(
@@ -1937,6 +1949,9 @@ class TaskInstanceApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'Basic', 
+            'Kerberos', 
+            'GoogleOpenId'
         ]
 
         return self.api_client.param_serialize(
@@ -2545,6 +2560,9 @@ class TaskInstanceApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'Basic', 
+            'Kerberos', 
+            'GoogleOpenId'
         ]
 
         return self.api_client.param_serialize(
@@ -2824,6 +2842,9 @@ class TaskInstanceApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'Basic', 
+            'Kerberos', 
+            'GoogleOpenId'
         ]
 
         return self.api_client.param_serialize(
@@ -3163,6 +3184,9 @@ class TaskInstanceApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'Basic', 
+            'Kerberos', 
+            'GoogleOpenId'
         ]
 
         return self.api_client.param_serialize(
@@ -3487,6 +3511,9 @@ class TaskInstanceApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'Basic', 
+            'Kerberos', 
+            'GoogleOpenId'
         ]
 
         return self.api_client.param_serialize(
@@ -3829,6 +3856,9 @@ class TaskInstanceApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'Basic', 
+            'Kerberos', 
+            'GoogleOpenId'
         ]
 
         return self.api_client.param_serialize(
@@ -4156,6 +4186,9 @@ class TaskInstanceApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'Basic', 
+            'Kerberos', 
+            'GoogleOpenId'
         ]
 
         return self.api_client.param_serialize(

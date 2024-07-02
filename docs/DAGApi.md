@@ -1,6 +1,6 @@
 # titanium_airflow_client.DAGApi
 
-All URIs are relative to *https://airflow.apache.org/api/v1*
+All URIs are relative to */api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,18 +26,29 @@ Deletes all metadata related to the DAG, including finished DAG Runs and Tasks. 
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -67,7 +78,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 
@@ -96,6 +107,7 @@ Presents only information available in database (DAGModel). If you need detailed
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
@@ -103,12 +115,22 @@ from titanium_airflow_client.models.dag import DAG
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -142,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 
@@ -169,6 +191,7 @@ The response contains many DAG attributes, so the response can be large. If poss
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
@@ -176,12 +199,22 @@ from titanium_airflow_client.models.dag_detail import DAGDetail
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -215,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 
@@ -242,6 +275,7 @@ Get a source code using file token.
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
@@ -249,12 +283,22 @@ from titanium_airflow_client.models.get_dag_source200_response import GetDagSour
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -286,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 
@@ -314,6 +358,7 @@ List DAGs in the database. `dag_id_pattern` can be set to match dags of a specif
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
@@ -321,12 +366,22 @@ from titanium_airflow_client.models.dag_collection import DAGCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -372,7 +427,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 
@@ -395,6 +450,7 @@ Get simplified representation of a task
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
@@ -402,12 +458,22 @@ from titanium_airflow_client.models.task import Task
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -441,7 +507,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 
@@ -466,6 +532,7 @@ Get tasks for DAG
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
@@ -473,12 +540,22 @@ from titanium_airflow_client.models.task_collection import TaskCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -512,7 +589,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 
@@ -537,6 +614,7 @@ Update a DAG
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
@@ -544,12 +622,22 @@ from titanium_airflow_client.models.dag import DAG
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -585,7 +673,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 
@@ -612,6 +700,7 @@ Update DAGs of a given dag_id_pattern using UpdateMask. This endpoint allows spe
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
@@ -620,12 +709,22 @@ from titanium_airflow_client.models.dag_collection import DAGCollection
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -669,7 +768,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 
@@ -696,6 +795,7 @@ Clears a set of task instances associated with the DAG for a specified date rang
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
@@ -704,12 +804,22 @@ from titanium_airflow_client.models.task_instance_reference_collection import Ta
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -743,7 +853,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 
@@ -770,6 +880,7 @@ Updates the state for multiple task instances simultaneously.
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
@@ -778,12 +889,22 @@ from titanium_airflow_client.models.update_task_instances_state import UpdateTas
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -817,7 +938,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 

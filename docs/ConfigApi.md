@@ -1,6 +1,6 @@
 # titanium_airflow_client.ConfigApi
 
-All URIs are relative to *https://airflow.apache.org/api/v1*
+All URIs are relative to */api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,6 +15,7 @@ Get current configuration
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
@@ -22,12 +23,22 @@ from titanium_airflow_client.models.config import Config
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -59,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 
@@ -84,6 +95,7 @@ Get a option from configuration
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import titanium_airflow_client
@@ -91,12 +103,22 @@ from titanium_airflow_client.models.config import Config
 from titanium_airflow_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://airflow.apache.org/api/v1
+# Defining the host is optional and defaults to /api/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = titanium_airflow_client.Configuration(
-    host = "https://airflow.apache.org/api/v1"
+    host = "/api/v1"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = titanium_airflow_client.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with titanium_airflow_client.ApiClient(configuration) as api_client:
@@ -130,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic), [Kerberos](../README.md#Kerberos), [GoogleOpenId](../README.md#GoogleOpenId)
 
 ### HTTP request headers
 
