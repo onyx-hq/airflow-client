@@ -49,7 +49,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_extra_links(
+    async def get_extra_links(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -115,11 +115,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -127,7 +127,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_extra_links_with_http_info(
+    async def get_extra_links_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -193,11 +193,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -205,7 +205,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_extra_links_without_preload_content(
+    async def get_extra_links_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -271,7 +271,7 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -348,7 +348,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_log(
+    async def get_log(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -431,11 +431,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -443,7 +443,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_log_with_http_info(
+    async def get_log_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -526,11 +526,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -538,7 +538,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_log_without_preload_content(
+    async def get_log_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -621,7 +621,7 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -717,7 +717,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_mapped_task_instance(
+    async def get_mapped_task_instance(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -787,11 +787,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -799,7 +799,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_mapped_task_instance_with_http_info(
+    async def get_mapped_task_instance_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -869,11 +869,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -881,7 +881,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_mapped_task_instance_without_preload_content(
+    async def get_mapped_task_instance_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -951,7 +951,7 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1031,7 +1031,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_mapped_task_instances(
+    async def get_mapped_task_instances(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1161,11 +1161,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1173,7 +1173,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_mapped_task_instances_with_http_info(
+    async def get_mapped_task_instances_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1303,11 +1303,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1315,7 +1315,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_mapped_task_instances_without_preload_content(
+    async def get_mapped_task_instances_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1445,7 +1445,7 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1677,7 +1677,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_task_instance(
+    async def get_task_instance(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1742,11 +1742,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1754,7 +1754,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_task_instance_with_http_info(
+    async def get_task_instance_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1819,11 +1819,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1831,7 +1831,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_task_instance_without_preload_content(
+    async def get_task_instance_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1896,7 +1896,7 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1973,7 +1973,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_task_instances(
+    async def get_task_instances(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -2094,11 +2094,11 @@ class TaskInstanceApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2106,7 +2106,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_task_instances_with_http_info(
+    async def get_task_instances_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -2227,11 +2227,11 @@ class TaskInstanceApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2239,7 +2239,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_task_instances_without_preload_content(
+    async def get_task_instances_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -2360,7 +2360,7 @@ class TaskInstanceApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2584,7 +2584,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_task_instances_batch(
+    async def get_task_instances_batch(
         self,
         list_task_instance_form: ListTaskInstanceForm,
         _request_timeout: Union[
@@ -2642,11 +2642,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2654,7 +2654,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_task_instances_batch_with_http_info(
+    async def get_task_instances_batch_with_http_info(
         self,
         list_task_instance_form: ListTaskInstanceForm,
         _request_timeout: Union[
@@ -2712,11 +2712,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2724,7 +2724,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def get_task_instances_batch_without_preload_content(
+    async def get_task_instances_batch_without_preload_content(
         self,
         list_task_instance_form: ListTaskInstanceForm,
         _request_timeout: Union[
@@ -2782,7 +2782,7 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2866,7 +2866,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def patch_mapped_task_instance(
+    async def patch_mapped_task_instance(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -2940,11 +2940,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2952,7 +2952,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def patch_mapped_task_instance_with_http_info(
+    async def patch_mapped_task_instance_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3026,11 +3026,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3038,7 +3038,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def patch_mapped_task_instance_without_preload_content(
+    async def patch_mapped_task_instance_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3112,7 +3112,7 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3208,7 +3208,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def patch_task_instance(
+    async def patch_task_instance(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3278,11 +3278,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3290,7 +3290,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def patch_task_instance_with_http_info(
+    async def patch_task_instance_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3360,11 +3360,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3372,7 +3372,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def patch_task_instance_without_preload_content(
+    async def patch_task_instance_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3442,7 +3442,7 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3535,7 +3535,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def set_mapped_task_instance_note(
+    async def set_mapped_task_instance_note(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3610,11 +3610,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3622,7 +3622,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def set_mapped_task_instance_note_with_http_info(
+    async def set_mapped_task_instance_note_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3697,11 +3697,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3709,7 +3709,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def set_mapped_task_instance_note_without_preload_content(
+    async def set_mapped_task_instance_note_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3784,7 +3784,7 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3880,7 +3880,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def set_task_instance_note(
+    async def set_task_instance_note(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3951,11 +3951,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3963,7 +3963,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def set_task_instance_note_with_http_info(
+    async def set_task_instance_note_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -4034,11 +4034,11 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4046,7 +4046,7 @@ class TaskInstanceApi:
 
 
     @validate_call
-    def set_task_instance_note_without_preload_content(
+    async def set_task_instance_note_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -4117,7 +4117,7 @@ class TaskInstanceApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

@@ -45,14 +45,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.UserApi(api_client)
     username = 'username_example' # str | The username of the user.  *New in version 2.1.0* 
 
     try:
         # Delete a user
-        api_instance.delete_user(username)
+        await api_instance.delete_user(username)
     except Exception as e:
         print("Exception when calling UserApi->delete_user: %s\n" % e)
 ```
@@ -126,14 +126,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.UserApi(api_client)
     username = 'username_example' # str | The username of the user.  *New in version 2.1.0* 
 
     try:
         # Get a user
-        api_response = api_instance.get_user(username)
+        api_response = await api_instance.get_user(username)
         print("The response of UserApi->get_user:\n")
         pprint(api_response)
     except Exception as e:
@@ -208,7 +208,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.UserApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -217,7 +217,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List users
-        api_response = api_instance.get_users(limit=limit, offset=offset, order_by=order_by)
+        api_response = await api_instance.get_users(limit=limit, offset=offset, order_by=order_by)
         print("The response of UserApi->get_users:\n")
         pprint(api_response)
     except Exception as e:
@@ -294,7 +294,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.UserApi(api_client)
     username = 'username_example' # str | The username of the user.  *New in version 2.1.0* 
@@ -303,7 +303,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a user
-        api_response = api_instance.patch_user(username, user, update_mask=update_mask)
+        api_response = await api_instance.patch_user(username, user, update_mask=update_mask)
         print("The response of UserApi->patch_user:\n")
         pprint(api_response)
     except Exception as e:
@@ -381,14 +381,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.UserApi(api_client)
     user = titanium_airflow_client.User() # User | 
 
     try:
         # Create a user
-        api_response = api_instance.post_user(user)
+        api_response = await api_instance.post_user(user)
         print("The response of UserApi->post_user:\n")
         pprint(api_response)
     except Exception as e:

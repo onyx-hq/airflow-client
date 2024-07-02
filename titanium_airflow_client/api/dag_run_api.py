@@ -49,7 +49,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def clear_dag_run(
+    async def clear_dag_run(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -116,11 +116,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -128,7 +128,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def clear_dag_run_with_http_info(
+    async def clear_dag_run_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -195,11 +195,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -207,7 +207,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def clear_dag_run_without_preload_content(
+    async def clear_dag_run_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -274,7 +274,7 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -364,7 +364,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def delete_dag_run(
+    async def delete_dag_run(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -426,11 +426,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -438,7 +438,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def delete_dag_run_with_http_info(
+    async def delete_dag_run_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -500,11 +500,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -512,7 +512,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def delete_dag_run_without_preload_content(
+    async def delete_dag_run_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -574,7 +574,7 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -648,7 +648,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def get_dag_run(
+    async def get_dag_run(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -713,11 +713,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -725,7 +725,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def get_dag_run_with_http_info(
+    async def get_dag_run_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -790,11 +790,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -802,7 +802,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def get_dag_run_without_preload_content(
+    async def get_dag_run_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -867,7 +867,7 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -947,7 +947,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def get_dag_runs(
+    async def get_dag_runs(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
@@ -1055,11 +1055,11 @@ class DAGRunApi:
             '200': "DAGRunCollection",
             '401': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1067,7 +1067,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def get_dag_runs_with_http_info(
+    async def get_dag_runs_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
@@ -1175,11 +1175,11 @@ class DAGRunApi:
             '200': "DAGRunCollection",
             '401': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1187,7 +1187,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def get_dag_runs_without_preload_content(
+    async def get_dag_runs_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
@@ -1295,7 +1295,7 @@ class DAGRunApi:
             '200': "DAGRunCollection",
             '401': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1505,7 +1505,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def get_dag_runs_batch(
+    async def get_dag_runs_batch(
         self,
         list_dag_runs_form: ListDagRunsForm,
         _request_timeout: Union[
@@ -1563,11 +1563,11 @@ class DAGRunApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1575,7 +1575,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def get_dag_runs_batch_with_http_info(
+    async def get_dag_runs_batch_with_http_info(
         self,
         list_dag_runs_form: ListDagRunsForm,
         _request_timeout: Union[
@@ -1633,11 +1633,11 @@ class DAGRunApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1645,7 +1645,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def get_dag_runs_batch_without_preload_content(
+    async def get_dag_runs_batch_without_preload_content(
         self,
         list_dag_runs_form: ListDagRunsForm,
         _request_timeout: Union[
@@ -1703,7 +1703,7 @@ class DAGRunApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1787,7 +1787,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def get_upstream_dataset_events(
+    async def get_upstream_dataset_events(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1849,11 +1849,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1861,7 +1861,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def get_upstream_dataset_events_with_http_info(
+    async def get_upstream_dataset_events_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1923,11 +1923,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1935,7 +1935,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def get_upstream_dataset_events_without_preload_content(
+    async def get_upstream_dataset_events_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -1997,7 +1997,7 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2071,7 +2071,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def post_dag_run(
+    async def post_dag_run(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run: DAGRun,
@@ -2135,11 +2135,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2147,7 +2147,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def post_dag_run_with_http_info(
+    async def post_dag_run_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run: DAGRun,
@@ -2211,11 +2211,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2223,7 +2223,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def post_dag_run_without_preload_content(
+    async def post_dag_run_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run: DAGRun,
@@ -2287,7 +2287,7 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2374,7 +2374,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def set_dag_run_note(
+    async def set_dag_run_note(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -2441,11 +2441,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2453,7 +2453,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def set_dag_run_note_with_http_info(
+    async def set_dag_run_note_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -2520,11 +2520,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2532,7 +2532,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def set_dag_run_note_without_preload_content(
+    async def set_dag_run_note_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -2599,7 +2599,7 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2689,7 +2689,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def update_dag_run_state(
+    async def update_dag_run_state(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -2756,11 +2756,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2768,7 +2768,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def update_dag_run_state_with_http_info(
+    async def update_dag_run_state_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -2835,11 +2835,11 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2847,7 +2847,7 @@ class DAGRunApi:
 
 
     @validate_call
-    def update_dag_run_state_without_preload_content(
+    async def update_dag_run_state_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -2914,7 +2914,7 @@ class DAGRunApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

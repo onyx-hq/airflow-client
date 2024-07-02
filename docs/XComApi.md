@@ -43,7 +43,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.XComApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -56,7 +56,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List XCom entries
-        api_response = api_instance.get_xcom_entries(dag_id, dag_run_id, task_id, map_index=map_index, xcom_key=xcom_key, limit=limit, offset=offset)
+        api_response = await api_instance.get_xcom_entries(dag_id, dag_run_id, task_id, map_index=map_index, xcom_key=xcom_key, limit=limit, offset=offset)
         print("The response of XComApi->get_xcom_entries:\n")
         pprint(api_response)
     except Exception as e:
@@ -134,7 +134,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.XComApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -146,7 +146,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get an XCom entry
-        api_response = api_instance.get_xcom_entry(dag_id, dag_run_id, task_id, xcom_key, map_index=map_index, deserialize=deserialize)
+        api_response = await api_instance.get_xcom_entry(dag_id, dag_run_id, task_id, xcom_key, map_index=map_index, deserialize=deserialize)
         print("The response of XComApi->get_xcom_entry:\n")
         pprint(api_response)
     except Exception as e:

@@ -45,14 +45,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.RoleApi(api_client)
     role_name = 'role_name_example' # str | The role name
 
     try:
         # Delete a role
-        api_instance.delete_role(role_name)
+        await api_instance.delete_role(role_name)
     except Exception as e:
         print("Exception when calling RoleApi->delete_role: %s\n" % e)
 ```
@@ -126,14 +126,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.RoleApi(api_client)
     role_name = 'role_name_example' # str | The role name
 
     try:
         # Get a role
-        api_response = api_instance.get_role(role_name)
+        api_response = await api_instance.get_role(role_name)
         print("The response of RoleApi->get_role:\n")
         pprint(api_response)
     except Exception as e:
@@ -208,7 +208,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.RoleApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -217,7 +217,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List roles
-        api_response = api_instance.get_roles(limit=limit, offset=offset, order_by=order_by)
+        api_response = await api_instance.get_roles(limit=limit, offset=offset, order_by=order_by)
         print("The response of RoleApi->get_roles:\n")
         pprint(api_response)
     except Exception as e:
@@ -293,7 +293,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.RoleApi(api_client)
     role_name = 'role_name_example' # str | The role name
@@ -302,7 +302,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a role
-        api_response = api_instance.patch_role(role_name, role, update_mask=update_mask)
+        api_response = await api_instance.patch_role(role_name, role, update_mask=update_mask)
         print("The response of RoleApi->patch_role:\n")
         pprint(api_response)
     except Exception as e:
@@ -380,14 +380,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.RoleApi(api_client)
     role = titanium_airflow_client.Role() # Role | 
 
     try:
         # Create a role
-        api_response = api_instance.post_role(role)
+        api_response = await api_instance.post_role(role)
         print("The response of RoleApi->post_role:\n")
         pprint(api_response)
     except Exception as e:

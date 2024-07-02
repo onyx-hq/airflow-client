@@ -285,14 +285,14 @@ configuration = titanium_airflow_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ConfigApi(api_client)
     section = 'section_example' # str | If given, only return config of this section. (optional)
 
     try:
         # Get current configuration
-        api_response = api_instance.get_config(section=section)
+        api_response = await api_instance.get_config(section=section)
         print("The response of ConfigApi->get_config:\n")
         pprint(api_response)
     except ApiException as e:

@@ -41,14 +41,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.EventLogApi(api_client)
     event_log_id = 56 # int | The event log ID.
 
     try:
         # Get a log entry
-        api_response = api_instance.get_event_log(event_log_id)
+        api_response = await api_instance.get_event_log(event_log_id)
         print("The response of EventLogApi->get_event_log:\n")
         pprint(api_response)
     except Exception as e:
@@ -123,7 +123,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.EventLogApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -141,7 +141,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List log entries
-        api_response = api_instance.get_event_logs(limit=limit, offset=offset, order_by=order_by, dag_id=dag_id, task_id=task_id, run_id=run_id, event=event, owner=owner, before=before, after=after, included_events=included_events, excluded_events=excluded_events)
+        api_response = await api_instance.get_event_logs(limit=limit, offset=offset, order_by=order_by, dag_id=dag_id, task_id=task_id, run_id=run_id, event=event, owner=owner, before=before, after=after, included_events=included_events, excluded_events=excluded_events)
         print("The response of EventLogApi->get_event_logs:\n")
         pprint(api_response)
     except Exception as e:

@@ -42,7 +42,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.PermissionApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -50,7 +50,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List permissions
-        api_response = api_instance.get_permissions(limit=limit, offset=offset)
+        api_response = await api_instance.get_permissions(limit=limit, offset=offset)
         print("The response of PermissionApi->get_permissions:\n")
         pprint(api_response)
     except Exception as e:

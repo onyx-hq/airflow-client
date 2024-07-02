@@ -53,14 +53,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DatasetApi(api_client)
     create_dataset_event = titanium_airflow_client.CreateDatasetEvent() # CreateDatasetEvent | 
 
     try:
         # Create dataset event
-        api_response = api_instance.create_dataset_event(create_dataset_event)
+        api_response = await api_instance.create_dataset_event(create_dataset_event)
         print("The response of DatasetApi->create_dataset_event:\n")
         pprint(api_response)
     except Exception as e:
@@ -135,7 +135,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DatasetApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -144,7 +144,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a queued Dataset event for a DAG.
-        api_instance.delete_dag_dataset_queued_event(dag_id, uri, before=before)
+        await api_instance.delete_dag_dataset_queued_event(dag_id, uri, before=before)
     except Exception as e:
         print("Exception when calling DatasetApi->delete_dag_dataset_queued_event: %s\n" % e)
 ```
@@ -219,7 +219,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DatasetApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -227,7 +227,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete queued Dataset events for a DAG.
-        api_instance.delete_dag_dataset_queued_events(dag_id, before=before)
+        await api_instance.delete_dag_dataset_queued_events(dag_id, before=before)
     except Exception as e:
         print("Exception when calling DatasetApi->delete_dag_dataset_queued_events: %s\n" % e)
 ```
@@ -301,7 +301,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DatasetApi(api_client)
     uri = 'uri_example' # str | The encoded Dataset URI
@@ -309,7 +309,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete queued Dataset events for a Dataset.
-        api_instance.delete_dataset_queued_events(uri, before=before)
+        await api_instance.delete_dataset_queued_events(uri, before=before)
     except Exception as e:
         print("Exception when calling DatasetApi->delete_dataset_queued_events: %s\n" % e)
 ```
@@ -384,7 +384,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DatasetApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -393,7 +393,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get a queued Dataset event for a DAG
-        api_response = api_instance.get_dag_dataset_queued_event(dag_id, uri, before=before)
+        api_response = await api_instance.get_dag_dataset_queued_event(dag_id, uri, before=before)
         print("The response of DatasetApi->get_dag_dataset_queued_event:\n")
         pprint(api_response)
     except Exception as e:
@@ -470,7 +470,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DatasetApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -478,7 +478,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get queued Dataset events for a DAG.
-        api_response = api_instance.get_dag_dataset_queued_events(dag_id, before=before)
+        api_response = await api_instance.get_dag_dataset_queued_events(dag_id, before=before)
         print("The response of DatasetApi->get_dag_dataset_queued_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -554,14 +554,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DatasetApi(api_client)
     uri = 'uri_example' # str | The encoded Dataset URI
 
     try:
         # Get a dataset
-        api_response = api_instance.get_dataset(uri)
+        api_response = await api_instance.get_dataset(uri)
         print("The response of DatasetApi->get_dataset:\n")
         pprint(api_response)
     except Exception as e:
@@ -636,7 +636,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DatasetApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -650,7 +650,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get dataset events
-        api_response = api_instance.get_dataset_events(limit=limit, offset=offset, order_by=order_by, dataset_id=dataset_id, source_dag_id=source_dag_id, source_task_id=source_task_id, source_run_id=source_run_id, source_map_index=source_map_index)
+        api_response = await api_instance.get_dataset_events(limit=limit, offset=offset, order_by=order_by, dataset_id=dataset_id, source_dag_id=source_dag_id, source_task_id=source_task_id, source_run_id=source_run_id, source_map_index=source_map_index)
         print("The response of DatasetApi->get_dataset_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -732,7 +732,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DatasetApi(api_client)
     uri = 'uri_example' # str | The encoded Dataset URI
@@ -740,7 +740,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get queued Dataset events for a Dataset.
-        api_response = api_instance.get_dataset_queued_events(uri, before=before)
+        api_response = await api_instance.get_dataset_queued_events(uri, before=before)
         print("The response of DatasetApi->get_dataset_queued_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -814,7 +814,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DatasetApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -825,7 +825,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List datasets
-        api_response = api_instance.get_datasets(limit=limit, offset=offset, order_by=order_by, uri_pattern=uri_pattern, dag_ids=dag_ids)
+        api_response = await api_instance.get_datasets(limit=limit, offset=offset, order_by=order_by, uri_pattern=uri_pattern, dag_ids=dag_ids)
         print("The response of DatasetApi->get_datasets:\n")
         pprint(api_response)
     except Exception as e:
@@ -903,7 +903,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DatasetApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -911,7 +911,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get dataset events for a DAG run
-        api_response = api_instance.get_upstream_dataset_events(dag_id, dag_run_id)
+        api_response = await api_instance.get_upstream_dataset_events(dag_id, dag_run_id)
         print("The response of DatasetApi->get_upstream_dataset_events:\n")
         pprint(api_response)
     except Exception as e:

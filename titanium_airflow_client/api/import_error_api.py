@@ -42,7 +42,7 @@ class ImportErrorApi:
 
 
     @validate_call
-    def get_import_error(
+    async def get_import_error(
         self,
         import_error_id: Annotated[StrictInt, Field(description="The import error ID.")],
         _request_timeout: Union[
@@ -99,11 +99,11 @@ class ImportErrorApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -111,7 +111,7 @@ class ImportErrorApi:
 
 
     @validate_call
-    def get_import_error_with_http_info(
+    async def get_import_error_with_http_info(
         self,
         import_error_id: Annotated[StrictInt, Field(description="The import error ID.")],
         _request_timeout: Union[
@@ -168,11 +168,11 @@ class ImportErrorApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -180,7 +180,7 @@ class ImportErrorApi:
 
 
     @validate_call
-    def get_import_error_without_preload_content(
+    async def get_import_error_without_preload_content(
         self,
         import_error_id: Annotated[StrictInt, Field(description="The import error ID.")],
         _request_timeout: Union[
@@ -237,7 +237,7 @@ class ImportErrorApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -308,7 +308,7 @@ class ImportErrorApi:
 
 
     @validate_call
-    def get_import_errors(
+    async def get_import_errors(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -372,11 +372,11 @@ class ImportErrorApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -384,7 +384,7 @@ class ImportErrorApi:
 
 
     @validate_call
-    def get_import_errors_with_http_info(
+    async def get_import_errors_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -448,11 +448,11 @@ class ImportErrorApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -460,7 +460,7 @@ class ImportErrorApi:
 
 
     @validate_call
-    def get_import_errors_without_preload_content(
+    async def get_import_errors_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -524,7 +524,7 @@ class ImportErrorApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

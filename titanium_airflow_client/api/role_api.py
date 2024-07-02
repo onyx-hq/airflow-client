@@ -42,7 +42,7 @@ class RoleApi:
 
 
     @validate_call
-    def delete_role(
+    async def delete_role(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         _request_timeout: Union[
@@ -102,11 +102,11 @@ class RoleApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -114,7 +114,7 @@ class RoleApi:
 
 
     @validate_call
-    def delete_role_with_http_info(
+    async def delete_role_with_http_info(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         _request_timeout: Union[
@@ -174,11 +174,11 @@ class RoleApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -186,7 +186,7 @@ class RoleApi:
 
 
     @validate_call
-    def delete_role_without_preload_content(
+    async def delete_role_without_preload_content(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         _request_timeout: Union[
@@ -246,7 +246,7 @@ class RoleApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -317,7 +317,7 @@ class RoleApi:
 
 
     @validate_call
-    def get_role(
+    async def get_role(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         _request_timeout: Union[
@@ -376,11 +376,11 @@ class RoleApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -388,7 +388,7 @@ class RoleApi:
 
 
     @validate_call
-    def get_role_with_http_info(
+    async def get_role_with_http_info(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         _request_timeout: Union[
@@ -447,11 +447,11 @@ class RoleApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -459,7 +459,7 @@ class RoleApi:
 
 
     @validate_call
-    def get_role_without_preload_content(
+    async def get_role_without_preload_content(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         _request_timeout: Union[
@@ -518,7 +518,7 @@ class RoleApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -589,7 +589,7 @@ class RoleApi:
 
 
     @validate_call
-    def get_roles(
+    async def get_roles(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -655,11 +655,11 @@ class RoleApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -667,7 +667,7 @@ class RoleApi:
 
 
     @validate_call
-    def get_roles_with_http_info(
+    async def get_roles_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -733,11 +733,11 @@ class RoleApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -745,7 +745,7 @@ class RoleApi:
 
 
     @validate_call
-    def get_roles_without_preload_content(
+    async def get_roles_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -811,7 +811,7 @@ class RoleApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -894,7 +894,7 @@ class RoleApi:
 
 
     @validate_call
-    def patch_role(
+    async def patch_role(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         role: Role,
@@ -962,11 +962,11 @@ class RoleApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -974,7 +974,7 @@ class RoleApi:
 
 
     @validate_call
-    def patch_role_with_http_info(
+    async def patch_role_with_http_info(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         role: Role,
@@ -1042,11 +1042,11 @@ class RoleApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1054,7 +1054,7 @@ class RoleApi:
 
 
     @validate_call
-    def patch_role_without_preload_content(
+    async def patch_role_without_preload_content(
         self,
         role_name: Annotated[StrictStr, Field(description="The role name")],
         role: Role,
@@ -1122,7 +1122,7 @@ class RoleApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1215,7 +1215,7 @@ class RoleApi:
 
 
     @validate_call
-    def post_role(
+    async def post_role(
         self,
         role: Role,
         _request_timeout: Union[
@@ -1274,11 +1274,11 @@ class RoleApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1286,7 +1286,7 @@ class RoleApi:
 
 
     @validate_call
-    def post_role_with_http_info(
+    async def post_role_with_http_info(
         self,
         role: Role,
         _request_timeout: Union[
@@ -1345,11 +1345,11 @@ class RoleApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1357,7 +1357,7 @@ class RoleApi:
 
 
     @validate_call
-    def post_role_without_preload_content(
+    async def post_role_without_preload_content(
         self,
         role: Role,
         _request_timeout: Union[
@@ -1416,7 +1416,7 @@ class RoleApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

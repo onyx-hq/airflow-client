@@ -51,7 +51,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -60,7 +60,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Clear a DAG run
-        api_response = api_instance.clear_dag_run(dag_id, dag_run_id, clear_dag_run)
+        api_response = await api_instance.clear_dag_run(dag_id, dag_run_id, clear_dag_run)
         print("The response of DAGRunApi->clear_dag_run:\n")
         pprint(api_response)
     except Exception as e:
@@ -135,7 +135,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -143,7 +143,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a DAG run
-        api_instance.delete_dag_run(dag_id, dag_run_id)
+        await api_instance.delete_dag_run(dag_id, dag_run_id)
     except Exception as e:
         print("Exception when calling DAGRunApi->delete_dag_run: %s\n" % e)
 ```
@@ -216,7 +216,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -225,7 +225,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get a DAG run
-        api_response = api_instance.get_dag_run(dag_id, dag_run_id, fields=fields)
+        api_response = await api_instance.get_dag_run(dag_id, dag_run_id, fields=fields)
         print("The response of DAGRunApi->get_dag_run:\n")
         pprint(api_response)
     except Exception as e:
@@ -302,7 +302,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -322,7 +322,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List DAG runs
-        api_response = api_instance.get_dag_runs(dag_id, limit=limit, offset=offset, execution_date_gte=execution_date_gte, execution_date_lte=execution_date_lte, start_date_gte=start_date_gte, start_date_lte=start_date_lte, end_date_gte=end_date_gte, end_date_lte=end_date_lte, updated_at_gte=updated_at_gte, updated_at_lte=updated_at_lte, state=state, order_by=order_by, fields=fields)
+        api_response = await api_instance.get_dag_runs(dag_id, limit=limit, offset=offset, execution_date_gte=execution_date_gte, execution_date_lte=execution_date_lte, start_date_gte=start_date_gte, start_date_lte=start_date_lte, end_date_gte=end_date_gte, end_date_lte=end_date_lte, updated_at_gte=updated_at_gte, updated_at_lte=updated_at_lte, state=state, order_by=order_by, fields=fields)
         print("The response of DAGRunApi->get_dag_runs:\n")
         pprint(api_response)
     except Exception as e:
@@ -409,14 +409,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     list_dag_runs_form = titanium_airflow_client.ListDagRunsForm() # ListDagRunsForm | 
 
     try:
         # List DAG runs (batch)
-        api_response = api_instance.get_dag_runs_batch(list_dag_runs_form)
+        api_response = await api_instance.get_dag_runs_batch(list_dag_runs_form)
         print("The response of DAGRunApi->get_dag_runs_batch:\n")
         pprint(api_response)
     except Exception as e:
@@ -491,7 +491,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -499,7 +499,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get dataset events for a DAG run
-        api_response = api_instance.get_upstream_dataset_events(dag_id, dag_run_id)
+        api_response = await api_instance.get_upstream_dataset_events(dag_id, dag_run_id)
         print("The response of DAGRunApi->get_upstream_dataset_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -575,7 +575,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -583,7 +583,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Trigger a new DAG run.
-        api_response = api_instance.post_dag_run(dag_id, dag_run)
+        api_response = await api_instance.post_dag_run(dag_id, dag_run)
         print("The response of DAGRunApi->post_dag_run:\n")
         pprint(api_response)
     except Exception as e:
@@ -662,7 +662,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -671,7 +671,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Update the DagRun note.
-        api_response = api_instance.set_dag_run_note(dag_id, dag_run_id, set_dag_run_note)
+        api_response = await api_instance.set_dag_run_note(dag_id, dag_run_id, set_dag_run_note)
         print("The response of DAGRunApi->set_dag_run_note:\n")
         pprint(api_response)
     except Exception as e:
@@ -750,7 +750,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGRunApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -759,7 +759,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Modify a DAG run
-        api_response = api_instance.update_dag_run_state(dag_id, dag_run_id, update_dag_run_state)
+        api_response = await api_instance.update_dag_run_state(dag_id, dag_run_id, update_dag_run_state)
         print("The response of DAGRunApi->update_dag_run_state:\n")
         pprint(api_response)
     except Exception as e:

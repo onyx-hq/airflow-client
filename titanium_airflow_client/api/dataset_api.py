@@ -48,7 +48,7 @@ class DatasetApi:
 
 
     @validate_call
-    def create_dataset_event(
+    async def create_dataset_event(
         self,
         create_dataset_event: CreateDatasetEvent,
         _request_timeout: Union[
@@ -107,11 +107,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -119,7 +119,7 @@ class DatasetApi:
 
 
     @validate_call
-    def create_dataset_event_with_http_info(
+    async def create_dataset_event_with_http_info(
         self,
         create_dataset_event: CreateDatasetEvent,
         _request_timeout: Union[
@@ -178,11 +178,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -190,7 +190,7 @@ class DatasetApi:
 
 
     @validate_call
-    def create_dataset_event_without_preload_content(
+    async def create_dataset_event_without_preload_content(
         self,
         create_dataset_event: CreateDatasetEvent,
         _request_timeout: Union[
@@ -249,7 +249,7 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -333,7 +333,7 @@ class DatasetApi:
 
 
     @validate_call
-    def delete_dag_dataset_queued_event(
+    async def delete_dag_dataset_queued_event(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
@@ -400,11 +400,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -412,7 +412,7 @@ class DatasetApi:
 
 
     @validate_call
-    def delete_dag_dataset_queued_event_with_http_info(
+    async def delete_dag_dataset_queued_event_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
@@ -479,11 +479,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -491,7 +491,7 @@ class DatasetApi:
 
 
     @validate_call
-    def delete_dag_dataset_queued_event_without_preload_content(
+    async def delete_dag_dataset_queued_event_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
@@ -558,7 +558,7 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -646,7 +646,7 @@ class DatasetApi:
 
 
     @validate_call
-    def delete_dag_dataset_queued_events(
+    async def delete_dag_dataset_queued_events(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -709,11 +709,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -721,7 +721,7 @@ class DatasetApi:
 
 
     @validate_call
-    def delete_dag_dataset_queued_events_with_http_info(
+    async def delete_dag_dataset_queued_events_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -784,11 +784,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -796,7 +796,7 @@ class DatasetApi:
 
 
     @validate_call
-    def delete_dag_dataset_queued_events_without_preload_content(
+    async def delete_dag_dataset_queued_events_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -859,7 +859,7 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -944,7 +944,7 @@ class DatasetApi:
 
 
     @validate_call
-    def delete_dataset_queued_events(
+    async def delete_dataset_queued_events(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -1007,11 +1007,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1019,7 +1019,7 @@ class DatasetApi:
 
 
     @validate_call
-    def delete_dataset_queued_events_with_http_info(
+    async def delete_dataset_queued_events_with_http_info(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -1082,11 +1082,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1094,7 +1094,7 @@ class DatasetApi:
 
 
     @validate_call
-    def delete_dataset_queued_events_without_preload_content(
+    async def delete_dataset_queued_events_without_preload_content(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -1157,7 +1157,7 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1242,7 +1242,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dag_dataset_queued_event(
+    async def get_dag_dataset_queued_event(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
@@ -1308,11 +1308,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1320,7 +1320,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dag_dataset_queued_event_with_http_info(
+    async def get_dag_dataset_queued_event_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
@@ -1386,11 +1386,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1398,7 +1398,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dag_dataset_queued_event_without_preload_content(
+    async def get_dag_dataset_queued_event_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
@@ -1464,7 +1464,7 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1552,7 +1552,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dag_dataset_queued_events(
+    async def get_dag_dataset_queued_events(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -1614,11 +1614,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1626,7 +1626,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dag_dataset_queued_events_with_http_info(
+    async def get_dag_dataset_queued_events_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -1688,11 +1688,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1700,7 +1700,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dag_dataset_queued_events_without_preload_content(
+    async def get_dag_dataset_queued_events_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -1762,7 +1762,7 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1847,7 +1847,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset(
+    async def get_dataset(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         _request_timeout: Union[
@@ -1905,11 +1905,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1917,7 +1917,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_with_http_info(
+    async def get_dataset_with_http_info(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         _request_timeout: Union[
@@ -1975,11 +1975,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1987,7 +1987,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_without_preload_content(
+    async def get_dataset_without_preload_content(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         _request_timeout: Union[
@@ -2045,7 +2045,7 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2116,7 +2116,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_events(
+    async def get_dataset_events(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -2202,11 +2202,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2214,7 +2214,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_events_with_http_info(
+    async def get_dataset_events_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -2300,11 +2300,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2312,7 +2312,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_events_without_preload_content(
+    async def get_dataset_events_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -2398,7 +2398,7 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2506,7 +2506,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_queued_events(
+    async def get_dataset_queued_events(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -2568,11 +2568,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2580,7 +2580,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_queued_events_with_http_info(
+    async def get_dataset_queued_events_with_http_info(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -2642,11 +2642,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2654,7 +2654,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_queued_events_without_preload_content(
+    async def get_dataset_queued_events_without_preload_content(
         self,
         uri: Annotated[StrictStr, Field(description="The encoded Dataset URI")],
         before: Annotated[Optional[datetime], Field(description="Timestamp to select event logs occurring before.")] = None,
@@ -2716,7 +2716,7 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2801,7 +2801,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_datasets(
+    async def get_datasets(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -2873,11 +2873,11 @@ class DatasetApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2885,7 +2885,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_datasets_with_http_info(
+    async def get_datasets_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -2957,11 +2957,11 @@ class DatasetApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2969,7 +2969,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_datasets_without_preload_content(
+    async def get_datasets_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -3041,7 +3041,7 @@ class DatasetApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3134,7 +3134,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_upstream_dataset_events(
+    async def get_upstream_dataset_events(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3196,11 +3196,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3208,7 +3208,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_upstream_dataset_events_with_http_info(
+    async def get_upstream_dataset_events_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3270,11 +3270,11 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3282,7 +3282,7 @@ class DatasetApi:
 
 
     @validate_call
-    def get_upstream_dataset_events_without_preload_content(
+    async def get_upstream_dataset_events_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -3344,7 +3344,7 @@ class DatasetApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

@@ -43,13 +43,13 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.MonitoringApi(api_client)
 
     try:
         # Get instance status
-        api_response = api_instance.get_health()
+        api_response = await api_instance.get_health()
         print("The response of MonitoringApi->get_health:\n")
         pprint(api_response)
     except Exception as e:
@@ -116,13 +116,13 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.MonitoringApi(api_client)
 
     try:
         # Get version information
-        api_response = api_instance.get_version()
+        api_response = await api_instance.get_version()
         print("The response of MonitoringApi->get_version:\n")
         pprint(api_response)
     except Exception as e:

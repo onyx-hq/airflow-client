@@ -43,14 +43,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.VariableApi(api_client)
     variable_key = 'variable_key_example' # str | The variable Key.
 
     try:
         # Delete a variable
-        api_instance.delete_variable(variable_key)
+        await api_instance.delete_variable(variable_key)
     except Exception as e:
         print("Exception when calling VariableApi->delete_variable: %s\n" % e)
 ```
@@ -124,14 +124,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.VariableApi(api_client)
     variable_key = 'variable_key_example' # str | The variable Key.
 
     try:
         # Get a variable
-        api_response = api_instance.get_variable(variable_key)
+        api_response = await api_instance.get_variable(variable_key)
         print("The response of VariableApi->get_variable:\n")
         pprint(api_response)
     except Exception as e:
@@ -206,7 +206,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.VariableApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -215,7 +215,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List variables
-        api_response = api_instance.get_variables(limit=limit, offset=offset, order_by=order_by)
+        api_response = await api_instance.get_variables(limit=limit, offset=offset, order_by=order_by)
         print("The response of VariableApi->get_variables:\n")
         pprint(api_response)
     except Exception as e:
@@ -291,7 +291,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.VariableApi(api_client)
     variable_key = 'variable_key_example' # str | The variable Key.
@@ -300,7 +300,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a variable
-        api_response = api_instance.patch_variable(variable_key, variable, update_mask=update_mask)
+        api_response = await api_instance.patch_variable(variable_key, variable, update_mask=update_mask)
         print("The response of VariableApi->patch_variable:\n")
         pprint(api_response)
     except Exception as e:
@@ -376,14 +376,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.VariableApi(api_client)
     variable = titanium_airflow_client.Variable() # Variable | 
 
     try:
         # Create a variable
-        api_response = api_instance.post_variables(variable)
+        api_response = await api_instance.post_variables(variable)
         print("The response of VariableApi->post_variables:\n")
         pprint(api_response)
     except Exception as e:

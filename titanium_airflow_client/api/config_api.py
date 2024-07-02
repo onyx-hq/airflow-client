@@ -41,7 +41,7 @@ class ConfigApi:
 
 
     @validate_call
-    def get_config(
+    async def get_config(
         self,
         section: Annotated[Optional[StrictStr], Field(description="If given, only return config of this section.")] = None,
         _request_timeout: Union[
@@ -98,11 +98,11 @@ class ConfigApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -110,7 +110,7 @@ class ConfigApi:
 
 
     @validate_call
-    def get_config_with_http_info(
+    async def get_config_with_http_info(
         self,
         section: Annotated[Optional[StrictStr], Field(description="If given, only return config of this section.")] = None,
         _request_timeout: Union[
@@ -167,11 +167,11 @@ class ConfigApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -179,7 +179,7 @@ class ConfigApi:
 
 
     @validate_call
-    def get_config_without_preload_content(
+    async def get_config_without_preload_content(
         self,
         section: Annotated[Optional[StrictStr], Field(description="If given, only return config of this section.")] = None,
         _request_timeout: Union[
@@ -236,7 +236,7 @@ class ConfigApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -310,7 +310,7 @@ class ConfigApi:
 
 
     @validate_call
-    def get_value(
+    async def get_value(
         self,
         section: StrictStr,
         option: StrictStr,
@@ -371,11 +371,11 @@ class ConfigApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -383,7 +383,7 @@ class ConfigApi:
 
 
     @validate_call
-    def get_value_with_http_info(
+    async def get_value_with_http_info(
         self,
         section: StrictStr,
         option: StrictStr,
@@ -444,11 +444,11 @@ class ConfigApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -456,7 +456,7 @@ class ConfigApi:
 
 
     @validate_call
-    def get_value_without_preload_content(
+    async def get_value_without_preload_content(
         self,
         section: StrictStr,
         option: StrictStr,
@@ -517,7 +517,7 @@ class ConfigApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

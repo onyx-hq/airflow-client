@@ -52,7 +52,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.TaskInstanceApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -61,7 +61,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List extra links
-        api_response = api_instance.get_extra_links(dag_id, dag_run_id, task_id)
+        api_response = await api_instance.get_extra_links(dag_id, dag_run_id, task_id)
         print("The response of TaskInstanceApi->get_extra_links:\n")
         pprint(api_response)
     except Exception as e:
@@ -138,7 +138,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.TaskInstanceApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -151,7 +151,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get logs
-        api_response = api_instance.get_log(dag_id, dag_run_id, task_id, task_try_number, full_content=full_content, map_index=map_index, token=token)
+        api_response = await api_instance.get_log(dag_id, dag_run_id, task_id, task_try_number, full_content=full_content, map_index=map_index, token=token)
         print("The response of TaskInstanceApi->get_log:\n")
         pprint(api_response)
     except Exception as e:
@@ -233,7 +233,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.TaskInstanceApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -243,7 +243,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get a mapped task instance
-        api_response = api_instance.get_mapped_task_instance(dag_id, dag_run_id, task_id, map_index)
+        api_response = await api_instance.get_mapped_task_instance(dag_id, dag_run_id, task_id, map_index)
         print("The response of TaskInstanceApi->get_mapped_task_instance:\n")
         pprint(api_response)
     except Exception as e:
@@ -321,7 +321,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.TaskInstanceApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -346,7 +346,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List mapped task instances
-        api_response = api_instance.get_mapped_task_instances(dag_id, dag_run_id, task_id, limit=limit, offset=offset, execution_date_gte=execution_date_gte, execution_date_lte=execution_date_lte, start_date_gte=start_date_gte, start_date_lte=start_date_lte, end_date_gte=end_date_gte, end_date_lte=end_date_lte, updated_at_gte=updated_at_gte, updated_at_lte=updated_at_lte, duration_gte=duration_gte, duration_lte=duration_lte, state=state, pool=pool, queue=queue, order_by=order_by)
+        api_response = await api_instance.get_mapped_task_instances(dag_id, dag_run_id, task_id, limit=limit, offset=offset, execution_date_gte=execution_date_gte, execution_date_lte=execution_date_lte, start_date_gte=start_date_gte, start_date_lte=start_date_lte, end_date_gte=end_date_gte, end_date_lte=end_date_lte, updated_at_gte=updated_at_gte, updated_at_lte=updated_at_lte, duration_gte=duration_gte, duration_lte=duration_lte, state=state, pool=pool, queue=queue, order_by=order_by)
         print("The response of TaskInstanceApi->get_mapped_task_instances:\n")
         pprint(api_response)
     except Exception as e:
@@ -437,7 +437,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.TaskInstanceApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -446,7 +446,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get a task instance
-        api_response = api_instance.get_task_instance(dag_id, dag_run_id, task_id)
+        api_response = await api_instance.get_task_instance(dag_id, dag_run_id, task_id)
         print("The response of TaskInstanceApi->get_task_instance:\n")
         pprint(api_response)
     except Exception as e:
@@ -523,7 +523,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.TaskInstanceApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -546,7 +546,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List task instances
-        api_response = api_instance.get_task_instances(dag_id, dag_run_id, execution_date_gte=execution_date_gte, execution_date_lte=execution_date_lte, start_date_gte=start_date_gte, start_date_lte=start_date_lte, end_date_gte=end_date_gte, end_date_lte=end_date_lte, updated_at_gte=updated_at_gte, updated_at_lte=updated_at_lte, duration_gte=duration_gte, duration_lte=duration_lte, state=state, pool=pool, queue=queue, limit=limit, offset=offset)
+        api_response = await api_instance.get_task_instances(dag_id, dag_run_id, execution_date_gte=execution_date_gte, execution_date_lte=execution_date_lte, start_date_gte=start_date_gte, start_date_lte=start_date_lte, end_date_gte=end_date_gte, end_date_lte=end_date_lte, updated_at_gte=updated_at_gte, updated_at_lte=updated_at_lte, duration_gte=duration_gte, duration_lte=duration_lte, state=state, pool=pool, queue=queue, limit=limit, offset=offset)
         print("The response of TaskInstanceApi->get_task_instances:\n")
         pprint(api_response)
     except Exception as e:
@@ -637,14 +637,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.TaskInstanceApi(api_client)
     list_task_instance_form = titanium_airflow_client.ListTaskInstanceForm() # ListTaskInstanceForm | 
 
     try:
         # List task instances (batch)
-        api_response = api_instance.get_task_instances_batch(list_task_instance_form)
+        api_response = await api_instance.get_task_instances_batch(list_task_instance_form)
         print("The response of TaskInstanceApi->get_task_instances_batch:\n")
         pprint(api_response)
     except Exception as e:
@@ -720,7 +720,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.TaskInstanceApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -731,7 +731,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates the state of a mapped task instance
-        api_response = api_instance.patch_mapped_task_instance(dag_id, dag_run_id, task_id, map_index, update_task_instance=update_task_instance)
+        api_response = await api_instance.patch_mapped_task_instance(dag_id, dag_run_id, task_id, map_index, update_task_instance=update_task_instance)
         print("The response of TaskInstanceApi->patch_mapped_task_instance:\n")
         pprint(api_response)
     except Exception as e:
@@ -811,7 +811,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.TaskInstanceApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -821,7 +821,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates the state of a task instance
-        api_response = api_instance.patch_task_instance(dag_id, dag_run_id, task_id, update_task_instance)
+        api_response = await api_instance.patch_task_instance(dag_id, dag_run_id, task_id, update_task_instance)
         print("The response of TaskInstanceApi->patch_task_instance:\n")
         pprint(api_response)
     except Exception as e:
@@ -900,7 +900,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.TaskInstanceApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -911,7 +911,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Update the TaskInstance note.
-        api_response = api_instance.set_mapped_task_instance_note(dag_id, dag_run_id, task_id, map_index, set_task_instance_note)
+        api_response = await api_instance.set_mapped_task_instance_note(dag_id, dag_run_id, task_id, map_index, set_task_instance_note)
         print("The response of TaskInstanceApi->set_mapped_task_instance_note:\n")
         pprint(api_response)
     except Exception as e:
@@ -992,7 +992,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.TaskInstanceApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -1002,7 +1002,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Update the TaskInstance note.
-        api_response = api_instance.set_task_instance_note(dag_id, dag_run_id, task_id, set_task_instance_note)
+        api_response = await api_instance.set_task_instance_note(dag_id, dag_run_id, task_id, set_task_instance_note)
         print("The response of TaskInstanceApi->set_task_instance_note:\n")
         pprint(api_response)
     except Exception as e:

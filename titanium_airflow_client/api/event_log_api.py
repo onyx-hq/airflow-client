@@ -43,7 +43,7 @@ class EventLogApi:
 
 
     @validate_call
-    def get_event_log(
+    async def get_event_log(
         self,
         event_log_id: Annotated[StrictInt, Field(description="The event log ID.")],
         _request_timeout: Union[
@@ -100,11 +100,11 @@ class EventLogApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -112,7 +112,7 @@ class EventLogApi:
 
 
     @validate_call
-    def get_event_log_with_http_info(
+    async def get_event_log_with_http_info(
         self,
         event_log_id: Annotated[StrictInt, Field(description="The event log ID.")],
         _request_timeout: Union[
@@ -169,11 +169,11 @@ class EventLogApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -181,7 +181,7 @@ class EventLogApi:
 
 
     @validate_call
-    def get_event_log_without_preload_content(
+    async def get_event_log_without_preload_content(
         self,
         event_log_id: Annotated[StrictInt, Field(description="The event log ID.")],
         _request_timeout: Union[
@@ -238,7 +238,7 @@ class EventLogApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -309,7 +309,7 @@ class EventLogApi:
 
 
     @validate_call
-    def get_event_logs(
+    async def get_event_logs(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -410,11 +410,11 @@ class EventLogApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -422,7 +422,7 @@ class EventLogApi:
 
 
     @validate_call
-    def get_event_logs_with_http_info(
+    async def get_event_logs_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -523,11 +523,11 @@ class EventLogApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -535,7 +535,7 @@ class EventLogApi:
 
 
     @validate_call
-    def get_event_logs_without_preload_content(
+    async def get_event_logs_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -636,7 +636,7 @@ class EventLogApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

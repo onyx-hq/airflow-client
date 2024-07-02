@@ -51,14 +51,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
 
     try:
         # Delete a DAG
-        api_instance.delete_dag(dag_id)
+        await api_instance.delete_dag(dag_id)
     except Exception as e:
         print("Exception when calling DAGApi->delete_dag: %s\n" % e)
 ```
@@ -133,7 +133,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -141,7 +141,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get basic information about a DAG
-        api_response = api_instance.get_dag(dag_id, fields=fields)
+        api_response = await api_instance.get_dag(dag_id, fields=fields)
         print("The response of DAGApi->get_dag:\n")
         pprint(api_response)
     except Exception as e:
@@ -217,7 +217,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -225,7 +225,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get a simplified representation of DAG
-        api_response = api_instance.get_dag_details(dag_id, fields=fields)
+        api_response = await api_instance.get_dag_details(dag_id, fields=fields)
         print("The response of DAGApi->get_dag_details:\n")
         pprint(api_response)
     except Exception as e:
@@ -301,14 +301,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     file_token = 'file_token_example' # str | The key containing the encrypted path to the file. Encryption and decryption take place only on the server. This prevents the client from reading an non-DAG file. This also ensures API extensibility, because the format of encrypted data may change. 
 
     try:
         # Get a source code
-        api_response = api_instance.get_dag_source(file_token)
+        api_response = await api_instance.get_dag_source(file_token)
         print("The response of DAGApi->get_dag_source:\n")
         pprint(api_response)
     except Exception as e:
@@ -384,7 +384,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -398,7 +398,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List DAGs
-        api_response = api_instance.get_dags(limit=limit, offset=offset, order_by=order_by, tags=tags, only_active=only_active, paused=paused, fields=fields, dag_id_pattern=dag_id_pattern)
+        api_response = await api_instance.get_dags(limit=limit, offset=offset, order_by=order_by, tags=tags, only_active=only_active, paused=paused, fields=fields, dag_id_pattern=dag_id_pattern)
         print("The response of DAGApi->get_dags:\n")
         pprint(api_response)
     except Exception as e:
@@ -476,7 +476,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -484,7 +484,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get simplified representation of a task
-        api_response = api_instance.get_task(dag_id, task_id)
+        api_response = await api_instance.get_task(dag_id, task_id)
         print("The response of DAGApi->get_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -558,7 +558,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -566,7 +566,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Get tasks for DAG
-        api_response = api_instance.get_tasks(dag_id, order_by=order_by)
+        api_response = await api_instance.get_tasks(dag_id, order_by=order_by)
         print("The response of DAGApi->get_tasks:\n")
         pprint(api_response)
     except Exception as e:
@@ -640,7 +640,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -649,7 +649,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a DAG
-        api_response = api_instance.patch_dag(dag_id, dag, update_mask=update_mask)
+        api_response = await api_instance.patch_dag(dag_id, dag, update_mask=update_mask)
         print("The response of DAGApi->patch_dag:\n")
         pprint(api_response)
     except Exception as e:
@@ -727,7 +727,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id_pattern = 'dag_id_pattern_example' # str | If set, only update DAGs with dag_ids matching this pattern. 
@@ -740,7 +740,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Update DAGs
-        api_response = api_instance.patch_dags(dag_id_pattern, dag, limit=limit, offset=offset, tags=tags, update_mask=update_mask, only_active=only_active)
+        api_response = await api_instance.patch_dags(dag_id_pattern, dag, limit=limit, offset=offset, tags=tags, update_mask=update_mask, only_active=only_active)
         print("The response of DAGApi->patch_dags:\n")
         pprint(api_response)
     except Exception as e:
@@ -822,7 +822,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -830,7 +830,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Clear a set of task instances
-        api_response = api_instance.post_clear_task_instances(dag_id, clear_task_instances)
+        api_response = await api_instance.post_clear_task_instances(dag_id, clear_task_instances)
         print("The response of DAGApi->post_clear_task_instances:\n")
         pprint(api_response)
     except Exception as e:
@@ -907,7 +907,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.DAGApi(api_client)
     dag_id = 'dag_id_example' # str | The DAG ID.
@@ -915,7 +915,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # Set a state of task instances
-        api_response = api_instance.post_set_task_instances_state(dag_id, update_task_instances_state)
+        api_response = await api_instance.post_set_task_instances_state(dag_id, update_task_instances_state)
         print("The response of DAGApi->post_set_task_instances_state:\n")
         pprint(api_response)
     except Exception as e:

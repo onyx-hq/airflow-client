@@ -41,14 +41,14 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ImportErrorApi(api_client)
     import_error_id = 56 # int | The import error ID.
 
     try:
         # Get an import error
-        api_response = api_instance.get_import_error(import_error_id)
+        api_response = await api_instance.get_import_error(import_error_id)
         print("The response of ImportErrorApi->get_import_error:\n")
         pprint(api_response)
     except Exception as e:
@@ -121,7 +121,7 @@ configuration = titanium_airflow_client.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with titanium_airflow_client.ApiClient(configuration) as api_client:
+async with titanium_airflow_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = titanium_airflow_client.ImportErrorApi(api_client)
     limit = 100 # int | The numbers of items to return. (optional) (default to 100)
@@ -130,7 +130,7 @@ with titanium_airflow_client.ApiClient(configuration) as api_client:
 
     try:
         # List import errors
-        api_response = api_instance.get_import_errors(limit=limit, offset=offset, order_by=order_by)
+        api_response = await api_instance.get_import_errors(limit=limit, offset=offset, order_by=order_by)
         print("The response of ImportErrorApi->get_import_errors:\n")
         pprint(api_response)
     except Exception as e:

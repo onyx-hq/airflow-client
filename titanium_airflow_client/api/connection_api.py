@@ -43,7 +43,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def delete_connection(
+    async def delete_connection(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         _request_timeout: Union[
@@ -101,11 +101,11 @@ class ConnectionApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -113,7 +113,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def delete_connection_with_http_info(
+    async def delete_connection_with_http_info(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         _request_timeout: Union[
@@ -171,11 +171,11 @@ class ConnectionApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -183,7 +183,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def delete_connection_without_preload_content(
+    async def delete_connection_without_preload_content(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         _request_timeout: Union[
@@ -241,7 +241,7 @@ class ConnectionApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -312,7 +312,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def get_connection(
+    async def get_connection(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         _request_timeout: Union[
@@ -369,11 +369,11 @@ class ConnectionApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -381,7 +381,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def get_connection_with_http_info(
+    async def get_connection_with_http_info(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         _request_timeout: Union[
@@ -438,11 +438,11 @@ class ConnectionApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -450,7 +450,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def get_connection_without_preload_content(
+    async def get_connection_without_preload_content(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         _request_timeout: Union[
@@ -507,7 +507,7 @@ class ConnectionApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -578,7 +578,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def get_connections(
+    async def get_connections(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -642,11 +642,11 @@ class ConnectionApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -654,7 +654,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def get_connections_with_http_info(
+    async def get_connections_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -718,11 +718,11 @@ class ConnectionApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -730,7 +730,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def get_connections_without_preload_content(
+    async def get_connections_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -794,7 +794,7 @@ class ConnectionApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -877,7 +877,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def patch_connection(
+    async def patch_connection(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         connection: Connection,
@@ -943,11 +943,11 @@ class ConnectionApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -955,7 +955,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def patch_connection_with_http_info(
+    async def patch_connection_with_http_info(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         connection: Connection,
@@ -1021,11 +1021,11 @@ class ConnectionApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1033,7 +1033,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def patch_connection_without_preload_content(
+    async def patch_connection_without_preload_content(
         self,
         connection_id: Annotated[StrictStr, Field(description="The connection ID.")],
         connection: Connection,
@@ -1099,7 +1099,7 @@ class ConnectionApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1192,7 +1192,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def post_connection(
+    async def post_connection(
         self,
         connection: Connection,
         _request_timeout: Union[
@@ -1249,11 +1249,11 @@ class ConnectionApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1261,7 +1261,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def post_connection_with_http_info(
+    async def post_connection_with_http_info(
         self,
         connection: Connection,
         _request_timeout: Union[
@@ -1318,11 +1318,11 @@ class ConnectionApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1330,7 +1330,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def post_connection_without_preload_content(
+    async def post_connection_without_preload_content(
         self,
         connection: Connection,
         _request_timeout: Union[
@@ -1387,7 +1387,7 @@ class ConnectionApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1471,7 +1471,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def test_connection(
+    async def test_connection(
         self,
         connection: Connection,
         _request_timeout: Union[
@@ -1530,11 +1530,11 @@ class ConnectionApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1542,7 +1542,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def test_connection_with_http_info(
+    async def test_connection_with_http_info(
         self,
         connection: Connection,
         _request_timeout: Union[
@@ -1601,11 +1601,11 @@ class ConnectionApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1613,7 +1613,7 @@ class ConnectionApi:
 
 
     @validate_call
-    def test_connection_without_preload_content(
+    async def test_connection_without_preload_content(
         self,
         connection: Connection,
         _request_timeout: Union[
@@ -1672,7 +1672,7 @@ class ConnectionApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

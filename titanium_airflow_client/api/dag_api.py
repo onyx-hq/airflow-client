@@ -49,7 +49,7 @@ class DAGApi:
 
 
     @validate_call
-    def delete_dag(
+    async def delete_dag(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         _request_timeout: Union[
@@ -109,11 +109,11 @@ class DAGApi:
             '404': "Error",
             '409': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -121,7 +121,7 @@ class DAGApi:
 
 
     @validate_call
-    def delete_dag_with_http_info(
+    async def delete_dag_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         _request_timeout: Union[
@@ -181,11 +181,11 @@ class DAGApi:
             '404': "Error",
             '409': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -193,7 +193,7 @@ class DAGApi:
 
 
     @validate_call
-    def delete_dag_without_preload_content(
+    async def delete_dag_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         _request_timeout: Union[
@@ -253,7 +253,7 @@ class DAGApi:
             '404': "Error",
             '409': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -324,7 +324,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_dag(
+    async def get_dag(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         fields: Annotated[Optional[List[StrictStr]], Field(description="List of field for return. ")] = None,
@@ -386,11 +386,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -398,7 +398,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_dag_with_http_info(
+    async def get_dag_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         fields: Annotated[Optional[List[StrictStr]], Field(description="List of field for return. ")] = None,
@@ -460,11 +460,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -472,7 +472,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_dag_without_preload_content(
+    async def get_dag_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         fields: Annotated[Optional[List[StrictStr]], Field(description="List of field for return. ")] = None,
@@ -534,7 +534,7 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -611,7 +611,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_dag_details(
+    async def get_dag_details(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         fields: Annotated[Optional[List[StrictStr]], Field(description="List of field for return. ")] = None,
@@ -673,11 +673,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -685,7 +685,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_dag_details_with_http_info(
+    async def get_dag_details_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         fields: Annotated[Optional[List[StrictStr]], Field(description="List of field for return. ")] = None,
@@ -747,11 +747,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -759,7 +759,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_dag_details_without_preload_content(
+    async def get_dag_details_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         fields: Annotated[Optional[List[StrictStr]], Field(description="List of field for return. ")] = None,
@@ -821,7 +821,7 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -898,7 +898,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_dag_source(
+    async def get_dag_source(
         self,
         file_token: Annotated[StrictStr, Field(description="The key containing the encrypted path to the file. Encryption and decryption take place only on the server. This prevents the client from reading an non-DAG file. This also ensures API extensibility, because the format of encrypted data may change. ")],
         _request_timeout: Union[
@@ -957,11 +957,11 @@ class DAGApi:
             '404': "Error",
             '406': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -969,7 +969,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_dag_source_with_http_info(
+    async def get_dag_source_with_http_info(
         self,
         file_token: Annotated[StrictStr, Field(description="The key containing the encrypted path to the file. Encryption and decryption take place only on the server. This prevents the client from reading an non-DAG file. This also ensures API extensibility, because the format of encrypted data may change. ")],
         _request_timeout: Union[
@@ -1028,11 +1028,11 @@ class DAGApi:
             '404': "Error",
             '406': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1040,7 +1040,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_dag_source_without_preload_content(
+    async def get_dag_source_without_preload_content(
         self,
         file_token: Annotated[StrictStr, Field(description="The key containing the encrypted path to the file. Encryption and decryption take place only on the server. This prevents the client from reading an non-DAG file. This also ensures API extensibility, because the format of encrypted data may change. ")],
         _request_timeout: Union[
@@ -1099,7 +1099,7 @@ class DAGApi:
             '404': "Error",
             '406': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1171,7 +1171,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_dags(
+    async def get_dags(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -1255,11 +1255,11 @@ class DAGApi:
             '200': "DAGCollection",
             '401': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1267,7 +1267,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_dags_with_http_info(
+    async def get_dags_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -1351,11 +1351,11 @@ class DAGApi:
             '200': "DAGCollection",
             '401': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1363,7 +1363,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_dags_without_preload_content(
+    async def get_dags_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -1447,7 +1447,7 @@ class DAGApi:
             '200': "DAGCollection",
             '401': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1557,7 +1557,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_task(
+    async def get_task(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
@@ -1618,11 +1618,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1630,7 +1630,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_task_with_http_info(
+    async def get_task_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
@@ -1691,11 +1691,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1703,7 +1703,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_task_without_preload_content(
+    async def get_task_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         task_id: Annotated[StrictStr, Field(description="The task ID.")],
@@ -1764,7 +1764,7 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1838,7 +1838,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_tasks(
+    async def get_tasks(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         order_by: Annotated[Optional[StrictStr], Field(description="The name of the field to order the results by. Prefix a field name with `-` to reverse the sort order.  *New in version 2.1.0* ")] = None,
@@ -1899,11 +1899,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1911,7 +1911,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_tasks_with_http_info(
+    async def get_tasks_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         order_by: Annotated[Optional[StrictStr], Field(description="The name of the field to order the results by. Prefix a field name with `-` to reverse the sort order.  *New in version 2.1.0* ")] = None,
@@ -1972,11 +1972,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1984,7 +1984,7 @@ class DAGApi:
 
 
     @validate_call
-    def get_tasks_without_preload_content(
+    async def get_tasks_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         order_by: Annotated[Optional[StrictStr], Field(description="The name of the field to order the results by. Prefix a field name with `-` to reverse the sort order.  *New in version 2.1.0* ")] = None,
@@ -2045,7 +2045,7 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2121,7 +2121,7 @@ class DAGApi:
 
 
     @validate_call
-    def patch_dag(
+    async def patch_dag(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag: DAG,
@@ -2186,11 +2186,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2198,7 +2198,7 @@ class DAGApi:
 
 
     @validate_call
-    def patch_dag_with_http_info(
+    async def patch_dag_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag: DAG,
@@ -2263,11 +2263,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2275,7 +2275,7 @@ class DAGApi:
 
 
     @validate_call
-    def patch_dag_without_preload_content(
+    async def patch_dag_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag: DAG,
@@ -2340,7 +2340,7 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2433,7 +2433,7 @@ class DAGApi:
 
 
     @validate_call
-    def patch_dags(
+    async def patch_dags(
         self,
         dag_id_pattern: Annotated[StrictStr, Field(description="If set, only update DAGs with dag_ids matching this pattern. ")],
         dag: DAG,
@@ -2515,11 +2515,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2527,7 +2527,7 @@ class DAGApi:
 
 
     @validate_call
-    def patch_dags_with_http_info(
+    async def patch_dags_with_http_info(
         self,
         dag_id_pattern: Annotated[StrictStr, Field(description="If set, only update DAGs with dag_ids matching this pattern. ")],
         dag: DAG,
@@ -2609,11 +2609,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2621,7 +2621,7 @@ class DAGApi:
 
 
     @validate_call
-    def patch_dags_without_preload_content(
+    async def patch_dags_without_preload_content(
         self,
         dag_id_pattern: Annotated[StrictStr, Field(description="If set, only update DAGs with dag_ids matching this pattern. ")],
         dag: DAG,
@@ -2703,7 +2703,7 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2819,7 +2819,7 @@ class DAGApi:
 
 
     @validate_call
-    def post_clear_task_instances(
+    async def post_clear_task_instances(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         clear_task_instances: Annotated[ClearTaskInstances, Field(description="Parameters of action")],
@@ -2881,11 +2881,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2893,7 +2893,7 @@ class DAGApi:
 
 
     @validate_call
-    def post_clear_task_instances_with_http_info(
+    async def post_clear_task_instances_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         clear_task_instances: Annotated[ClearTaskInstances, Field(description="Parameters of action")],
@@ -2955,11 +2955,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2967,7 +2967,7 @@ class DAGApi:
 
 
     @validate_call
-    def post_clear_task_instances_without_preload_content(
+    async def post_clear_task_instances_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         clear_task_instances: Annotated[ClearTaskInstances, Field(description="Parameters of action")],
@@ -3029,7 +3029,7 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3116,7 +3116,7 @@ class DAGApi:
 
 
     @validate_call
-    def post_set_task_instances_state(
+    async def post_set_task_instances_state(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         update_task_instances_state: Annotated[UpdateTaskInstancesState, Field(description="Parameters of action")],
@@ -3178,11 +3178,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3190,7 +3190,7 @@ class DAGApi:
 
 
     @validate_call
-    def post_set_task_instances_state_with_http_info(
+    async def post_set_task_instances_state_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         update_task_instances_state: Annotated[UpdateTaskInstancesState, Field(description="Parameters of action")],
@@ -3252,11 +3252,11 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3264,7 +3264,7 @@ class DAGApi:
 
 
     @validate_call
-    def post_set_task_instances_state_without_preload_content(
+    async def post_set_task_instances_state_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         update_task_instances_state: Annotated[UpdateTaskInstancesState, Field(description="Parameters of action")],
@@ -3326,7 +3326,7 @@ class DAGApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

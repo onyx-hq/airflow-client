@@ -42,7 +42,7 @@ class PoolApi:
 
 
     @validate_call
-    def delete_pool(
+    async def delete_pool(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         _request_timeout: Union[
@@ -100,11 +100,11 @@ class PoolApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -112,7 +112,7 @@ class PoolApi:
 
 
     @validate_call
-    def delete_pool_with_http_info(
+    async def delete_pool_with_http_info(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         _request_timeout: Union[
@@ -170,11 +170,11 @@ class PoolApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -182,7 +182,7 @@ class PoolApi:
 
 
     @validate_call
-    def delete_pool_without_preload_content(
+    async def delete_pool_without_preload_content(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         _request_timeout: Union[
@@ -240,7 +240,7 @@ class PoolApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -311,7 +311,7 @@ class PoolApi:
 
 
     @validate_call
-    def get_pool(
+    async def get_pool(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         _request_timeout: Union[
@@ -368,11 +368,11 @@ class PoolApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -380,7 +380,7 @@ class PoolApi:
 
 
     @validate_call
-    def get_pool_with_http_info(
+    async def get_pool_with_http_info(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         _request_timeout: Union[
@@ -437,11 +437,11 @@ class PoolApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -449,7 +449,7 @@ class PoolApi:
 
 
     @validate_call
-    def get_pool_without_preload_content(
+    async def get_pool_without_preload_content(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         _request_timeout: Union[
@@ -506,7 +506,7 @@ class PoolApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -577,7 +577,7 @@ class PoolApi:
 
 
     @validate_call
-    def get_pools(
+    async def get_pools(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -641,11 +641,11 @@ class PoolApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -653,7 +653,7 @@ class PoolApi:
 
 
     @validate_call
-    def get_pools_with_http_info(
+    async def get_pools_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -717,11 +717,11 @@ class PoolApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -729,7 +729,7 @@ class PoolApi:
 
 
     @validate_call
-    def get_pools_without_preload_content(
+    async def get_pools_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The numbers of items to return.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="The number of items to skip before starting to collect the result set.")] = None,
@@ -793,7 +793,7 @@ class PoolApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -876,7 +876,7 @@ class PoolApi:
 
 
     @validate_call
-    def patch_pool(
+    async def patch_pool(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         pool: Pool,
@@ -943,11 +943,11 @@ class PoolApi:
             '404': "Error",
             '409': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -955,7 +955,7 @@ class PoolApi:
 
 
     @validate_call
-    def patch_pool_with_http_info(
+    async def patch_pool_with_http_info(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         pool: Pool,
@@ -1022,11 +1022,11 @@ class PoolApi:
             '404': "Error",
             '409': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1034,7 +1034,7 @@ class PoolApi:
 
 
     @validate_call
-    def patch_pool_without_preload_content(
+    async def patch_pool_without_preload_content(
         self,
         pool_name: Annotated[StrictStr, Field(description="The pool name.")],
         pool: Pool,
@@ -1101,7 +1101,7 @@ class PoolApi:
             '404': "Error",
             '409': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1194,7 +1194,7 @@ class PoolApi:
 
 
     @validate_call
-    def post_pool(
+    async def post_pool(
         self,
         pool: Pool,
         _request_timeout: Union[
@@ -1251,11 +1251,11 @@ class PoolApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1263,7 +1263,7 @@ class PoolApi:
 
 
     @validate_call
-    def post_pool_with_http_info(
+    async def post_pool_with_http_info(
         self,
         pool: Pool,
         _request_timeout: Union[
@@ -1320,11 +1320,11 @@ class PoolApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1332,7 +1332,7 @@ class PoolApi:
 
 
     @validate_call
-    def post_pool_without_preload_content(
+    async def post_pool_without_preload_content(
         self,
         pool: Pool,
         _request_timeout: Union[
@@ -1389,7 +1389,7 @@ class PoolApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

@@ -42,7 +42,7 @@ class XComApi:
 
 
     @validate_call
-    def get_xcom_entries(
+    async def get_xcom_entries(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -123,11 +123,11 @@ class XComApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -135,7 +135,7 @@ class XComApi:
 
 
     @validate_call
-    def get_xcom_entries_with_http_info(
+    async def get_xcom_entries_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -216,11 +216,11 @@ class XComApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -228,7 +228,7 @@ class XComApi:
 
 
     @validate_call
-    def get_xcom_entries_without_preload_content(
+    async def get_xcom_entries_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -309,7 +309,7 @@ class XComApi:
             '401': "Error",
             '403': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -406,7 +406,7 @@ class XComApi:
 
 
     @validate_call
-    def get_xcom_entry(
+    async def get_xcom_entry(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -483,11 +483,11 @@ class XComApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -495,7 +495,7 @@ class XComApi:
 
 
     @validate_call
-    def get_xcom_entry_with_http_info(
+    async def get_xcom_entry_with_http_info(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -572,11 +572,11 @@ class XComApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -584,7 +584,7 @@ class XComApi:
 
 
     @validate_call
-    def get_xcom_entry_without_preload_content(
+    async def get_xcom_entry_without_preload_content(
         self,
         dag_id: Annotated[StrictStr, Field(description="The DAG ID.")],
         dag_run_id: Annotated[StrictStr, Field(description="The DAG run ID.")],
@@ -661,7 +661,7 @@ class XComApi:
             '403': "Error",
             '404': "Error",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
